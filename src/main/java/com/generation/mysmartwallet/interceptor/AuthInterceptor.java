@@ -17,7 +17,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 			// L'utente non è autenticato, lo reindirizziamo alla pagina di login
 			response.sendRedirect("/login");
 			return false;
-		}
+		} 
+		
 		// L'autenticazione è valida, l'utente può accedere alla risorsa richiesta
 		return true;
 	}
