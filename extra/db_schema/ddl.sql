@@ -2,75 +2,81 @@
 create database MySmartWallet;
 use MySmartWallet;
 
-create table users(
-id int primary key auto_increment,
-username varchar(100) not null,
-password varchar(100) not null,
-enabled boolean,
-nome varchar(100) not null,
-cognome varchar(100) not null,
-datadinascita date not null
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    enabled BOOLEAN,
+    nome VARCHAR(100) NOT NULL,
+    cognome VARCHAR(100) NOT NULL,
+    datadinascita DATE NOT NULL
 );
--- drop table users;
--- select * from users;
+
 create table conto (
   id int primary key,
   saldo double default(0.0),
   foreign key (id) references users(id) ON DELETE CASCADE
   ON UPDATE CASCADE
 );
--- drop table conto;
--- select * from conto;
-create table obiettivi(
-id int primary key auto_increment,
-importo double not null,
-datainizio date not null,
-datafine date not null,
-completato boolean,
-nome varchar(100) not null,
-note varchar(1000),
-idconto int not null,
-foreign key(idconto) references conto(id) on delete cascade on update cascade
+
+CREATE TABLE obiettivi (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    importo DOUBLE NOT NULL,
+    datainizio DATE NOT NULL,
+    datafine DATE NOT NULL,
+    completato BOOLEAN,
+    nome VARCHAR(100) NOT NULL,
+    note VARCHAR(1000),
+    idconto INT NOT NULL,
+    FOREIGN KEY (idconto)
+        REFERENCES conto (id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 -- drop table obiettivi;
 -- select * from obiettivi;
-create table transazioni(
-id int primary key auto_increment,
-idconto int,
-importo double not null,
-datatransazione date not null,
-note varchar(1000),
-nome varchar(100) not null,
-metodo enum("Contanti","Carta","Altro") not null,
-categoria enum("Casa","Trasporti","Famiglia","Salute e Benessere","Tempo Libero","Altro") not null,
-tipo enum("Entrata","Uscita"),
-obiettivoid int,
-foreign key(idconto) references conto(id) on delete cascade on update cascade,
-foreign key(obiettivoid) references obiettivi(id) on delete cascade on update cascade
+CREATE TABLE transazioni (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idconto INT,
+    importo DOUBLE NOT NULL,
+    datatransazione DATE NOT NULL,
+    note VARCHAR(1000),
+    nome VARCHAR(100) NOT NULL,
+    metodo ENUM('Contanti', 'Carta', 'Altro') NOT NULL,
+    categoria ENUM('Casa', 'Trasporti', 'Famiglia', 'Salute e Benessere', 'Tempo Libero', 'Altro') NOT NULL,
+    tipo ENUM('Entrata', 'Uscita'),
+    obiettivoid INT,
+    FOREIGN KEY (idconto)
+        REFERENCES conto (id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (obiettivoid)
+        REFERENCES obiettivi (id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 -- drop table transazioni;
 -- select * from transazioni;
-create table budgetPerCategoria(
-id int primary key auto_increment,
-idconto int not null,
-budget double not null,
-nome enum("Casa","Trasporti","Famiglia","Salute e Benessere","Tempo Libero","Altro") not null,
-foreign key(idconto) references conto(id)
+CREATE TABLE budgetPerCategoria (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idconto INT NOT NULL,
+    budget DOUBLE NOT NULL,
+    nome ENUM('Casa', 'Trasporti', 'Famiglia', 'Salute e Benessere', 'Tempo Libero', 'Altro') NOT NULL,
+    FOREIGN KEY (idconto)
+        REFERENCES conto (id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 -- drop table budgetpercategoria;
 -- select * from budgetpercategoria;
-create table transazioniRicorrenti(
-id int primary key auto_increment,
-idconto int not null,
-importo double not null,
-datainizio date not null,
-frequenza int not null,
-unita enum("Settimana","Mese","Anno") not null,
-metodo enum("Contanti","Carta","Altro") not null,
-categoria enum("Casa","Trasporti","Famiglia","Salute e Benessere","Tempo Libero","Altro") not null,
-tipo enum("Entrata","Uscita") not null,
-obiettivoid int not null,
-foreign key(idconto) references conto(id)
+CREATE TABLE transazioniRicorrenti (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idconto INT NOT NULL,
+    importo DOUBLE NOT NULL,
+    datainizio DATE NOT NULL,
+    frequenza INT NOT NULL,
+    unita ENUM('Settimana', 'Mese', 'Anno') NOT NULL,
+    metodo ENUM('Contanti', 'Carta', 'Altro') NOT NULL,
+    categoria ENUM('Casa', 'Trasporti', 'Famiglia', 'Salute e Benessere', 'Tempo Libero', 'Altro') NOT NULL,
+    tipo ENUM('Entrata', 'Uscita') NOT NULL,
+    obiettivoid INT NOT NULL,
+    FOREIGN KEY (idconto)
+        REFERENCES conto (id)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-# Trigger(s)
