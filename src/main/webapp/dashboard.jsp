@@ -9,5 +9,6 @@
 	</head>
 	<body>
 		<h1>Benvenuto <c:out value="${sessionScope.user.nome}"/></h1>
+		<a href="/logout">Logout</a>
 	</body>
 </html>
