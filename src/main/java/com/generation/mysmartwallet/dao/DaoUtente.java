@@ -12,7 +12,6 @@ public class DaoUtente {
 	@Autowired
 	private Database db;
 
-
 	@Autowired
 	private ApplicationContext context;
 
@@ -35,6 +34,19 @@ public class DaoUtente {
 		return read("select * from users");
 	}
 
+
+	public User trovaPerUsername(String username) {
+		Map<String, String> riga = db.row("select * from users where username = ?", username);
+		if(riga == null) {
+			return null;
+		}
+		return context.getBean(User.class, riga);
+	}
+
+	public boolean isUsernameEsistente(String username) {
+		return trovaPerUsername(username) == null ? false : true;
+	}
+	
 	public boolean create(User u)
 	{
 		String query = "insert into users(username, password, enabled, nome, cognome, datadinascita) values (?,?,?,?,?,?);";

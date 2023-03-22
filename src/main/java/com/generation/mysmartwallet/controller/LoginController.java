@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.generation.mysmartwallet.dao.DaoUtente;
+import com.generation.mysmartwallet.entity.User;
 import com.generation.mysmartwallet.util.PasswordEncoder;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private PasswordEncoder encoder;
-	
+
+	@Autowired
+	private DaoUtente daoUtente;
+
 	@GetMapping("/login")
 	public String login(HttpSession session) {
 		if(session.getAttribute("user") != null) {
@@ -28,25 +33,34 @@ public class LoginController {
 		}
 		return "login.html";
 	}
-	
-	//TODO: Deve effettivamente controllare che l'utente sia presente nel Database
+
 	@RequestMapping(value = "/loginProcess", method = {RequestMethod.GET, RequestMethod.POST}) 
 	public String loginProcess(HttpSession session, @RequestParam("username") String username, 
-								@RequestParam("password") String password) {
-		
-		
-			if(username.equalsIgnoreCase("123")&& encoder.matches(password,encoder.encode("123"))) {
-				Map<String, String> user=new HashMap<String,String>();
-				user.put("username", username);
-				user.put("nome", "Marco");
-				user.put("cognome", "Cane di Giorgia");
-				user.put("datadinascita", "1987-11-19");
-				user.put("password", encoder.encode(password));
-				session.setAttribute("user", user);
-				return "redirect:/";
-			}
-		 
+			@RequestParam("password") String password) {
+
+		// Cerco l'utente nel DB in base all'username
+		User utenteRegistrato = daoUtente.trovaPerUsername(username);
+		// Se lo trovo (!= null) e la password corrisponde
+		if(utenteRegistrato != null && encoder.matches(password, utenteRegistrato.getPassword())) {
+			// creo una mappa e la salvo in sessione
+			Map<String, String> user = new HashMap<String,String>();
+			user.put("username", utenteRegistrato.getUsername());
+			user.put("nome", utenteRegistrato.getNome());
+			user.put("cognome", utenteRegistrato.getCognome());
+			user.put("datadinascita", utenteRegistrato.getDatadinascita().toString());
+
+			session.setAttribute("user", user);
+			return "redirect:/";
+
+		}
+
 		return "redirect:login";
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/";
+	}
+
 }
