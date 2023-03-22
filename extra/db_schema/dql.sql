@@ -4,4 +4,4 @@ select * from transazioni where idconto = ?;
 
 select saldo from conto where id = ?;
 
-select budget from budgetPerCategoria where nome = ?;
+select * from budgetPerCategoria where idconto = ?;

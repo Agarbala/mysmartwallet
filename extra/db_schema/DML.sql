@@ -1,5 +1,5 @@
 -- inserire utente 
-Insert into users(username, password, enabled, nome, cognome, datadinascita) values (?,?,?,?,?,?);
+insert into users(username, password, enabled, nome, cognome, datadinascita) values (?,?,?,?,?,?);
 
 
 -- inserire transazione 
