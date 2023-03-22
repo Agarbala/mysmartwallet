@@ -2,7 +2,7 @@ package com.generation.mysmartwallet.entity;
 
 import com.generation.mysmartwallet.enums.Categoria;
 
-public class Budget {
+public class Budget extends Entity {
 
 	private Categoria nome;
 	private double budget;

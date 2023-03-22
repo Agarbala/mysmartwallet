@@ -1,8 +1,8 @@
 package com.generation.mysmartwallet.entity;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
-import com.generation.mysmartwallet.entity.Entity;
 import com.generation.mysmartwallet.enums.Categoria;
 import com.generation.mysmartwallet.enums.MetodoPagamento;
 import com.generation.mysmartwallet.enums.TipoTransazione;
@@ -17,13 +17,20 @@ public class Transazione extends Entity {
 	private MetodoPagamento metodo;
 	private Categoria categoria;
 	private TipoTransazione tipo;
+	private Optional<Integer> obiettivoid;
 	
 	
 	public Transazione() {}
 
-	
-	
-	
+
+	public Optional<Integer> getObiettivoid() {
+		return obiettivoid;
+	}
+
+
+	public void setObiettivoid(Optional<Integer> obiettivoid) {
+		this.obiettivoid = obiettivoid;
+	}
 
 	public double getImporto() {
 		return importo;
