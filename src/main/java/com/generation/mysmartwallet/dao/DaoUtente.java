@@ -44,7 +44,7 @@ public class DaoUtente {
 				"1",  // di default l'utente è abilitato
 				u.getNome(), 
 				u.getCognome(),  
-				u.getDatanascita() + "");
+				u.getDatadinascita() + "");
 	}
 
 }
