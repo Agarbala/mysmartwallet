@@ -2,6 +2,7 @@ package com.generation.mysmartwallet.entity;
 
 import java.lang.reflect.Method;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,8 +10,8 @@ public abstract class Entity
 {
 	private int id;
 
-	
-	
+
+
 	public Entity() {}
 
 	public Entity(int id)
@@ -19,7 +20,7 @@ public abstract class Entity
 	}
 
 
-	
+
 	public int getId()
 	{
 		return id;
@@ -110,7 +111,8 @@ public abstract class Entity
 									valore.equalsIgnoreCase("si")	||
 									valore.equalsIgnoreCase("sì"))	;
 							break;
-
+						case "localdate":
+							m.invoke(this, LocalDate.parse(valore));
 						default	:
 							System.err.println("Nel fromMap() non ho riconosciuto il tipo " + tipo);
 							break;
