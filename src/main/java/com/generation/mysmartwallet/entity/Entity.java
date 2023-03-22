@@ -113,6 +113,7 @@ public abstract class Entity
 							break;
 						case "localdate":
 							m.invoke(this, LocalDate.parse(valore));
+							break;
 						default	:
 							System.err.println("Nel fromMap() non ho riconosciuto il tipo " + tipo);
 							break;
