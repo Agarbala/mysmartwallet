@@ -7,7 +7,7 @@ import com.generation.mysmartwallet.enums.TipoTransazione;
 public class Conto extends Entity {
 
 	private User utente;
-	private ArrayList<TipoTransazione> transazioni;
+	private ArrayList<Transazione> transazioni;
 	private ArrayList<Obiettivo> obiettivi;
 	private ArrayList<Budget> budgets;
 	private double saldo;
@@ -29,12 +29,12 @@ public class Conto extends Entity {
 	}
 
 
-	public ArrayList<TipoTransazione> getTransazioni() {
+	public ArrayList<Transazione> getTransazioni() {
 		return transazioni;
 	}
 
 
-	public void setTransazioni(ArrayList<TipoTransazione> transazioni) {
+	public void setTransazioni(ArrayList<Transazione> transazioni) {
 		this.transazioni = transazioni;
 	}
 

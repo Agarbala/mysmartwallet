@@ -5,7 +5,7 @@ import com.generation.mysmartwallet.enums.Categoria;
 public class Budget {
 
 	private Categoria nome;
-	private double budjet;
+	private double budget;
 
 	
 	public Budget() {}
@@ -23,13 +23,13 @@ public class Budget {
 	}
 
 
-	public double getBudjet() {
-		return budjet;
+	public double getBudget() {
+		return budget;
 	}
 
 
-	public void setBudjet(double budjet) {
-		this.budjet = budjet;
+	public void setBudjet(double budget) {
+		this.budget = budget;
 	}
 
 	
