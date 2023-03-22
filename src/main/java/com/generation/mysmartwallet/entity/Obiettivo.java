@@ -7,8 +7,8 @@ public class Obiettivo extends Entity {
 	
 	private String nome;
 	private double importo;
-	private LocalDate dataInizio;
-	private LocalDate dataFine;
+	private LocalDate datainizio;
+	private LocalDate datafine;
 	private boolean completato;
 	private String note;
 	
@@ -36,23 +36,23 @@ public class Obiettivo extends Entity {
 	}
 
 
-	public LocalDate getDataInizio() {
-		return dataInizio;
+	public LocalDate getDatainizio() {
+		return datainizio;
 	}
 
 
-	public void setDataInizio(LocalDate dataInizio) {
-		this.dataInizio = dataInizio;
+	public void setDatainizio(LocalDate datainizio) {
+		this.datainizio = datainizio;
 	}
 
 
-	public LocalDate getDataFine() {
-		return dataFine;
+	public LocalDate getDatafine() {
+		return datafine;
 	}
 
 
-	public void setDataFine(LocalDate dataFine) {
-		this.dataFine = dataFine;
+	public void setDatafine(LocalDate datafine) {
+		this.datafine = datafine;
 	}
 
 
@@ -74,6 +74,9 @@ public class Obiettivo extends Entity {
 	public void setNote(String note) {
 		this.note = note;
 	}
+
+
+	
 	
 	
 	

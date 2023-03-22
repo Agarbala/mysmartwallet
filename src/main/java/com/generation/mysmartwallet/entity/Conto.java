@@ -18,12 +18,11 @@ public class Conto extends Entity {
 	public Conto () {}
 
 
-	
-	
+
+
 	public User getUtente() {
 		return utente;
 	}
-
 
 	public void setUtente(User utente) {
 		this.utente = utente;
@@ -49,25 +48,23 @@ public class Conto extends Entity {
 		this.obiettivi = obiettivi;
 	}
 
-
 	public ArrayList<Budget> getBudgets() {
 		return budgets;
 	}
-
 
 	public void setBudgets(ArrayList<Budget> budgets) {
 		this.budgets = budgets;
 	}
 
-
 	public double getSaldo() {
 		return saldo;
 	}
 
-
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+
+
 	
 	
 	

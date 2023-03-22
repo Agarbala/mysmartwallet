@@ -9,25 +9,31 @@ public class Budget {
 
 	
 	public Budget() {}
+	
+	
 
-	
-	
-	
+
 	public Categoria getNome() {
 		return nome;
 	}
+
 
 	public void setNome(Categoria nome) {
 		this.nome = nome;
 	}
 
+
 	public double getBudjet() {
 		return budjet;
 	}
 
+
 	public void setBudjet(double budjet) {
 		this.budjet = budjet;
 	}
+
+	
+	
 	
 	
 	
