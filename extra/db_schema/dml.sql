@@ -28,7 +28,9 @@ delete from budgetPerCategoria where id = ?;
 insert into obiettivo (idconto, importo, datainizio, datafine, completato, nome) values (?,?,?,?,?,?);
 
 
-update obiettivo set  idconto = ?, importo = ?, datainizio = ?, datafine = ?, nome = ? where id = ?;
+update obiettivo set idconto = ?, importo = ?, datainizio = ?, datafine = ?, nome = ? where id = ?;
+
+delete from obiettivo where id = ?
 
 
 
