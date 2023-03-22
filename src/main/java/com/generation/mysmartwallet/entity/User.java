@@ -6,7 +6,7 @@ public class User extends Entity {
 	
 	private String nome;
 	private String cognome;
-	private LocalDate datanascita;
+	private LocalDate datadinascita;
 	private boolean enabled;
 	private String username;
 	private String password;
@@ -47,15 +47,15 @@ public class User extends Entity {
 
 
 
-	public LocalDate getDatanascita() {
-		return datanascita;
+	public LocalDate getDatadinascita() {
+		return datadinascita;
 	}
 
 
 
 
-	public void setDatanascita(LocalDate datanascita) {
-		this.datanascita = datanascita;
+	public void setDatadinascita(LocalDate datanascita) {
+		this.datadinascita = datanascita;
 	}
 
 
