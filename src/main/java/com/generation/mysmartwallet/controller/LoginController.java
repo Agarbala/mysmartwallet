@@ -33,17 +33,13 @@ public class LoginController {
 		return "login.html";
 	}
 
-	@GetMapping("/loginProcess")
-	public String loginProcessGet() {
-		return "redirect:/login";
-	}
-
 	@PostMapping("/loginProcess")
 	public String loginProcess(HttpSession session, @RequestParam("username") String username, 
 			@RequestParam("password") String password) {
 
 		// Cerco l'utente nel DB in base all'username
 		User utenteRegistrato = daoUtente.trovaPerUsername(username);
+		System.out.println(utenteRegistrato);
 		// Se lo trovo (!= null) e la password corrisponde
 		if(utenteRegistrato != null && encoder.matches(password, utenteRegistrato.getPassword())) {
 			// creo una mappa e la salvo in sessione

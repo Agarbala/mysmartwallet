@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.generation.mysmartwallet.dao.DaoUtente;
 import com.generation.mysmartwallet.entity.User;
@@ -33,9 +34,10 @@ public class SignupController {
 		return "signup.html";
 	}
 
-	@GetMapping("/signupProcess")
-	public String signupProcessGet() {
-		return "redirect:/signup";
+	@PostMapping("/isUsernameDisponibile")
+	@ResponseBody
+	public boolean isUsernameDisponibile(@RequestParam String username) {
+		return !daoUtente.isUsernameEsistente(username);
 	}
 	
 	@PostMapping("/signupProcess")

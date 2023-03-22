@@ -11,6 +11,7 @@
                     </td>
                     <td>
                         <input type="text" id="username" name="username" required><br>
+                        <div id="usernameAvailability"></div>
                     </td>
                 </tr>
                 <tr>
@@ -47,10 +48,34 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" value="Registrati">
+                        <input type="submit" id="submit" value="Registrati" onClick="" >
                     </td>
                  </tr>
             </table>
         </form>
+         <!-- Inclusione di jQuery -->
+   		 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   		 <!-- Codice jQuery -->
+	    <script>
+	   
+	    $(document).ready(function() {
+	        $('#username').on('blur', function() {
+	          var username = $(this).val();
+	          $.ajax({
+	            url: '/isUsernameDisponibile',
+	            type: 'POST',
+	            data: {username: username},
+	            success: function(response) {
+	              if (response) {
+	                $('#usernameAvailability').text('disponibile');
+	              } else {
+	                $('#usernameAvailability').text('già preso');
+	                $('#submit').css('display:none');
+	              }
+	            }
+	          });
+	        });
+	      });
+	    </script>
     </body>
 </html>

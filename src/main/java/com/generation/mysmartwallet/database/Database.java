@@ -19,6 +19,7 @@ public class Database
 {
 	
 	private Connection c;
+	
 	private final static String NOMEDB = "MySmartWallet";
 	private final static String USER =  "root";
 	private final static String PASSWORD = "rootroot";
