@@ -2,7 +2,6 @@ package com.generation.mysmartwallet.entity;
 
 import java.util.ArrayList;
 
-import com.generation.mysmartwallet.enums.TipoTransazione;
 
 public class Conto extends Entity {
 
@@ -12,13 +11,7 @@ public class Conto extends Entity {
 	private ArrayList<Budget> budgets;
 	private double saldo;
 	
-	
-	
-	
 	public Conto () {}
-
-
-
 
 	public User getUtente() {
 		return utente;
