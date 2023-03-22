@@ -9,10 +9,9 @@ public abstract class Entity
 {
 	private int id;
 
-	public Entity()
-	{
-
-	}
+	
+	
+	public Entity() {}
 
 	public Entity(int id)
 	{
@@ -20,6 +19,7 @@ public abstract class Entity
 	}
 
 
+	
 	public int getId()
 	{
 		return id;
@@ -104,7 +104,7 @@ public abstract class Entity
 							break;
 
 						case "boolean"	:
-							m.invoke(this,	valore.equals("1")				||
+							m.invoke(this,	valore.equals("1")	    ||
 									valore.equalsIgnoreCase("true")	||
 									valore.equalsIgnoreCase("vero")	||
 									valore.equalsIgnoreCase("si")	||
