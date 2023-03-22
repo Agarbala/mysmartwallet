@@ -21,7 +21,6 @@ public class Database
 	@Value("${<db.password>}")
 	private String PASSWORD;
 	
-	
 	public Database()
     {
         String timeZone = "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false&amp";
