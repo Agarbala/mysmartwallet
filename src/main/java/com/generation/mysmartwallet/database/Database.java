@@ -8,18 +8,20 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 public class Database
 {
-	private Connection c;
 	
-	@Value("${<db.nomedb>}")
-	private String NOMEDB;
-	@Value("${<db.username>}")
-	private String USER;
-	@Value("${<db.password>}")
-	private String PASSWORD;
+	private Connection c;
+	private final static String NOMEDB = "MySmartWallet";
+	private final static String USER =  "root";
+	private final static String PASSWORD = "rootroot";
 	
 	public Database()
     {
