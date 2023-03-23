@@ -97,9 +97,12 @@ public abstract class Entity
 							break;
 
 						case "int"	:
+							if(valore == null) {
+								m.invoke(this, 0);
+								break;
+							}
 							m.invoke(this, Integer.parseInt(valore));
 							break;
-
 						case "double"	:
 							m.invoke(this, Double.parseDouble(valore));
 							break;

@@ -8,6 +8,7 @@
 		<title>Dashboard</title>
 	</head>
 	<body>
+
 		<h1>Benvenuto <c:out value="${conto.utente.nome}"/>  <c:out value="${conto.utente.cognome}"/></h1>
 		<!--  Prova stampa oggetto Conto -->
 		<c:out value="${conto}"/>

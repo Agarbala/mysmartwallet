@@ -43,7 +43,7 @@ public class DaoTransazioni {
 				t.getMetodo()+"", 
 				t.getCategoria()+"", 
 				t.getTipo()+ "", 
-				t.getObiettivoid().orElse(-1) + "");
+				t.getObiettivoid() + "");
 	}
 
 	public boolean update(Transazione t)
