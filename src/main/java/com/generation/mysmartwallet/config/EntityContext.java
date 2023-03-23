@@ -63,6 +63,7 @@ public class EntityContext {
 		return b;
 	}
 	
+	// Creo un oggetto Conto solo una volta per sessione, al logout invalido la sessione
 	@Bean
 	@Scope("session")
 	public Conto conto(int id) {
