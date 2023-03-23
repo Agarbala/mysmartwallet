@@ -19,7 +19,7 @@
 		
 		<div class="mainCont">
 	        <div class="side">
-	            <a href="/logout"><i class="fa-sharp fa-solid fa-right-from-bracket"></i></a>
+	            <a href="/logout"><i class="fa-sharp fa-solid fa-right-from-bracket" title="logout"></i></a>
 				
 				<div class="icon-container">
 				  <a href="#"><i class="fa-sharp fa-solid fa-house-chimney iconColor"></i></a>
@@ -87,7 +87,7 @@
 	                    </div>
 	                </div>
 	            </nav>
-				<h1>Contenuto principale</h1>
+
 				<h1>Benvenuto <c:out value="${sessionScope.user.nome}"/></h1>
 				
 				
@@ -95,23 +95,28 @@
 				
 					<div id="recapMensile">
 						<div id="recapImg">
-													
-							<h4>testo</h4>
+											
+							<div id="recaph4">
+								<h4>testo</h4>
+							</div>
+							
+							<div id="freccia">
+							</div>
 							
 						</div>
 						
 						<div id="bilanciMens">
 						
 							<div class="bilancioCont">
-								<h4>bilancio mensile</h4>
+								<h4>Bilancio mensile</h4>
 								<h6>300 €</h6>
 							</div>
 							<div class="bilancioCont">
-								<h4>bilancio mensile</h4>
+								<h4>Uscite</h4>
 								<h6>300 €</h6>
 							</div>
 							<div class="bilancioCont">
-								<h4>bilancio mensile</h4>
+								<h4>Entrate</h4>
 								<h6>300 €</h6>
 							</div>
 						</div>
@@ -121,77 +126,91 @@
 					
 						<div id="bilancioCol1">
 							
+							<table class="table_obiett">
+								<h5>obiettivi  <a href=""><i class="fa-solid fa-bullseye tableIcons"></i></a></h5>
+
+								<thead>
+									<tr>
+										<th scope="col"></th>
+										<th scope="col">Totale</th>
+										<th scope="col">Risparmiato</th>
+										<th scope="col">ogni mese</th>
+										<th scope="col">Scadenza</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="td_center">
+											<h6>Auto nuova</h6>
+										</td>
+										<td>14.000.00</td>
+										<td>3500.00</td>
+										<td>354.00</td>
+										<td>21/02/2024</td>
+									</tr>
+										
+								</tbody>
+							</table>
+
 						</div >
 						<div id="bilancioCol2">
-						
+							<div class="bilTot">
+								<h4>BILANCIO TOTALE</h4>
+							</div>
+							<div class="bilTot">
+								<h2>-153,000.56€</h2>
+							</div>
 						</div >
 					</div>
+
+
+					
+					<div id="importiTabBox">
+							
+						<table class="table_importi">
+							<h5>Transazioni recenti  <a href=""><i class="fa-solid fa-money-bill-transfer tableIcons"></i></a></h5>
+							<thead>
+								<tr>
+									<th scope="col">Importo</th>
+									<th scope="col">Data</th>
+									<th scope="col">Note</th>
+									<th scope="col">Nome</th>
+									<th scope="col">Categoria</th>
+									<th scope="col">Tipo</th>
+									<th scope="col">Modifica</th>
+									<th scope="col">Elimina</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>80.50 €</td>
+									<td>22/03/2023</td>
+									<td>cena fuori con Stoca</td>
+									<td>nome</td>
+									<td>Divertimento</td>
+									<td>Uscita</td>
+									<td class="td_center">
+										<a id="mod" title="modifica" href="#">
+											<i class="fa-solid fa-pencil"></i>
+										</a>
+									</td>
+									<td class="td_center">
+										<a id="del" title="elimina" href="#">
+											<i class="fa-solid fa-trash-can-arrow-up"></i>
+										</a>
+									</td>
+								</tr>
+									
+							</tbody>
+						</table>
+
+					</div >
+
 					
 				</div>
 				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor ex vel libero ultrices hendrerit. Maecenas eu massa sit amet nisl semper elementum. Sed laoreet commodo justo, vel mollis urna gravida at. Integer at mauris velit. Proin finibus ligula non tellus facilisis consequat. Nam ultricies feugiat felis, vel pharetra neque aliquet sit amet. Praesent sodales ullamcorper quam, in suscipit enim iaculis vel.</p>
-				<p>Morbi ac aliquet nisi. Maecenas ultrices massa sit amet ligula tincidunt lobortis. Duis bibendum felis eget faucibus lacinia. Fusce vitae est eget libero tristique aliquam. Vestibulum sagittis orci vel lectus iaculis, nec efficitur magna posuere. Integer id volutpat magna, vel pellentesque eros. Fusce eget eleifend mauris. Aenean efficitur aliquam tellus nec imperdiet.</p>
-				<p>Etiam eu magna pharetra, semper ex at, fermentum orci. Praesent posuere quis
-	            <p>
-	                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores quia ipsum sunt dolor non velit impedit, quas facere
-	                fugit magni laudantium optio consectetur ratione dolorum et deserunt rerum nihil accusantium eligendi? Voluptatibus esse 
-	                laboriosam, consequatur a dolores illum illo corrupti, doloribus id explicabo necessitatibus cumque ducimus provident! Totam 
-	                veniam incidunt libero doloribus illum dolores beatae ratione provident iste, fugit quisquam rerum nemo quos voluptatibus, 
-	                laborum tempora molestias ab numquam pariatur saepe repellat suscipit? Repudiandae quidem ipsum necessitatibus incidunt 
-	                commodi qui perspiciatis architecto molestias laborum voluptatem iure, numquam aliquid obcaecati error nisi assumenda harum 
-	                aperiam dolorum beatae quibusdam autem maxime, explicabo totam? Eaque, harum? Voluptatem quo exercitationem mollitia a magnam 
-	                voluptatibus numquam quidem expedita! Accusamus nemo maiores ex vitae, quae id ullam, odit animi illo corrupti minima 
-	                doloremque ut labore. Illum nesciunt iure, dolores ab repellendus similique sunt blanditiis porro quos eaque voluptate id at 
-	                quisquam assumenda consequuntur numquam. Inventore quasi molestiae voluptas a quos placeat, molestias aliquam commodi at 
-	                veniam laboriosam quisquam amet, corrupti nam voluptate nihil quis aut. Rerum modi ipsam ea hic? Quae officiis sunt quasi quas,
-	                voluptatibus pariatur cupiditate? Sed impedit labore, ducimus iusto veritatis architecto perferendis asperiores laudantium, 
-	                modi, suscipit consequuntur alias voluptatem ipsum illo ut laboriosam! Asperiores, quos. Accusantium nesciunt modi aliquam. 
-	                Hic, reprehenderit est quis nobis aspernatur ipsam expedita. Suscipit laudantium itaque blanditiis optio eum debitis nostrum 
-	                ratione similique eaque, quidem alias ex voluptas, magni tenetur recusandae modi hic molestiae magnam ipsum quos, doloremque 
-	                velit commodi sunt nobis! Facilis itaque, odit tempore commodi porro rem mollitia quae quidem libero ipsam? Reiciendis
-	                recusandae non excepturi amet illum. Repellendus ipsam omnis similique tempora, in deserunt illo? Beatae repudiandae nobis 
-	                quos ipsa sit voluptates deserunt aspernatur ut, odio aliquid quas sunt repellendus, nemo rerum modi. Impedit explicabo 
-	                repudiandae omnis nihil quis aperiam tempore vero dolorem. Officiis quam error facere quis, harum excepturi repellat soluta 
-	                unde modi iste in voluptate cumque enim sit eveniet dignissimos eos consequuntur veritatis magnam numquam. Hic illum qui
-	                sint ratione ducimus nesciunt alias fuga, illo consequuntur nobis quaerat consequatur reprehenderit nemo rerum totam labore 
-	                quo possimus deleniti! Eveniet excepturi nam nostrum deleniti impedit dolorum molestiae iste quas culpa itaque minus 
-	                dolorem, quam iusto blanditiis dolor! Excepturi sequi dolore laudantium quo aliquid eius vel assumenda architecto 
-	                cupiditate, cumque laboriosam asperiores facilis blanditiis beatae iure esse non. Magni, fugit nobis. Quod at ad autem 
-	                vitae, et quis repudiandae debitis eveniet illo ipsa odit itaque aspernatur dolore deleniti in sequi accusamus laudantium 
-	                ullam quo officia explicabo, voluptatum fugiat consequuntur! Praesentium deleniti numquam rerum dicta doloremque tenetur 
-	                eius laboriosam nemo fugit nobis. Asperiores, voluptate. Laudantium neque labore voluptatem ullam dolorem accusantium et, 
-	                harum accusamus, atque dicta, inventore totam. Eligendi iure consectetur unde perferendis excepturi praesentium odit eum, 
-	                veniam libero totam, et delectus distinctio corporis quas ipsum! Nostrum cum et ratione illo autem dolor facilis. Ab amet 
-	                sit eligendi ex corrupti ea quia illum iste. Nostrum possimus beatae deleniti minima modi aspernatur asperiores vero impedit
-	                assumenda saepe reprehenderit eum cumque magni maiores totam, provident aliquam alias laborum earum ipsa aperiam quaerat 
-	                mollitia obcaecati amet. Reiciendis asperiores dolorum nostrum eligendi tenetur odio ea magni labore distinctio 
-	                necessitatibus nobis eum recusandae quibusdam officiis fugit eos molestiae animi, consequatur, nam aperiam accusamus dolor
-	                autem! Optio ex repellendus rerum dolorum qui eveniet, distinctio amet eligendi impedit, aut esse officiis autem. Non 
-	                deleniti explicabo reiciendis nisi nesciunt nobis, ut laboriosam saepe vel sapiente voluptas minima nemo autem, ipsa 
-	                necessitatibus quibusdam, ipsam consectetur qui animi! Temporibus pariatur quis rem? Distinctio doloremque quidem, velit
-	                expedita inventore cumque eum odit atque voluptas, omnis ex, assumenda autem pariatur ducimus maxime esse aut corrupti 
-	                adipisci. Officia vitae incidunt iusto consequatur tempora, fugiat sed dolorem cumque aliquid unde obcaecati omnis qui 
-	                autem repellat illo earum laudantium itaque porro quisquam optio dignissimos! Placeat neque magni voluptate, earum unde 
-	                aliquid ipsa eaque aperiam id enim saepe delectus voluptatem alias, atque incidunt autem consequatur assumenda pariatur 
-	                quas error nesciunt ea! Reiciendis quaerat voluptate voluptatibus ducimus? Libero enim error labore optio exercitationem
-	                ipsa obcaecati nam, praesentium atque laboriosam laudantium, doloremque minus unde dignissimos harum possimus sunt dicta
-	                tempora provident eligendi quae eveniet nostrum accusantium eaque. Repellat dolores totam rem distinctio esse incidunt 
-	                aliquam harum blanditiis similique nulla magni quo sapiente qui, labore excepturi doloremque corrupti minima fugiat ab 
-	                eum dignissimos odio reprehenderit provident? Cupiditate alias incidunt recusandae. Quaerat eligendi ullam dolorum, 
-	                natus necessitatibus unde incidunt molestiae amet vitae, aliquam a vero id porro sunt nesciunt, illum dolores nulla 
-	                deserunt labore perspiciatis consequatur exercitationem at blanditiis! Aut, possimus perferendis eligendi debitis 
-	                minima, quaerat amet inventore magnam, explicabo voluptatem tempore corporis dolorum sunt. Doloremque, rerum ratione 
-	                consequuntur necessitatibus provident minus, inventore atque mollitia corrupti voluptas recusandae, fuga nobis ex 
-	                deserunt voluptate temporibus vel voluptatibus eos itaque sit. Quo, autem odio voluptas deleniti cupiditate quibusdam 
-	                ratione at neque aspernatur corporis ab quasi molestias laborum natus veritatis. Soluta officiis alias provident 
-	                voluptas totam aliquam fugiat iste doloremque sequi aut quam, natus voluptatum. Aspernatur repudiandae sapiente aut 
-	                assumenda cumque labore saepe, ipsa enim deleniti dolorem asperiores impedit maxime? Mollitia placeat possimus quos 
-	                dolore repellendus voluptate maiores! Ad modi dicta similique ea impedit voluptatum nulla ex assumenda perferendis 
-	                itaque dignissimos quis maiores consectetur quasi vel ipsam atque veniam quia ipsum at, consequuntur placeat illo. 
-	                Temporibus explicabo possimus laudantium perferendis expedita quos sit excepturi dolore iusto veniam cumque rem nemo 
-	                accusamus voluptas sequi ea placeat voluptatum, natus commodi et eum, praesentium voluptate rerum. Cum adipisci iste 
-	                nihil ut exercitationem.
-	            </p>
+				
 	        </div>
     	</div>
 		
