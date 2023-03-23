@@ -1,10 +1,7 @@
 package com.generation.mysmartwallet.controller;
 
 import java.util.Map;
-import java.util.Objects;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.generation.mysmartwallet.dao.DaoUtente;
 import com.generation.mysmartwallet.entity.User;
 import com.generation.mysmartwallet.util.PasswordEncoder;
