@@ -39,7 +39,6 @@ public class LoginController {
 
 		// Cerco l'utente nel DB in base all'username
 		User utenteRegistrato = daoUtente.trovaPerUsername(username);
-		System.out.println(utenteRegistrato);
 		// Se lo trovo (!= null) e la password corrisponde
 		if(utenteRegistrato != null && encoder.matches(password, utenteRegistrato.getPassword())) {
 			// creo una mappa e la salvo in sessione
