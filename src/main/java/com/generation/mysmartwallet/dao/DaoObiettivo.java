@@ -30,9 +30,9 @@ public class DaoObiettivo {
 		return ris;
 	}
 
-	public List<Obiettivo> leggiTutti()
+	public List<Obiettivo> tuttiPerUtente(int idUtente)
 	{
-		return read("select * from obiettivo");
+		return read("select * from obiettivi where idConto = ?", idUtente+"");
 	}
 
 	public boolean create(Obiettivo o)

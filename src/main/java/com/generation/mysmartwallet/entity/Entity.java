@@ -6,6 +6,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.generation.mysmartwallet.enums.Categoria;
+import com.generation.mysmartwallet.enums.MetodoPagamento;
+import com.generation.mysmartwallet.enums.TipoTransazione;
+
 public abstract class Entity
 {
 	private int id;
@@ -113,6 +117,16 @@ public abstract class Entity
 							break;
 						case "localdate":
 							m.invoke(this, LocalDate.parse(valore));
+							break;
+						//TODO: Aggiungere supporto per Enumeration
+						case "categoria":
+							m.invoke(this, Enum.valueOf(Categoria.class, valore.toUpperCase()));
+							break;
+						case "metodopagamento":
+							m.invoke(this, Enum.valueOf(MetodoPagamento.class, valore.toUpperCase()));
+							break;
+						case "tipotransazione":
+							m.invoke(this, Enum.valueOf(TipoTransazione.class, valore.toUpperCase()));
 							break;
 						default	:
 							System.err.println("Nel fromMap() non ho riconosciuto il tipo " + tipo);
