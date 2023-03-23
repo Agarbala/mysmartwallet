@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.generation.mysmartwallet.dao.DaoTransazioni;
 import com.generation.mysmartwallet.entity.Conto;
+import com.generation.mysmartwallet.entity.Transazione;
+import com.generation.mysmartwallet.util.SessionUtil;
 
 @Controller
 @RequestMapping("/transazioni")
@@ -29,11 +31,10 @@ public class TransazioniController {
 	//TODO: aggiungere un if ed eventualmente mandare un errore in frontend
 	@GetMapping("/elimina")
 	public String eliminaTransazione(@RequestParam("id") int idTransazione, @RequestParam("pagina") String pagina, HttpSession session) {
-		int idUtente = Integer.parseInt(((Map<String, String>) session.getAttribute("user")).get("id"));
 		// Rimuovo dal database
 		if(daoTransazione.delete(idTransazione)) {
-			// Rimuovo dal Bean Conto
-			Conto conto = context.getBean(Conto.class, idUtente);
+			// Rimuovo dal Bean Conto per "sincronizzarlo" con il Database
+			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 			conto.getTransazioni().removeIf(t -> t.getId() == idTransazione);
 		}
 		// Redireziono alla giusta pagina
@@ -47,11 +48,23 @@ public class TransazioniController {
 		
 	@GetMapping("/listaTransazioni")
 	public String listaTransazioni(Model model, HttpSession session) {
-		int idUtente = Integer.parseInt(((Map<String, String>) session.getAttribute("user")).get("id"));
-		model.addAttribute("transazioni", context.getBean(Conto.class, idUtente).getTransazioni());
+		model.addAttribute("transazioni", context.getBean(Conto.class, SessionUtil.idFromSession(session)).getTransazioni());
 		return "listaTransazioni.jsp";
 	}
 	
+	@GetMapping("/aggiungi")
+	public String aggiungiTransazione(@RequestParam Map<String, String> transazioneMap) {
+		Transazione t = context.getBean(Transazione.class, transazioneMap);
+		daoTransazione.create(t);
+		return "redirect:/transazioni/listaTransazioni";
+	}
 	
+	
+	@GetMapping("/modifica")
+	public String modificaTransazione(@RequestParam Map<String, String> transazioneMap) {
+		Transazione t = context.getBean(Transazione.class, transazioneMap);
+		daoTransazione.update(t);
+		return "redirect:/transazioni/listaTransazioni";
+	}
 	
 }
