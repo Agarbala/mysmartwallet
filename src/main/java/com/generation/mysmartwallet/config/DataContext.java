@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.generation.mysmartwallet.dao.DaoBudget;
+import com.generation.mysmartwallet.dao.DaoConto;
 import com.generation.mysmartwallet.dao.DaoObiettivo;
 import com.generation.mysmartwallet.dao.DaoTransazioni;
 import com.generation.mysmartwallet.dao.DaoUtente;
@@ -35,5 +36,10 @@ public class DataContext {
 	@Bean
 	public DaoBudget daoBudget() {
 		return new DaoBudget();
+	}
+	
+	@Bean
+	public DaoConto daoConto() {
+		return new DaoConto();
 	}
 }
