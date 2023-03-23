@@ -1,9 +1,15 @@
 <html>
     <head>
         <title>Sign Up</title>
+        
+        <style>
+       		#usernameAvailability {
+        		color:red;
+        	}
+        </style>
     </head>
     <body>
-        <form action="signupProcess" method="post">
+        <form id="signupForm" action="signupProcess" method="post">
             <table>
                 <tr>
                     <td>
@@ -59,23 +65,37 @@
 	    <script>
 	   
 	    $(document).ready(function() {
+	        var isUsernameDisponibile = false;  // variabile di controllo
+	        
 	        $('#username').on('blur', function() {
-	          var username = $(this).val();
-	          $.ajax({
-	            url: '/isUsernameDisponibile',
-	            type: 'POST',
-	            data: {username: username},
-	            success: function(response) {
-	              if (response) {
-	                $('#usernameAvailability').text('disponibile');
-	              } else {
-	                $('#usernameAvailability').text('già preso');
-	                $('#submit').css('display:none');
-	              }
-	            }
-	          });
+	            var username = $(this).val();
+	            $.ajax({
+	                url: '/isUsernameDisponibile',
+	                type: 'POST',
+	                data: {username: username},
+	                success: function(response) {
+	                    if (response) {
+	                        isUsernameDisponibile = true;  
+	                    } else {
+	                        
+	                        isUsernameDisponibile = false;   
+	                    }
+	                }
+	            });
 	        });
-	      });
+	        
+	        $('#signupForm').on('submit', function(event) {
+	            if (!isUsernameDisponibile) {  
+	                //alert("Usa un altro username!");
+	                $('#usernameAvailability').text('Username non disponibile');
+                    //$('#submit').hide(); -> potrebbe confondere l'utente
+                    $('#username').css('border-color', 'red');
+	                event.preventDefault();  // impedisce l'invio
+	            }
+	        });
+
+	    });
+
 	    </script>
     </body>
 </html>
