@@ -43,16 +43,23 @@ public class ObiettiviController extends SessionUtil{
 	}
 	
 	@GetMapping("/aggiungi")
-	public String aggiungiObiettivo(@RequestParam Map<String, String> obiettivoMap) {
+	public String aggiungiObiettivo(@RequestParam Map<String, String> obiettivoMap, HttpSession session) {
 		Obiettivo o = context.getBean(Obiettivo.class, obiettivoMap);
-		daoObiettivo.create(o);
+		if(daoObiettivo.create(o)) {
+			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+			conto.getObiettivi().add(o);
+		}
 		return "redirect:/obiettivi/listaObiettivi";
 	}
 	
 	@GetMapping("/modifica")
-	public String modificaObiettivo(@RequestParam Map<String, String> obiettivoMap) {
+	public String modificaObiettivo(@RequestParam Map<String, String> obiettivoMap, HttpSession session) {
 		Obiettivo o = context.getBean(Obiettivo.class, obiettivoMap);
-		daoObiettivo.update(o);
+		if(daoObiettivo.update(o)) {
+			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+			conto.getObiettivi().removeIf(obb -> obb.getId() == o.getId());
+			conto.getObiettivi().add(o);
+		}
 		return "redirect:/obiettivi/listaObiettivi";
 	}
 	
