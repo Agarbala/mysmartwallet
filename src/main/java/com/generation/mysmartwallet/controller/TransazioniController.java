@@ -53,17 +53,24 @@ public class TransazioniController {
 	}
 	
 	@GetMapping("/aggiungi")
-	public String aggiungiTransazione(@RequestParam Map<String, String> transazioneMap) {
+	public String aggiungiTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
-		daoTransazione.create(t);
+		if(daoTransazione.create(t)) {
+			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+			c.getTransazioni().add(t);
+		}
 		return "redirect:/transazioni/listaTransazioni";
 	}
 	
 	
 	@GetMapping("/modifica")
-	public String modificaTransazione(@RequestParam Map<String, String> transazioneMap) {
+	public String modificaTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
-		daoTransazione.update(t);
+		if(daoTransazione.update(t)) {
+			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+			c.getTransazioni().removeIf(tr -> tr.getId() == t.getId());
+			c.getTransazioni().add(t);
+		}
 		return "redirect:/transazioni/listaTransazioni";
 	}
 	
