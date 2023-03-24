@@ -23,6 +23,8 @@ public class HomeController {
 	public String dashboard(Model model, HttpSession session) {
 		 model.addAttribute("conto", context.getBean(Conto.class, SessionUtil.idFromSession(session)).getId());
 		 	
+		 
+		 
 		 return "dashboard.jsp";
 	}
 	
