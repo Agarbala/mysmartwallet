@@ -22,9 +22,14 @@ import com.generation.mysmartwallet.util.PasswordEncoder;
 @Controller
 public class LoginController {
 
+
+	// true per bypassare il login
+	private boolean bypassaLogin = true;
+
 	
 	@Autowired
 	private ApplicationContext context;
+
 	
 	@Autowired
 	private PasswordEncoder encoder;
@@ -34,6 +39,12 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String login(HttpSession session) {
+		// Metodo per bypassare il login
+		if(bypassaLogin) {
+			session.setAttribute("user", new User());
+			return "redirect:/";
+		}
+		
 		if(session.getAttribute("user") != null) {
 			return "redirect:/";
 		}

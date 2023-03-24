@@ -1,3 +1,247 @@
+
+ body{
+    width: 100%;
+    overflow-x: hidden;
+    
+}
+
+.verde {
+    color: #52ae2c;
+}
+#logo{
+    height: 30px;
+}
+.mainCont {
+    display: flex;
+    background: #ededed;
+}
+.container-fluid {
+    margin: 0 20px 0 80px !important;
+}
+.navbar {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.d-flex {
+    display: flex!important;
+    margin: 0 auto;
+    width: 50%;
+}
+#userCont {
+    display: flex;
+    gap: 15px;
+    margin-right: 70px;
+}
+#userCont a{
+    text-decoration:none;
+    
+}
+#userCont h6{
+    text-align: right;
+    color: #000;
+}
+
+#userImg {
+	border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid gray;
+    overflow: hidden;
+}
+#userImg img{
+    object-fit: cover;
+    width: 42px;
+}
+.menuIcon {
+	width: 34px;
+}
+
+
+
+.icon-label {
+    position: absolute;
+    top: 10px;
+    right: -103px;
+    width: 80px;
+    color: #434343;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.icon-container{
+    position: relative;
+    margin-bottom: 24px;
+    display: block ;
+}
+.icon-container:hover .icon-label {
+  opacity: 1; /* mostra l'etichetta quando si fa l'hover sull'icona */
+}
+
+.iconColor {
+	color: #fff;
+}
+#recapMensile {
+    width: 100%;
+    background: #fff;
+    margin: 0 auto;
+    display: flex;
+    height: 150px;
+    gap: 50px;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px 1px 17px 15px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #0403039c, 2px 1px 17px 15px rgba(0,0,0,0);
+}
+div#recapImg {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+div#recapImg img{
+    object-fit: cover;
+    height: 100%;
+    position: relative;
+}
+#recaph4 {
+    width: 100%;
+    height: 100%;
+    background: #52ae2c;
+}
+#freccia {
+    width: 0;
+    height: 100%;
+    border-top: 75px solid transparent;
+    border-left: 50px solid #52ae2c;
+    border-bottom: 75px solid transparent;
+}
+div#recapImg h4{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+#bilanciMens {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#bilanciMens2 {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    margin-top: 30px;
+    height: 220px;
+}
+
+#bilancioCol1 {
+    background-color: #fff;
+    width: 75%;
+    padding: 30px;
+}
+#bilancioCol2 {
+    background-color: #fff;
+    width: 25%;
+    padding: 30px;
+
+}
+.bilTot {
+    width: 100%;
+    margin-bottom: 20%;
+}
+.bilTot h2{
+    text-align: right;
+    font-size: 50px;
+    color: red;
+}
+
+.table_obiett {
+    width: 100%;
+    background: #ececec;
+    margin-bottom: 10px;
+}
+.table_obiett td, .table_obiett th {
+    padding: 10px;
+}
+
+
+#importiTabBox {
+    width: 100%;
+    margin-top: 30px;
+    background: white;
+    padding: 30px;
+}
+
+table.table_importi {
+    width: 100%;
+    margin: 0 auto;
+    background: #ececec;
+}
+.table_importi  td, .table_importi  th {
+    padding: 10px;
+}
+.tableIcons {
+    color: #000;
+}
+#del i{
+    font-size: 30px;
+    color: red;
+}
+#mod i{
+    font-size: 30px;
+    color: green;
+}
+
+
+.main-content {
+    position: relative;
+    flex-grow: 1;
+    padding: 80px 90px;
+    box-sizing: border-box;
+}
+
+.side {
+	flex-basis: 100px;
+    background-color: #323a46;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    /*height: 100vh;*/
+}
+
+.side a {
+	display: block;
+	margin-bottom: 10px;
+	color: #fdfdfd;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 5px;
+}
+
+.side a:hover {
+	background-color: #5c6169;
+	border-radius: 5px;
+}
+
+
 #usernameAvailability {
     color:red;
 }
