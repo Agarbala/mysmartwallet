@@ -1,3 +1,4 @@
+
  body{
     width: 100%;
     overflow-x: hidden;
@@ -240,3 +241,7 @@ table.table_importi {
 	border-radius: 5px;
 }
 
+
+#usernameAvailability {
+    color:red;
+}

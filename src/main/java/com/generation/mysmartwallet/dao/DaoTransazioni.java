@@ -27,9 +27,9 @@ public class DaoTransazioni {
 		return ris;
 	}
 
-	public List<Transazione> leggiTutti()
+	public List<Transazione> tuttePerUtente(int idUtente)
 	{
-		return read("select * from transazioni");
+		return read("select * from transazioni where idconto = ?", idUtente + "");
 	}
 
 	public boolean create(Transazione t)
@@ -43,7 +43,7 @@ public class DaoTransazioni {
 				t.getMetodo()+"", 
 				t.getCategoria()+"", 
 				t.getTipo()+ "", 
-				t.getObiettivoid().orElse(-1) + "");
+				t.getObiettivoid() + "");
 	}
 
 	public boolean update(Transazione t)

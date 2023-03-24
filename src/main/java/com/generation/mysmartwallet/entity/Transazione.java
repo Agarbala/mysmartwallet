@@ -17,18 +17,18 @@ public class Transazione extends Entity {
 	private MetodoPagamento metodo;
 	private Categoria categoria;
 	private TipoTransazione tipo;
-	private Optional<Integer> obiettivoid;
+	private int obiettivoid;
 	
 	
 	public Transazione() {}
 
 
-	public Optional<Integer> getObiettivoid() {
+	public int getObiettivoid() {
 		return obiettivoid;
 	}
 
 
-	public void setObiettivoid(Optional<Integer> obiettivoid) {
+	public void setObiettivoid(int obiettivoid) {
 		this.obiettivoid = obiettivoid;
 	}
 
