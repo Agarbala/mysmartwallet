@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.generation.mysmartwallet.dao.DaoBudget;
 import com.generation.mysmartwallet.entity.Budget;
+import com.generation.mysmartwallet.entity.Conto;
 import com.generation.mysmartwallet.util.SessionUtil;
 
 @Controller
@@ -24,16 +25,23 @@ public class BudgetController {
 	private DaoBudget daoBudget;
 	
 	@GetMapping("/modifica")
-	public String modificaBudget(@RequestParam Map<String, String> budgetMap) {
+	public String modificaBudget(@RequestParam Map<String, String> budgetMap, HttpSession session) {
 		Budget b = context.getBean(Budget.class, budgetMap);
-		daoBudget.update(b);
+		if(daoBudget.update(b)){
+			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+			conto.getBudgets().removeIf(bu -> bu.getId() == b.getId());
+			conto.getBudgets().add(b);
+		}
 		return "redirect:/budget/listaBudget.jsp";
 	}
 	
 	@GetMapping("/aggiungi")
-	public String aggiungiBudget(@RequestParam Map<String, String> budgetMap) {
+	public String aggiungiBudget(@RequestParam Map<String, String> budgetMap, HttpSession session) {
 		Budget b = context.getBean(Budget.class, budgetMap);
-		daoBudget.create(b);
+		if(daoBudget.create(b)) {
+			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+			conto.getBudgets().add(b);
+		}
 		return "redirect:/budget/listaBudget.jsp";
 	}
 	
