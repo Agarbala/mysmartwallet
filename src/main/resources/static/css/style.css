@@ -5,15 +5,13 @@
     
 }
 
-.verde {
-    color: #52ae2c;
-}
 #logo{
     height: 30px;
 }
 .mainCont {
     display: flex;
     background: #ededed;
+    z-index: 1;
 }
 .container-fluid {
     margin: 0 20px 0 80px !important;
@@ -100,8 +98,12 @@
     align-items: center;
     position: relative;
 
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px 1px 17px 15px rgba(0,0,0,0);
-    box-shadow: 0px 10px 13px -7px #0403039c, 2px 1px 17px 15px rgba(0,0,0,0);
+/*     -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px 1px 17px 15px rgba(0,0,0,0); */
+/*     box-shadow: 0px 10px 13px -7px #0403039c, 2px 1px 17px 15px rgba(0,0,0,0); */
+/*     -webkit-border-radius: 10px; */
+/* 	-moz-border-radius: 10px; */
+/* 	border-radius: 10px; */
+   
 }
 div#recapImg {
     width: 20%;
@@ -141,35 +143,40 @@ div#recapImg h4{
     gap: 40px;
     justify-content: space-around;
     align-items: center;
+    
+    
+    
 }
+
 
 #bilanciMens2 {
     display: flex;
     width: 100%;
-    gap: 30px;
+    gap: 15px;
     margin-top: 30px;
     height: 220px;
+    
 }
 
 #bilancioCol1 {
     background-color: #fff;
-    width: 75%;
+    width: 60%;
     padding: 30px;
 }
 #bilancioCol2 {
     background-color: #fff;
-    width: 25%;
+    width: 40%;
     padding: 30px;
-
+ 
 }
 .bilTot {
     width: 100%;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
 }
 .bilTot h2{
     text-align: right;
-    font-size: 50px;
-    color: red;
+    font-size: 3vw;
+    /*color: red;*/
 }
 
 .table_obiett {
@@ -189,23 +196,38 @@ div#recapImg h4{
     padding: 30px;
 }
 
-table.table_importi {
-    width: 100%;
-    margin: 0 auto;
-    background: #ececec;
+/* table.table_importi { */
+/*     width: 100%; */
+/*     margin: 0 auto; */
+/*     background: #ececec; */
+/* } */
+/* .table_importi  td, .table_importi  th { */
+/*     padding: 10px; */
+/* } */
+
+.td_center {
+	text-align: center;
+	width: 5%;
 }
-.table_importi  td, .table_importi  th {
-    padding: 10px;
-}
+
+td.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* Imposta la larghezza massima del td */
+  }
+  
 .tableIcons {
     color: #000;
 }
+
 #del i{
-    font-size: 30px;
+    font-size: 24px;
     color: red;
 }
+
 #mod i{
-    font-size: 30px;
+    font-size: 24px;
     color: green;
 }
 
@@ -214,16 +236,22 @@ table.table_importi {
     position: relative;
     flex-grow: 1;
     padding: 80px 90px;
+    padding-left: 140px;
     box-sizing: border-box;
+   
 }
 
 .side {
-	flex-basis: 100px;
+	/* flex-basis: 100px; */
+	flex-basis: 50px;
     background-color: #323a46;
     padding: 10px;
+    padding-top: 60px;
     box-sizing: border-box;
     text-align: center;
-    /*height: 100vh;*/
+    height: 100vh;
+    z-index:100;
+    position:fixed;
 }
 
 .side a {
@@ -241,6 +269,15 @@ table.table_importi {
 	border-radius: 5px;
 }
 
+
+/*------- Colore Transazioni nella Dashboard --------- */
+.negativo {
+	color: red !important;
+}
+
+.positivo {
+	color: green !important;
+}
 
 
 /*------- LOGIN---------- */
