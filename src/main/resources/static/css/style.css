@@ -242,6 +242,144 @@ table.table_importi {
 }
 
 
+
+/*------- LOGIN---------- */
+.cont {
+	padding: 100px 30px 30px;
+    grid-column: 1/4;
+	grid-row: 2/3;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+
+.containForm {
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: #ededed;;
+    border-radius: 10px;
+}
+
+.containForm .form {
+	padding: 30px;
+	
+}
+
+.containForm .form .title {
+	position: relative;
+	font-size: 27px;
+	font-weight: 600;
+}
+
+.input-field {
+	position: relative;
+	margin-top: 30px; 
+	height: 50px;
+	width: 100%;
+}
+
+.input-field input {
+	position: absolute;
+	height: 100%;
+	width: 80%;
+	padding: 0 35px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+    background: #ededed;
+	border-bottom: 2px solid #ccc;
+	border-top: 2px solid transparent;
+	transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+	border-bottom-color: #323a46;
+}
+
+.input-field i {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 23px;
+}
+
+.input-field input:is(:focus, :valid) ~ i {
+	color: #323a46;
+}
+
+.input-field i.icon {
+	left: 0;
+}
+
+.input-field i.showHidePw {
+	right: 0;
+	cursor: pointer;
+	padding: 10px;
+}
+
+#reg_form .checkbox_text {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+	margin-top: 20px;
+}
+
+.checkbox_text .checkbox_content {
+	display: flex;
+	align-items: center;
+}
+
+.checkbox_text input {
+	margin: 0 8px 2px 0;
+	accent-color: #323a46;
+}
+
+#reg_form .text {
+	color: #333;
+	font-size:14px;
+}
+
+#reg_form a.text {
+	color: #323a46;
+	text-decoration: none; 
+	font-weight: 600;
+}
+
+#reg_form a:hover {
+	text-decoration: underline; 
+}
+
+#reg_form .button {
+	width: 460px; 
+	margin-bottom: 10px;
+}
+
+#reg_form .button input {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #323a46;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+}
+
+.login_signup {
+	margin-top: 20px;
+	text-align: center; 
+}
+
+.login_signup a{
+	color: #323a46; 
+}
+/* FINE LOGIN---------------- */
+
 #usernameAvailability {
     color:red;
 }
+
