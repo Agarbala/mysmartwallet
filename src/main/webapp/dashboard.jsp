@@ -13,17 +13,14 @@
 		
 	</head>
 
-	<body>
-		
-		
+	<body>		
 		
 		<div class="mainCont">
 	        <div class="side">
-	            <a href="/logout"><i class="fa-sharp fa-solid fa-right-from-bracket" title="logout"></i></a>
 				
 				<div class="icon-container">
-				  <a href="#"><i class="fa-sharp fa-solid fa-house-chimney iconColor"></i></a>
-				  <span class="icon-label">Home</span>
+					<a href="#"><i class="fa-sharp fa-solid fa-house-chimney iconColor"></i></a>
+					<span class="icon-label">Home</span>
 				</div>
 				
 				
@@ -33,8 +30,8 @@
 				</div>
 				
 				<div class="icon-container">
-				  <a href="#"><i class="fa-solid fa-bullseye"></i></a>
-				  <span class="icon-label">Obiettivi</span>
+					<a href="#"><i class="fa-solid fa-bullseye"></i></a>
+					<span class="icon-label">Obiettivi</span>
 				</div>
 				
 				
@@ -43,7 +40,8 @@
 				  <span class="icon-label">Budget</span>
 				</div>
 				
-				<a href="#">altra voce</a>
+				
+				<a href="/logout"><i class="fa-sharp fa-solid fa-right-from-bracket" title="logout"></i></a>
 				
 			</div>
 			<div class="main-content">
@@ -127,7 +125,7 @@
 						<div id="bilancioCol1">
 							
 							<table class="table_obiett">
-								<h5>obiettivi  <a href=""><i class="fa-solid fa-bullseye tableIcons"></i></a></h5>
+								<h5>obiettivi  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></a></h5>
 
 								<thead>
 									<tr>
@@ -168,7 +166,7 @@
 					<div id="importiTabBox">
 							
 						<table class="table_importi">
-							<h5>Transazioni recenti  <a href=""><i class="fa-solid fa-money-bill-transfer tableIcons"></i></a></h5>
+							<h5>Transazioni recenti  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></i></a></h5>
 							<thead>
 								<tr>
 									<th scope="col">Importo</th>
@@ -184,7 +182,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>80.50 €</td>
+									<td class="${transazione.importo < 0 ? 'negativo' : 'positivo'}" >80.50 €</td>
 									<td>22/03/2023</td>
 									<td>cena fuori con Stoca</td>
 									<td>nome</td>
@@ -215,9 +213,133 @@
     	</div>
 		
 		
-	
+		<!-- Footer -->
+		<footer class="text-center text-lg-start bg-light text-muted">
+			<!--Social media -->
+			<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+			<!-- Left -->
+			<div class="me-5 d-none d-lg-block">
+				<span>Get connected with us on social networks:</span>
+			</div>
+			<!-- Left -->
+		
+			<!-- Right -->
+			<div>
+				<a href="" class="me-4 text-reset">
+				<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+				<i class="fab fa-twitter"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+				<i class="fab fa-google"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+				<i class="fab fa-instagram"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+				<i class="fab fa-linkedin"></i>
+				</a>
+				<a href="" class="me-4 text-reset">
+				<i class="fab fa-github"></i>
+				</a>
+			</div>
+			<!-- Right -->
+			</section>
+			<!-- Section: Social media -->
+		
+			<!-- Section: Links  -->
+			<section class="">
+			<div class="container text-center text-md-start mt-5">
+				<!-- Grid row -->
+				<div class="row mt-3">
+				<!-- Grid column -->
+					<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+						<!-- Content -->
+						<h6 class="text-uppercase fw-bold mb-4">
+							<i class="fas fa-gem me-3"></i>Cammelli, 'nduja e carbonara
+						</h6>
+						<p>
+							Gruppo di programmatori chiamato Cammelli, 'nduja e Carbonara con una passione comune per la tecnologia e il cibo. 
+							Insieme, creano soluzioni innovative mentre gustano le prelibatezze italiane come la 'nduja piccante e la carbonara cremosa. 
+							Una combinazione vincente di creatività e buon gusto!
+						</p>
+					</div>
+					<!-- Grid column -->
+			
+					<!-- Grid column -->
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+						<!-- Links -->
+						<h6 class="text-uppercase fw-bold mb-4">
+						Tecnolofie
+						</h6>
+						<p>
+						<a href="#!" class="text-reset">Java</a>
+						</p>
+						<p>
+						<a href="#!" class="text-reset">Spring</a>
+						</p>
+						<p>
+						<a href="#!" class="text-reset">Jquery</a>
+						</p>
+						<p>
+						<a href="#!" class="text-reset">Bootstrap</a>
+						</p>
+					</div>
+					<!-- Grid column -->
+			
+					<!-- Grid column -->
+					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+						<!-- Links -->
+						<h6 class="text-uppercase fw-bold mb-4">
+						Useful links
+						</h6>
+						<p>
+						<a href="#!" class="text-reset">HOME</a>
+						</p>
+						<p>
+						<a href="#!" class="text-reset">Transizioni</a>
+						</p>
+						<p>
+						<a href="#!" class="text-reset">Obiettivi</a>
+						</p>
+						<p>
+						<a href="#!" class="text-reset">Budjet</a>
+						</p>
+					</div>
+					<!-- Grid column -->
+			
+					<!-- Grid column -->
+					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+						<!-- Links -->
+						<h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+						<p><i class="fas fa-home me-3"></i> Anywhere, Boh, 01001, IT</p>
+						<p>
+							<i class="fas fa-envelope me-3"></i>
+							cammellindujacarbonara@gmail.com
+						</p>
+						<p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+						<p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+					</div>
+					<!-- Grid column -->
+				</div>
+				<!-- Grid row -->
+			</div>
+			</section>
+			<!-- Section: Links  -->
+		
+			<!-- Copyright -->
+			<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2021 Copyright:
+			<a class="text-reset fw-bold" href="#">CNC Group</a>
+			</div>
+			<!-- Copyright -->
+		</footer>
+		<!-- Footer -->
+
 		
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
 	</body>
 </html>

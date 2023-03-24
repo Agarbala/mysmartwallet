@@ -30,9 +30,9 @@ public class DaoBudget {
 		return ris;
 	}
 
-	public List<Budget> leggiTutti()
+	public List<Budget> tuttiPerUtente(int idUtente)
 	{
-		return read("select * from budgetPerCategoria");
+		return read("select * from budgetPerCategoria where idConto = ?", idUtente+"");
 	}
 
 	public boolean create(Budget bud)
@@ -53,5 +53,6 @@ public class DaoBudget {
 		String query = "delete from budgetPerCategoria where id = ?;";
 		return db.update(query, id + "");
 	}
+
 
 }

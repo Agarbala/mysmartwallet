@@ -42,6 +42,13 @@ public class DaoUtente {
 		}
 		return context.getBean(User.class, riga);
 	}
+	
+	public int cercaIdPerUsername(String username) {
+		return Integer.parseInt(
+				db.row("select id from users where username = ?", username).get("id")
+				);
+	
+	}
 
 	public boolean isUsernameEsistente(String username) {
 		return trovaPerUsername(username) == null ? false : true;
