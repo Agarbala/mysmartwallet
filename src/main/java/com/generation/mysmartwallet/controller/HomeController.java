@@ -22,13 +22,6 @@ public class HomeController {
 	@GetMapping("/")
 	public String dashboard(Model model, HttpSession session) {
 		 model.addAttribute("conto", context.getBean(Conto.class, SessionUtil.idFromSession(session)));
-		 	
-		 
 		 return "dashboard.jsp";
 	}
-	
-	
-	
-	
-	
 }

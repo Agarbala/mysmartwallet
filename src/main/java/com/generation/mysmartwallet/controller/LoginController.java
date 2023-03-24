@@ -24,7 +24,7 @@ public class LoginController {
 
 
 	// true per bypassare il login
-	private boolean bypassaLogin = true;
+	private boolean bypassaLogin = false;
 
 	
 	@Autowired
