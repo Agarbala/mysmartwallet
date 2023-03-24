@@ -55,13 +55,13 @@ public class TransazioniController {
 	@GetMapping("/aggiungi")
 	public String aggiungiTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
+		//TODO: Se form a scorrimento, fare stessa cosa di eliminaTransazione
 		if(daoTransazione.create(t)) {
 			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 			c.getTransazioni().add(t);
 		}
 		return "redirect:/transazioni/listaTransazioni";
 	}
-	
 	
 	@GetMapping("/modifica")
 	public String modificaTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {

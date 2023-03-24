@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>  
 <!DOCTYPE html>
 <html>
 	<head>
@@ -75,8 +76,9 @@
 								<li class="nav-item">
 									<div id="userCont">
 										
-										<a href="#"><h6>ciao, <br><c:out value="${sessionScope.user.nome}"/></h6></a>
+										<a href="#"><h6>ciao, <br><c:out value="${conto.utente.nome}"/></h6></a>
 										<div id="userImg">
+										<!-- implementare immagine utente -->
 											<a href="#"><img alt="" src="imgs/gianpiero.jpeg"></a>
 										</div>
 									</div>
@@ -86,7 +88,7 @@
 	                </div>
 	            </nav>
 
-				<h1>Benvenuto <c:out value="${sessionScope.user.nome}"/></h1>
+				<h1>Benvenuto <c:out value="${conto.utente.nome}"/></h1>
 				
 				
 				<div id="bilanciContainer">
@@ -125,7 +127,7 @@
 						<div id="bilancioCol1">
 							
 							<table class="table_obiett">
-								<h5>obiettivi  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></a></h5>
+								<h5>Obiettivi  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></a></h5>
 
 								<thead>
 									<tr>
@@ -137,15 +139,22 @@
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach items="${conto.obiettivi}" var="obiettivo">
 									<tr>
 										<td class="td_center">
-											<h6>Auto nuova</h6>
+											<h6>${obiettivo.nome}</h6>
 										</td>
-										<td>14.000.00</td>
+										<td>
+											<fmt:formatNumber type="currency" currencySymbol="€">
+												${obiettivo.importo}
+											</fmt:formatNumber>
+										</td>
 										<td>3500.00</td>
 										<td>354.00</td>
-										<td>21/02/2024</td>
+										<td>${obiettivo.datafine}</td>
 									</tr>
+								</c:forEach>
+									
 										
 								</tbody>
 							</table>
@@ -156,7 +165,15 @@
 								<h4>BILANCIO TOTALE</h4>
 							</div>
 							<div class="bilTot">
-								<h2>-153,000.56€</h2>
+							<c:set var="bilancio" value="0"/>
+							<c:forEach items="${conto.transazioni}" var="transazione" >
+								<c:set var="bilancio" value="${transazione.tipo.name().equalsIgnoreCase('USCITA') ? bilancio - transazione.importo : bilancio + transazione.importo}"/>
+							</c:forEach>
+								<h2 class="${bilancio < 0 ? 'negativo' : 'positivo'}">
+									<fmt:formatNumber type="currency" currencySymbol="€">
+										<c:out value="${bilancio}" />
+									</fmt:formatNumber>
+								</h2>
 							</div>
 						</div >
 					</div>
@@ -169,37 +186,39 @@
 							<h5>Transazioni recenti  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></i></a></h5>
 							<thead>
 								<tr>
-									<th scope="col">Importo</th>
 									<th scope="col">Data</th>
-									<th scope="col">Note</th>
 									<th scope="col">Nome</th>
 									<th scope="col">Categoria</th>
 									<th scope="col">Tipo</th>
+									<th scope="col">Importo</th>
+									<th scope="col">Note</th>
 									<th scope="col">Modifica</th>
 									<th scope="col">Elimina</th>
 									
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach items="${conto.transazioni}" var="transazione" >
 								<tr>
-									<td class="${transazione.importo < 0 ? 'negativo' : 'positivo'}" >80.50 €</td>
-									<td>22/03/2023</td>
-									<td>cena fuori con Stoca</td>
-									<td>nome</td>
-									<td>Divertimento</td>
-									<td>Uscita</td>
+								<!--  ragionare sul ternario -->
+									<td>${transazione.datatransazione}</td>
+									<td>${transazione.nome}</td>
+									<td>${transazione.categoria}</td>
+									<td>${transazione.tipo}</td>
+									<td class="${transazione.tipo.name().equalsIgnoreCase('USCITA') ? 'negativo' : 'positivo'}" >${transazione.importo} €</td>
+									<td style="text-overflow: ellipsis; width:">${transazione.note}</td>
 									<td class="td_center">
 										<a id="mod" title="modifica" href="#">
 											<i class="fa-solid fa-pencil"></i>
 										</a>
 									</td>
 									<td class="td_center">
-										<a id="del" title="elimina" href="#">
+										<a id="del" title="Elimina" href="transazioni/elimina?id=${transazione.id}&pagina=home">
 											<i class="fa-solid fa-trash-can-arrow-up"></i>
 										</a>
 									</td>
 								</tr>
-									
+							</c:forEach>
 							</tbody>
 						</table>
 
