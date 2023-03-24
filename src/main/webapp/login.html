@@ -6,20 +6,11 @@
 
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-		<script src="script.js?v=01"></script>
+		
 
 	</head>
 	<body>
-		<h1>Login</h1>
-		<form action="loginProcess" method="POST">
-			USERNAME <input type="text" name="username" required/>
-			PASSWORD <input type="password" name="password" required/>
-			<input type="submit" value="Login"/>
-		</form>
-		<a href="/signup">Registrati</a>
-
-
-
+		
 		<div class="cont">
 			<div class="containForm log_in">
 				<div class="form login">
@@ -29,11 +20,11 @@
 					<form id="reg_form" action="loginProcess" method="POST">	
 
 						<div class="input-field">
-							<input name="email" type="text" placeholder="Inserisci la tua email" required>	
+							<input name="username" type="text" placeholder="Inserisci il tuo username" required>	
 							<i class="uil uil-envelope"></i>
 						</div>
 						<div class="input-field">
-							<input name="password" class="password" type="password" placeholder="Inserisci la tua password" required>	
+							<input name="password" class="password" name="password" type="password" placeholder="Inserisci la tua password" required>	
 							<i class="uil uil-lock icon"></i>
 							<i class="uil uil-eye-slash showHidePw"></i>
 						</div>
@@ -53,9 +44,7 @@
 						</div>
 					</form>
 					
-					<span class="form_succes">	
-						
-					</span>	
+					<span class="form_succes"></span>	
 
 					<!--SEZIONE REGISTRATI-->
 					<div class="login_signup">Non sei ancora un membro?
@@ -68,5 +57,7 @@
 			</div>	
 		</div>
 
+		
+		<script src="script.js"></script>
 	</body>
 </html>
