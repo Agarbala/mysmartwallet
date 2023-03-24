@@ -3,6 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Login</title>
+
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+		<script src="script.js?v=01"></script>
+
 	</head>
 	<body>
 		<h1>Login</h1>
@@ -12,5 +17,56 @@
 			<input type="submit" value="Login"/>
 		</form>
 		<a href="/signup">Registrati</a>
+
+
+
+		<div class="cont">
+			<div class="containForm log_in">
+				<div class="form login">
+					
+					<span class="title">Login</span>
+
+					<form id="reg_form" action="loginProcess" method="POST">	
+
+						<div class="input-field">
+							<input name="email" type="text" placeholder="Inserisci la tua email" required>	
+							<i class="uil uil-envelope"></i>
+						</div>
+						<div class="input-field">
+							<input name="password" class="password" type="password" placeholder="Inserisci la tua password" required>	
+							<i class="uil uil-lock icon"></i>
+							<i class="uil uil-eye-slash showHidePw"></i>
+						</div>
+						
+						<div class="checkbox_text">
+							<div class="checkbox_content">
+								<input type="checkbox" id="log_check">
+								<label for="log_check" class="text">Ricorda</label>
+							</div>
+							
+							<a href="#" class="text">Pasword dimenticata?</a>
+						</div>
+						
+						
+						<div class="input-field button">
+							<input type="submit" value="Accedi">
+						</div>
+					</form>
+					
+					<span class="form_succes">	
+						
+					</span>	
+
+					<!--SEZIONE REGISTRATI-->
+					<div class="login_signup">Non sei ancora un membro?
+						<span>
+							<a href="signup.html" class="text signup_text reg_link">Registrati</a>
+						</span>
+					</div>
+						
+				</div>
+			</div>	
+		</div>
+
 	</body>
 </html>
