@@ -66,7 +66,7 @@ public class LoginController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		// Invalida la sessione e distrugge tutti gli oggetti collegati alla sessione
+		// Invalida la sessione e distrugge tutti gli oggetti collegati alla ad essa
 		session.invalidate();
 		return "redirect:/";
 	}

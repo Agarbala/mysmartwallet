@@ -34,6 +34,11 @@ public class SignupController {
 		return "signup.html";
 	}
 
+	/**
+	 * Le chiamate a questo Mapping controllano la disponibilità dell'username passato come parametro
+	 * @param username
+	 * @return true se l'username è disponibile, false altrimenti
+	 */
 	@PostMapping("/isUsernameDisponibile")
 	@ResponseBody
 	public boolean isUsernameDisponibile(@RequestParam String username) {

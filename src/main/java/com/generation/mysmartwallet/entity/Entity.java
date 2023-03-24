@@ -121,7 +121,7 @@ public abstract class Entity
 						case "localdate":
 							m.invoke(this, LocalDate.parse(valore));
 							break;
-						//TODO: Aggiungere supporto per Enumeration
+						//Aggiunto supporto per le Enumeration
 						case "categoria":
 							m.invoke(this, Enum.valueOf(Categoria.class, valore.toUpperCase()));
 							break;
