@@ -9,6 +9,7 @@
 		<title>Dashboard</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
      	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 	
 		
@@ -93,7 +94,7 @@
 				
 				<div id="bilanciContainer">
 				
-					<div id="recapMensile">
+					<div id="recapMensile" class="shadow rounded">
 						<div id="recapImg">
 											
 							<div id="recaph4">
@@ -124,10 +125,10 @@
 					
 					<div id="bilanciMens2">
 					
-						<div id="bilancioCol1">
+						<div id="bilancioCol1" class="shadow-sm rounded">
 							
-							<table class="table_obiett">
-								<h5>Obiettivi  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></a></h5>
+							<table class="table table-striped table-hover align-middle">
+								<h5>Obiettivi  <a href=""><i class="bi bi-plus-circle-fill"></i></a></h5>
 
 								<thead>
 									<tr>
@@ -160,7 +161,7 @@
 							</table>
 
 						</div >
-						<div id="bilancioCol2">
+						<div id="bilancioCol2" class="shadow-sm rounded">
 							<div class="bilTot">
 								<h4>BILANCIO TOTALE</h4>
 							</div>
@@ -180,10 +181,10 @@
 
 
 					
-					<div id="importiTabBox">
+					<div id="importiTabBox" class="shadow-sm rounded">
 							
-						<table class="table_importi">
-							<h5>Transazioni recenti  <a href=""><i class="fa-sharp fa-solid fa-plus verde"></i></i></a></h5>
+						<table class="table table-fixed table-striped table-hover align-middle">
+							<h5>Transazioni recenti  <a href=""><i class="bi bi-plus-circle-fill"></i></i></a></h5>
 							<thead>
 								<tr>
 									<th scope="col">Data</th>
@@ -191,30 +192,32 @@
 									<th scope="col">Categoria</th>
 									<th scope="col">Tipo</th>
 									<th scope="col">Importo</th>
-									<th scope="col">Note</th>
-									<th scope="col">Modifica</th>
-									<th scope="col">Elimina</th>
+									<th scope="col" class="w-25">Note</th>
+							<th scope="col" class="td_center"></th>
+							<th scope="col" class="td_center"></th>
 									
 								</tr>
 							</thead>
 							<tbody>
 							<c:forEach items="${conto.transazioni}" var="transazione" >
-								<tr>
+								<tr class="">
 								<!--  ragionare sul ternario -->
 									<td>${transazione.datatransazione}</td>
 									<td>${transazione.nome}</td>
 									<td>${transazione.categoria}</td>
 									<td>${transazione.tipo}</td>
 									<td class="${transazione.tipo.name().equalsIgnoreCase('USCITA') ? 'negativo' : 'positivo'}" >${transazione.importo} €</td>
-									<td style="text-overflow: ellipsis; width:">${transazione.note}</td>
+									<td class="truncate">${transazione.note}</td>
 									<td class="td_center">
-										<a id="mod" title="modifica" href="#">
+										<a id="mod" title="Modifica" href="#">
 											<i class="fa-solid fa-pencil"></i>
 										</a>
 									</td>
 									<td class="td_center">
 										<a id="del" title="Elimina" href="transazioni/elimina?id=${transazione.id}&pagina=home">
-											<i class="fa-solid fa-trash-can-arrow-up"></i>
+										<i class="bi bi-x-circle-fill"></i>
+										
+<!-- 									<i class="fa-solid fa-trash-can-arrow-up"></i> -->
 										</a>
 									</td>
 								</tr>
