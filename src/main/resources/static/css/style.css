@@ -154,7 +154,7 @@ div#recapImg h4{
     width: 100%;
     gap: 15px;
     margin-top: 30px;
-    height: 220px;
+/*     height: 300px; */
     
 }
 
@@ -164,6 +164,7 @@ div#recapImg h4{
     padding: 30px;
 }
 #bilancioCol2 {
+	display: flex;
     background-color: #fff;
     width: 40%;
     padding: 30px;
@@ -171,11 +172,15 @@ div#recapImg h4{
 }
 .bilTot {
     width: 100%;
-    margin-bottom: 10%;
+    
 }
-.bilTot h2{
+.bilTotValuta {
+	align-self: flex-end;
+}
+.bilTotValuta h2{
     text-align: right;
     font-size: 3vw;
+    margin-top: auto;
     /*color: red;*/
 }
 
@@ -188,12 +193,16 @@ div#recapImg h4{
     padding: 10px;
 }
 
-
 #importiTabBox {
     width: 100%;
     margin-top: 30px;
     background: white;
     padding: 30px;
+    
+}
+
+.clickableTd {
+	cursor: pointer;
 }
 
 /* table.table_importi { */
