@@ -1,0 +1,5 @@
+@charset "UTF-8";
+*:not(i):not(.fa){
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap');
+  font-family: 'Noto Sans', sans-serif;
+}
