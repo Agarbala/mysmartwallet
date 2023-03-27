@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>  
-<c:set var="dataPattern" value="dd-MM-yyyy"/>
 
 <!DOCTYPE html>
 <html>
@@ -21,9 +20,12 @@
 
 	<body>		
 		<div class="mainCont">
-	        <c:import url="sidebar.jsp"></c:import>
+	        <jsp:include page="sidebar.jsp">
+	        	<jsp:param name="homeSelected" value="true" />
+	        </jsp:include>
 			<div class="main-content">
-	            <c:import url="navbar.jsp"></c:import>
+			<c:import url="navbar.jsp"></c:import>
+<%-- 	            <c:import url="navbar.jsp"></c:import> --%>
 
 <%-- 				<h1>Benvenuto <c:out value="${conto.utente.nome}"/></h1> --%>
 				

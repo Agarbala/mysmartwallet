@@ -23,7 +23,9 @@
 
 	<body>		
 		<div class="mainCont">
-	        <c:import url="/sidebar.jsp"></c:import>
+	        <jsp:include page="/sidebar.jsp">
+	        	<jsp:param name="tranSelected" value="true" />
+	        </jsp:include>
 			<div class="main-content">
 	            <c:import url="/navbar.jsp"></c:import>
 

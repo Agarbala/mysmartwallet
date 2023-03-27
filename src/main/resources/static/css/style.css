@@ -282,6 +282,11 @@ td.truncate {
 	border-radius: 5px;
 }
 
+.side a[data-sel='true'] {
+	background-color: #5c6169;
+	border-radius: 5px;
+}
+
 
 /*------- Colore Transazioni nella Dashboard --------- */
 .negativo {

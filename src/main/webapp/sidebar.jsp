@@ -1,24 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <div class="side">
 				
 				<div class="icon-container">
-					<a href="/"><i class="fa-sharp fa-solid fa-house-chimney iconColor"></i></a>
+					<a href="/" data-sel="${param.homeSelected}"><i class="fa-sharp fa-solid fa-house-chimney iconColor"></i></a>
 					<span class="icon-label">Home</span>
 				</div>
 				
 				
 				<div class="icon-container">
-				  <a href="/transazioni/listaTransazioni"><i class="fa-solid fa-right-left"></i></a>
+				  <a href="/transazioni/listaTransazioni" data-sel="${param.tranSelected}"><i class="fa-solid fa-right-left"></i></a>
 				  <span class="icon-label">Transazioni</span>
 				</div>
 				
 				<div class="icon-container">
-					<a href="#"><i class="fa-solid fa-bullseye"></i></a>
+					<a href="#" data-sel="${param.obieSelected}"><i class="fa-solid fa-bullseye"></i></a>
 					<span class="icon-label">Obiettivi</span>
 				</div>
 				
 				
 				<div class="icon-container">
-				  <a href="#"><i class="fa-solid fa-wallet iconColor"></i></a>
+				  <a href="#" data-sel="${param.budgSelected}"><i class="fa-solid fa-wallet iconColor"></i></a>
 				  <span class="icon-label">Budget</span>
 				</div>
 				
