@@ -164,7 +164,7 @@ div#recapImg h4{
     padding: 30px;
 }
 #bilancioCol2 {
-	display: flex;
+	position: relative;
     background-color: #fff;
     width: 40%;
     padding: 30px;
@@ -175,6 +175,10 @@ div#recapImg h4{
     
 }
 .bilTotValuta {
+	position: absolute;
+	bottom: 0;
+	right: 20px;
+	width:100%;
 	align-self: flex-end;
 }
 .bilTotValuta h2{

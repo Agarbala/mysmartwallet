@@ -1,5 +1,6 @@
 package com.generation.mysmartwallet.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -56,7 +57,8 @@ public class TransazioniController {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
 		if(daoTransazione.create(t)) {
 			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
-			c.getTransazioni().add(t);
+//			c.getTransazioni().add(t);
+			c.setTransazioni((ArrayList<Transazione>) daoTransazione.tuttePerUtente(c.getId()));
 		}
 		switch(transazioneMap.get("pagina").toLowerCase()) {
 		case "home":
@@ -71,8 +73,7 @@ public class TransazioniController {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
 		if(daoTransazione.update(t)) {
 			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
-			c.getTransazioni().removeIf(tr -> tr.getId() == t.getId());
-			c.getTransazioni().add(t);
+			c.setTransazioni((ArrayList<Transazione>) daoTransazione.tuttePerUtente(c.getId()));
 		}
 		return "redirect:/transazioni/listaTransazioni";
 	}

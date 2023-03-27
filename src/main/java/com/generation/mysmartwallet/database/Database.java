@@ -95,7 +95,6 @@ public class Database
 			{
 				p.setString(i + 1, params[i]);
 			}
-			
 			p.executeUpdate();
 			return true;
 		}
