@@ -92,7 +92,7 @@
 	                </div>
 	            </nav>
 
-				<h1>Benvenuto <c:out value="${conto.utente.nome}"/></h1>
+<%-- 				<h1>Benvenuto <c:out value="${conto.utente.nome}"/></h1> --%>
 				
 				<!-- Modal Aggiungi Transazione-->
 				<div class="modal fade modal-right" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -128,7 +128,7 @@
 				                        <label for="note">Note:</label>
 				                    </td>
 				                    <td>
-				                        <textarea id="note" name="note"></textarea>
+				                        <textarea id="note" name="note" maxlength="200"></textarea>
 				                    </td>
 				                </tr>
 				                <tr>
@@ -136,7 +136,7 @@
 				                        <label for="nome">Nome:</label>
 				                    </td>
 				                    <td>
-				                        <input type="text" id="nome" name="nome">
+				                        <input type="text" id="nome" name="nome" required>
 				                    </td>
 				                </tr>
 				                <tr>
@@ -197,7 +197,7 @@
 						<div id="recapImg">
 											
 							<div id="recaph4">
-								<h4>testo</h4>
+								<h4>${mese}</h4>
 							</div>
 							
 							<div id="freccia">
@@ -209,15 +209,26 @@
 						
 							<div class="bilancioCont">
 								<h4>Bilancio mensile</h4>
-								<h5>300 €</h5>
+								<h5>
+									<fmt:formatNumber type="currency" currencySymbol="">
+												${bilancioMensile}
+									</fmt:formatNumber></h5>
 							</div>
 							<div class="bilancioCont">
 								<h4>Uscite</h4>
-								<h5>300 €</h5>
+								<h5>
+									<fmt:formatNumber type="currency" currencySymbol="">
+												${uscite}
+									</fmt:formatNumber></h5>
+								</h5>
 							</div>
 							<div class="bilancioCont">
 								<h4>Entrate</h4>
-								<h5>300 €</h5>
+								<h5>
+									<fmt:formatNumber type="currency" currencySymbol="">
+												${entrate}
+									</fmt:formatNumber></h5>
+								</h5>
 							</div>
 						</div>
 					</div>
@@ -252,8 +263,9 @@
 										<td>3500.00</td>
 										<td>354.00</td>
 										<td>
-											<fmt:parseDate value="${obiettivo.datafine}" pattern="yyyy-MM-dd" var="dataFineObiettivo" type="date"/>
-											<fmt:formatDate pattern='${dataPattern}' value="${dataFineObiettivo}"/>
+											${obiettivo.datafine}
+<%-- 											<fmt:parseDate value="${obiettivo.datafine}" pattern="yyyy-MM-dd" var="dataFineObiettivo" type="date"/> --%>
+<%-- 											<fmt:formatDate pattern='${dataPattern}' value="${dataFineObiettivo}"/> --%>
 										</td>
 									</tr>
 								</c:forEach>
@@ -305,9 +317,9 @@
 							<c:forEach items="${conto.transazioni}" var="transazione" >
 								<tr>
 									<td>
-										
-										<fmt:parseDate value="${transazione.datatransazione}" pattern="yyyy-MM-dd" var="dataTrans" type="date"/>
-										<fmt:formatDate pattern='${dataPattern}' value="${dataTrans}"/>
+										${transazione.datatransazione}
+<%-- 										<fmt:parseDate value="${transazione.datatransazione}" pattern="yyyy-MM-dd" var="dataTrans" type="date"/> --%>
+<%-- 										<fmt:formatDate pattern='${dataPattern}' value="${dataTrans}"/> --%>
 <%-- 									<fmt:formatDate type = "date" value = "${transazione.datatransazione}" /> --%>
 									</td>
 									<td class="clickableTd" onclick="location.href='transazioni/show?id=${transazione.id}'">${transazione.nome}</td>
@@ -438,7 +450,7 @@
 						<a href="#!" class="text-reset">Obiettivi</a>
 						</p>
 						<p>
-						<a href="#!" class="text-reset">Budjet</a>
+						<a href="#!" class="text-reset">Budget</a>
 						</p>
 					</div>
 					<!-- Grid column -->
@@ -475,32 +487,43 @@
    		 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-		<script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/cr-1.6.2/fc-4.2.2/sb-1.4.2/datatables.min.js"></script>
+		<script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/cr-1.6.2/fc-4.2.2/sb-1.4.2/datatables.min.js"></script>ù
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+		<script src="https://cdn.datatables.net/plug-ins/1.13.4/sorting/datetime-moment.js"></script>
+		
 		<script>
-		$('#transazioniTable').DataTable( {
-			language: {
-		        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/it-IT.json',
-		    },
-		    
-		      colReorder: false,
-		      "lengthChange": false,
-		      "pageLength": 5,
-		      columnDefs: [
-		    	    { orderable: false, targets: [0,1,2,3,4,5,6,7] }
-		    	  ],
-		    	  order: [[0, 'desc']]
-		       
+		
+		$(document).ready(function() {
+			
+		    $.fn.dataTable.moment( 'dddd, MMMM Do, YYYY' );
+		 
+		    $('#transazioniTable').DataTable( {
+				language: {
+			        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/it-IT.json',
+			    },
+			    
+			      colReorder: false,
+			      "lengthChange": false,
+			      "pageLength": 5,
+			      columnDefs: [
+			    	    { orderable: false, targets: [0,1,2,3,4,5,6,7] }
+			    	  ],
+			    	  order: [[0, 'desc']]
+			       
+			} );
+			
+			$('#bilanciTable').DataTable( {
+				language: {
+			        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/it-IT.json',
+			    },
+			      colReorder: false,
+			      "lengthChange": false,
+			      "pageLength": 2,
+			      "ordering": false
+			} );
 		} );
 		
-		$('#bilanciTable').DataTable( {
-			language: {
-		        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/it-IT.json',
-		    },
-		      colReorder: false,
-		      "lengthChange": false,
-		      "pageLength": 2,
-		      "ordering": false
-		} );
+		
 		</script>
 	</body>
 </html>

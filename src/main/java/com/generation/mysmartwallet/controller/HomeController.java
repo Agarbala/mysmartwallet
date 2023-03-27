@@ -1,5 +1,10 @@
 package com.generation.mysmartwallet.controller;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +14,43 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.generation.mysmartwallet.entity.Conto;
+import com.generation.mysmartwallet.entity.Transazione;
+import com.generation.mysmartwallet.enums.TipoTransazione;
 import com.generation.mysmartwallet.util.SessionUtil;
 
 
 @Controller
 public class HomeController {
 
-	
+
 	@Autowired
 	private ApplicationContext context;
-	
+
 	@GetMapping("/")
 	public String dashboard(Model model, HttpSession session) {
-		 model.addAttribute("conto", context.getBean(Conto.class, SessionUtil.idFromSession(session)));
-		 return "dashboard.jsp";
+		Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		LocalDate oggi = LocalDate.now();
+		Month mese = oggi.getMonth();
+		int anno = oggi.getYear();
+		
+		double entrate = 0;
+		double uscite = 0;
+		for(Transazione t : c.getTransazioni()) {
+			if(t.getDatatransazione().getMonth() == mese && t.getDatatransazione().getYear() == anno) {
+				if(t.getTipo().equals(TipoTransazione.ENTRATA)) {
+					entrate += t.getImporto();
+				} else {
+					uscite += t.getImporto();
+				}
+			}
+		}
+		
+		model.addAttribute("conto", c);
+		model.addAttribute("bilancioMensile", (entrate - uscite));
+		model.addAttribute("entrate", entrate);
+		model.addAttribute("uscite", uscite);
+		model.addAttribute("mese", mese.getDisplayName(TextStyle.FULL, Locale.ITALIAN).toUpperCase());
+
+		return "dashboard.jsp";
 	}
 }
