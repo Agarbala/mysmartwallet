@@ -85,8 +85,8 @@ public class Transazione extends Entity {
 	}
 
 
-	public MetodoPagamento getMetodo() {
-		return metodo;
+	public String getMetodo() {
+		return metodo.getLabel();
 	}
 
 
@@ -95,8 +95,8 @@ public class Transazione extends Entity {
 	}
 
 
-	public Categoria getCategoria() {
-		return categoria;
+	public String getCategoria() {
+		return categoria.getLabel();
 	}
 
 
@@ -105,8 +105,8 @@ public class Transazione extends Entity {
 	}
 
 
-	public TipoTransazione getTipo() {
-		return tipo;
+	public String getTipo() {
+		return tipo.getLabel();
 	}
 
 

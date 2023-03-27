@@ -40,9 +40,9 @@ public class DaoTransazioni {
 				t.getImporto()+ "", 
 				t.getDatatransazione()+ "", 
 				t.getNote(), t.getNome(), 
-				t.getMetodo().getLabel(), 
-				t.getCategoria().getLabel(),
-				t.getTipo().getLabel(), 
+				t.getMetodo(), 
+				t.getCategoria(),
+				t.getTipo(), 
 				t.getObiettivoid() == 0 ? null : t.getObiettivoid() + "");
 	}
 
@@ -50,14 +50,15 @@ public class DaoTransazioni {
 	{
 		String query = "update transazioni set idconto = ?, importo = ?, datatransazione = ?, note = ?, nome= ?, metodo = ?, categoria = ?, tipo = ? where id = ? ;";
 		return db.update(query, 
-				t.getId()+"", 
+				t.getIdconto()+"", 
 				t.getImporto()+ "", 
 				t.getDatatransazione()+ "", 
 				t.getNote(), 
 				t.getNome(), 
-				t.getMetodo().getLabel(), 
-				t.getCategoria().getLabel(), 
-				t.getTipo().getLabel() );
+				t.getMetodo(), 
+				t.getCategoria(), 
+				t.getTipo(),
+				t.getId()+"");
 	}
 
 	public boolean delete(int id)

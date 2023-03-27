@@ -28,8 +28,105 @@
 	        </jsp:include>
 			<div class="main-content">
 	            <c:import url="/navbar.jsp"></c:import>
-
-<%-- 				<h1>Benvenuto <c:out value="${conto.utente.nome}"/></h1> --%>
+				
+				<!--  Modal modifica transazione -->
+				<div class="modal fade modal-right" id="modificaTransazioneModale" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="staticBackdropLabel">Modifica transazione</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <form id="modificaTransazione" action="/transazioni/modifica" method="GET">
+						    <input type="hidden" name="pagina" value="lista"/>
+						    <input type="hidden" name="idconto" value="${conto.id}"/>
+						    <input type="hidden" id="idTransazione"  name="id" value=""/>
+						    <table>
+				                <tr>
+				                    <td>
+				                        <label for="importo">Importo:</label>
+				                    </td>
+				                    <td>
+				                        <input type="number" id="importo" name="importo" min="0" step=".01" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="data">Data della transazione:</label>
+				                    </td>
+				                    <td>
+				                        <input type="date" id="datatransazione" name="datatransazione" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="note">Note:</label>
+				                    </td>
+				                    <td>
+				                        <textarea id="note" name="note" maxlength="200"></textarea>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="nome">Nome:</label>
+				                    </td>
+				                    <td>
+				                        <input type="text" id="nome" name="nome" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="metodo">Metodo di pagamento:</label>
+				                    </td>
+				                    <td>
+				                        <select id="metodo" name="metodo">
+				                            <option value="contanti">Contanti</option>
+				                            <option value="carta">Carta</option>
+				                            <option value="altro">Altro</option>
+				                        </select>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="categoria">Categoria:</label>
+				                    </td>
+				                    <td>
+				                        <select id="categoria" name="categoria">
+				                            <option value="casa">Casa</option>
+				                            <option value="trasporti">Trasporti</option>
+				                            <option value="famiglia">Famiglia</option>
+				                            <option value="salute e benessere">Salute e benessere</option>
+				                            <option value="tempo libero">Tempo libero</option>
+				                            <option value="altro">Altro</option>
+				                            </select>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="tipo">Tipo di transazione:</label>
+				                    </td>
+				                    <td>
+				                        <input type="radio" id="entrata" name="tipo" value="entrata" required>
+				                        <label id="tipo" for="entrata">Entrata</label>
+				                        <input type="radio" id="uscita" name="tipo" value="uscita" required>
+				                        <label id="tipo" for="uscita">Uscita</label>
+				                    </td>
+				                </tr>
+				            </table>    
+					   	</form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+				        <button form="modificaTransazione" type="submit" class="btn btn-primary">Salva</button>
+				      </div>
+				 	 
+				 	  
+				    </div>
+				  </div>
+				</div>
+				
+				<!-- Fine Modal Modifica Transazione -->
 				
 				<div id="importiTabBox" class="shadow-sm rounded">
 				<h3>Transazioni  <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle-fill"></i></a></h3>
@@ -64,22 +161,20 @@
 								<tr>
 									<td>
 										${transazione.datatransazione}
-<%-- 										<fmt:parseDate value="${transazione.datatransazione}" pattern="yyyy-MM-dd" var="dataTrans" type="date"/> --%>
-<%-- 										<fmt:formatDate pattern='${dataPattern}' value="${dataTrans}"/> --%>
-<%-- 									<fmt:formatDate type = "date" value = "${transazione.datatransazione}" /> --%>
+
 									</td>
 									<td class="clickableTd" onclick="location.href='transazioni/show?id=${transazione.id}'">${transazione.nome}</td>
-									<td>${transazione.categoria.getLabel()}</td>
-									<td>${transazione.tipo.getLabel()}</td>
-									<td class="${transazione.tipo.getLabel().equalsIgnoreCase('USCITA') ? 'negativo' : 'positivo'}" >
+									<td>${transazione.categoria}</td>
+									<td>${transazione.tipo}</td>
+									<td class="${transazione.tipo.equalsIgnoreCase('USCITA') ? 'negativo' : 'positivo'}" >
 										<fmt:formatNumber type="currency" currencySymbol="€">
 											<c:out value="${transazione.importo}" />
 										</fmt:formatNumber>
 									</td>
-									<td>${transazione.metodo.getLabel()}</td>
+									<td>${transazione.metodo}</td>
 									<td class="truncate">${transazione.note}</td>
 									<td class="td_center">
-										<a id="mod" title="Modifica" href="#">
+										<a class="modButton" id="mod" title="Modifica" href="#" data-bs-toggle="modal" data-bs-target="#modificaTransazioneModale" data-id="${transazione.id}">
 											<i class="fa-solid fa-pencil"></i>
 										</a>
 									</td>
@@ -87,7 +182,6 @@
 										<a id="del" title="Elimina" href="/transazioni/elimina?id=${transazione.id}&pagina=lista">
 										<i class="bi bi-x-circle-fill"></i>
 										
-<!-- 									<i class="fa-solid fa-trash-can-arrow-up"></i> -->
 										</a>
 									</td>
 								</tr>
@@ -265,6 +359,37 @@
 		    $('#min, #max').on('change', function () {
 		        table.draw();
 		    });
+		    
+		    $(".modButton").click(function() {
+				var id = this.dataset.id;
+				$.ajax({
+	                url: '/transazioni/getTransazione',
+	                type: 'POST',
+	                data: {id: id},
+	                success: function(response) {
+	                    if (response) {
+	                    	const map = new Map(Object.entries(response));
+	                    	$("#idTransazione").val(map.get('id'));
+	                    	map.forEach((value, key) => {
+	                    		if(key == 'metodo' || key == 'categoria') {
+	                    			$("#" + key).val(value.toLowerCase());
+	                    		} else if( key == 'tipo') {
+	                    				if(value == 'ENTRATA') {
+	                    					$("#entrata").prop("checked", true);
+	                    				} else {
+	                    					$("#uscita").prop("checked", true);
+	                    				}
+	                    		} else {
+	                    			$("#" + key).val(value);
+	                    		}
+	                    		
+	                    	});
+	                    	
+	                    } 
+	                }
+	            });
+			});
+		    
 		});
 		
 		
