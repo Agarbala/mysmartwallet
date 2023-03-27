@@ -123,13 +123,13 @@ public abstract class Entity
 							break;
 						//Aggiunto supporto per le Enumeration
 						case "categoria":
-							m.invoke(this, Enum.valueOf(Categoria.class, valore.toUpperCase()));
+							m.invoke(this, Categoria.valueOfLabel(valore));
 							break;
 						case "metodopagamento":
-							m.invoke(this, Enum.valueOf(MetodoPagamento.class, valore.toUpperCase()));
+							m.invoke(this, MetodoPagamento.valueOfLabel(valore));
 							break;
 						case "tipotransazione":
-							m.invoke(this, Enum.valueOf(TipoTransazione.class, valore.toUpperCase()));
+							m.invoke(this, TipoTransazione.valueOfLabel(valore));
 							break;
 						default	:
 							System.err.println("Nel fromMap() non ho riconosciuto il tipo " + tipo);
