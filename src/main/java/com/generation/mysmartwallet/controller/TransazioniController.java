@@ -10,8 +10,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.generation.mysmartwallet.dao.DaoTransazioni;
 import com.generation.mysmartwallet.entity.Conto;
@@ -70,12 +72,27 @@ public class TransazioniController {
 	
 	@GetMapping("/modifica")
 	public String modificaTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {
+		
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
+
 		if(daoTransazione.update(t)) {
 			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 			c.setTransazioni((ArrayList<Transazione>) daoTransazione.tuttePerUtente(c.getId()));
 		}
-		return "redirect:/transazioni/listaTransazioni";
+		switch(transazioneMap.get("pagina").toLowerCase()) {
+		case "home":
+			return "redirect:/";
+		default:
+			return "redirect:/transazioni/listaTransazioni";
+		}
+	}
+	
+	@PostMapping("/getTransazione")
+	@ResponseBody
+	public Map<String, String> getTransazione(@RequestParam int id, HttpSession session) {
+		Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		// TODO:Farlo con il foreach
+		return c.getTransazioni().stream().filter(t -> t.getId() == id).findFirst().get().toMap();
 	}
 	
 	
