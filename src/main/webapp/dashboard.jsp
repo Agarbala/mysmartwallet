@@ -31,7 +31,7 @@
 				
 				<div class="icon-container">
 				  <a href="#"><i class="fa-solid fa-right-left"></i></a>
-				  <span class="icon-label">Transizioni</span>
+				  <span class="icon-label">Transazioni</span>
 				</div>
 				
 				<div class="icon-container">
