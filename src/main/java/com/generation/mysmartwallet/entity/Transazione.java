@@ -9,7 +9,7 @@ import com.generation.mysmartwallet.enums.TipoTransazione;
 
 public class Transazione extends Entity {
 
-	
+	private int idconto;
 	private double importo;
 	private LocalDate datatransazione;
 	private String note;
@@ -21,6 +21,19 @@ public class Transazione extends Entity {
 	
 	
 	public Transazione() {}
+
+
+	
+	public int getIdconto() {
+		return idconto;
+	}
+
+
+
+	public void setIdconto(int idconto) {
+		this.idconto = idconto;
+	}
+
 
 
 	public int getObiettivoid() {

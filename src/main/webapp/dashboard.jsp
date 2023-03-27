@@ -94,6 +94,102 @@
 
 				<h1>Benvenuto <c:out value="${conto.utente.nome}"/></h1>
 				
+				<!-- Modal Aggiungi Transazione-->
+				<div class="modal fade modal-right" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <form id="nuovaTransazione" action="transazioni/aggiungi" method="GET">
+						    <input type="hidden" name="pagina" value="home"/>
+						    <input type="hidden" name="idconto" value="${conto.id}"/>
+						    <table>
+				                <tr>
+				                    <td>
+				                        <label for="importo">Importo:</label>
+				                    </td>
+				                    <td>
+				                        <input type="number" id="importo" name="importo" min="0" step=".01" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="data">Data della transazione:</label>
+				                    </td>
+				                    <td>
+				                        <input type="date" id="datatransazione" name="datatransazione" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="note">Note:</label>
+				                    </td>
+				                    <td>
+				                        <textarea id="note" name="note"></textarea>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="nome">Nome:</label>
+				                    </td>
+				                    <td>
+				                        <input type="text" id="nome" name="nome">
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="metodo">Metodo di pagamento:</label>
+				                    </td>
+				                    <td>
+				                        <select id="metodo" name="metodo">
+				                            <option value="contanti">Contanti</option>
+				                            <option value="carta">Carta</option>
+				                            <option value="altro">Altro</option>
+				                        </select>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="categoria">Categoria:</label>
+				                    </td>
+				                    <td>
+				                        <select id="categoria" name="categoria">
+				                            <option value="casa">Casa</option>
+				                            <option value="trasporti">Trasporti</option>
+				                            <option value="famiglia">Famiglia</option>
+				                            <option value="salute e benessere">Salute e benessere</option>
+				                            <option value="tempo libero">Tempo libero</option>
+				                            <option value="altro">Altro</option>
+				                            </select>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="tipo">Tipo di transazione:</label>
+				                    </td>
+				                    <td>
+				                        <input type="radio" id="entrata" name="tipo" value="entrata" required>
+				                        <label id="tipo" for="entrata">Entrata</label>
+				                        <input type="radio" id="uscita" name="tipo" value="uscita" required>
+				                        <label id="tipo" for="uscita">Uscita</label>
+				                    </td>
+				                </tr>
+				            </table>
+					   	</form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+				        <button form="nuovaTransazione" type="submit" class="btn btn-primary" >Salva</button>
+				      </div>
+				 	  <!-- Fine Modal --> 
+				 	  
+				    </div>
+				  </div>
+				</div>
+				
 				
 				<div id="bilanciContainer">
 				
@@ -190,7 +286,7 @@
 					<div id="importiTabBox" class="shadow-sm rounded">
 							
 						<table id="transazioniTable" class="table table-fixed table-striped table-hover align-middle">
-							<h5>Transazioni recenti  <a href=""><i class="bi bi-plus-circle-fill"></i></i></a></h5>
+							<h5>Transazioni recenti  <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle-fill"></i></i></a></h5>
 							<thead>
 								<tr>
 									<th scope="col">Data</th>
@@ -198,6 +294,7 @@
 									<th scope="col">Categoria</th>
 									<th scope="col">Tipo</th>
 									<th scope="col">Importo</th>
+									<th scope="col">Metodo</th>
 									<th scope="col" class="w-25">Note</th>
 							<th scope="col" class="td_center"></th>
 							<th scope="col" class="td_center"></th>
@@ -214,13 +311,14 @@
 <%-- 									<fmt:formatDate type = "date" value = "${transazione.datatransazione}" /> --%>
 									</td>
 									<td class="clickableTd" onclick="location.href='transazioni/show?id=${transazione.id}'">${transazione.nome}</td>
-									<td>${transazione.categoria}</td>
-									<td>${transazione.tipo}</td>
-									<td class="${transazione.tipo.name().equalsIgnoreCase('USCITA') ? 'negativo' : 'positivo'}" >
+									<td>${transazione.categoria.getLabel()}</td>
+									<td>${transazione.tipo.getLabel()}</td>
+									<td class="${transazione.tipo.getLabel().equalsIgnoreCase('USCITA') ? 'negativo' : 'positivo'}" >
 										<fmt:formatNumber type="currency" currencySymbol="€">
 											<c:out value="${transazione.importo}" />
 										</fmt:formatNumber>
 									</td>
+									<td>${transazione.metodo.getLabel()}</td>
 									<td class="truncate">${transazione.note}</td>
 									<td class="td_center">
 										<a id="mod" title="Modifica" href="#">
@@ -387,7 +485,11 @@
 		      colReorder: false,
 		      "lengthChange": false,
 		      "pageLength": 5,
-		      "ordering": false
+		      columnDefs: [
+		    	    { orderable: false, targets: [0,1,2,3,4,5,6,7] }
+		    	  ],
+		    	  order: [[0, 'desc']]
+		       
 		} );
 		
 		$('#bilanciTable').DataTable( {

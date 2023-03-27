@@ -1,6 +1,5 @@
 package com.generation.mysmartwallet.controller;
 
-
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -55,12 +54,16 @@ public class TransazioniController {
 	@GetMapping("/aggiungi")
 	public String aggiungiTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
-		//TODO: Se form a scorrimento, fare stessa cosa di eliminaTransazione
 		if(daoTransazione.create(t)) {
 			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 			c.getTransazioni().add(t);
 		}
-		return "redirect:/transazioni/listaTransazioni";
+		switch(transazioneMap.get("pagina").toLowerCase()) {
+		case "home":
+			return "redirect:/";
+		default:
+			return "redirect:/transazioni/listaTransazioni";
+		}
 	}
 	
 	@GetMapping("/modifica")

@@ -289,6 +289,26 @@ td.truncate {
 }
 
 
+/* MODAL */
+@media screen and (min-width: 1400px) {
+  .modal-dialog {
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+  }
+  .modal-content {
+  	margin: 0vh;
+  	height: 100vh;
+  }
+
+}
+.modal.fade.modal-right .modal-dialog {
+  transform: translate(125%, 10px);
+}
+
+.modal.show.modal-right .modal-dialog {
+  transform: none;
+  
+}
 /*------- LOGIN---------- */
 .cont {
 	padding: 100px 30px 30px;

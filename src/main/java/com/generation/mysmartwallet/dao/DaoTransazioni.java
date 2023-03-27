@@ -29,21 +29,21 @@ public class DaoTransazioni {
 
 	public List<Transazione> tuttePerUtente(int idUtente)
 	{
-		return read("select * from transazioni where idconto = ?", idUtente + "");
+		return read("select * from transazioni where idconto = ? order by datatransazione desc", idUtente + "");
 	}
 
 	public boolean create(Transazione t)
 	{
-		String query = "insert into transazioni(idconto, importo, datatransazione, note, nome, metodo, categoria, tipo, obiettivoid) values(?,?,?,?,?,?,?,?);";
+		String query = "insert into transazioni(idconto, importo, datatransazione, note, nome, metodo, categoria, tipo, obiettivoid) values(?,?,?,?,?,?,?,?,?);";
 		return db.update(query, 
-				t.getId()+"", 
+				t.getIdconto()+ "", 
 				t.getImporto()+ "", 
 				t.getDatatransazione()+ "", 
 				t.getNote(), t.getNome(), 
-				t.getMetodo()+"", 
-				t.getCategoria()+"", 
-				t.getTipo()+ "", 
-				t.getObiettivoid() + "");
+				t.getMetodo().getLabel(), 
+				t.getCategoria().getLabel(),
+				t.getTipo().getLabel(), 
+				t.getObiettivoid() == 0 ? null : t.getObiettivoid() + "");
 	}
 
 	public boolean update(Transazione t)
@@ -55,9 +55,9 @@ public class DaoTransazioni {
 				t.getDatatransazione()+ "", 
 				t.getNote(), 
 				t.getNome(), 
-				t.getMetodo()+"", 
-				t.getCategoria()+"", 
-				t.getTipo()+ "" );
+				t.getMetodo().getLabel(), 
+				t.getCategoria().getLabel(), 
+				t.getTipo().getLabel() );
 	}
 
 	public boolean delete(int id)
