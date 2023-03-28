@@ -8,8 +8,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.generation.mysmartwallet.dao.DaoObiettivo;
 import com.generation.mysmartwallet.entity.Conto;
 import com.generation.mysmartwallet.entity.Obiettivo;
@@ -69,6 +72,11 @@ public class ObiettiviController extends SessionUtil{
 		return "redirect:/obiettivi/listaObiettivi";
 	}
 	
-	
-
+	@PostMapping("/getObiettivo")
+	@ResponseBody
+	public Map<String, String> getObiettivo(@RequestParam int id, HttpSession session) {
+		Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		// TODO:Farlo con il foreach
+		return c.getObiettivi().stream().filter(o -> o.getId() == id).findFirst().get().toMap();
+	}
 }
