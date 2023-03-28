@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>  
+<%@ page import="java.time.Period" %>
 
 <!DOCTYPE html>
 <html>
@@ -270,7 +271,7 @@
 					
 						<div id="bilancioCol1" class="shadow-sm rounded">
 							
-							<table id="bilanciTable" class="table table-striped table-hover align-middle">
+							<table id="obiettiviTable" class="table table-striped table-hover align-middle">
 								<h5>Obiettivi  <a href=""><i class="bi bi-plus-circle-fill"></i></a></h5>
 
 								<thead>
@@ -278,8 +279,9 @@
 										<th scope="col"></th>
 										<th scope="col">Totale</th>
 										<th scope="col">Risparmiato</th>
-										<th scope="col">ogni mese</th>
-										<th scope="col">Scadenza</th>
+										<th scope="col">Quota mensile</th>
+										<th scope="col">Data fine</th>
+										<th scope="col">Completato</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -294,12 +296,17 @@
 											</fmt:formatNumber>
 										</td>
 										<td>3500.00</td>
-										<td>354.00</td>
+										<td>
+										<fmt:formatNumber type="currency" currencySymbol="€">
+											<c:out value="${obiettivo.importo / ((Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()) == 0 ? 1 : (Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()) )}" />
+										</fmt:formatNumber>
+										</td>
 										<td>
 											${obiettivo.datafine}
 <%-- 											<fmt:parseDate value="${obiettivo.datafine}" pattern="yyyy-MM-dd" var="dataFineObiettivo" type="date"/> --%>
 <%-- 											<fmt:formatDate pattern='${dataPattern}' value="${dataFineObiettivo}"/> --%>
 										</td>
+										<td>${obiettivo.completato ? '1' : '0'}</td>
 									</tr>
 								</c:forEach>
 									
@@ -351,7 +358,6 @@
 								<tr>
 									<td>
 										${transazione.datatransazione}
-
 									</td>
 									<td class="clickableTd" onclick="location.href='transazioni/show?id=${transazione.id}'">${transazione.nome}</td>
 									<td>${transazione.categoria}</td>
@@ -379,13 +385,8 @@
 							</c:forEach>
 							</tbody>
 						</table>
-
 					</div >
-
-					
-				</div>
-				
-				
+				</div>			
 	        </div>
     	</div>
     	
@@ -421,15 +422,25 @@
 			       
 			} );
 			
-			$('#bilanciTable').DataTable( {
+		    $('#obiettiviTable').DataTable( {
 				language: {
 			        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/it-IT.json',
 			    },
-			      colReorder: false,
 			      "lengthChange": false,
 			      "pageLength": 2,
-			      "ordering": false
-			});
+			      colReorder: false,
+			      columnDefs: [
+			    	    { orderable: false, targets: [0,1,2,3,4] },
+			    		{ target: 5, visible: false}
+			    	  ],
+			    	  order: [[4, 'asc']],
+			    	  searching : false,
+
+			} ).rows( function ( idx, data, node ) {
+		        return data[5] !=0;
+		    } )
+		    .remove()
+		    .draw();
 			
 			$(".delButton").click(function() {
 				var nome = this.dataset.name;
@@ -470,11 +481,7 @@
 			});
 			
 		});
-		
-
-		
-		
-		
+			
 		
 		</script>
 	</body>

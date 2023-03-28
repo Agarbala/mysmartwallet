@@ -23,11 +23,75 @@
 	        	<jsp:param name="obieSelected" value="true" />
 	        </jsp:include>
 			<div class="main-content">
+				<div class="modal fade modal-right" id="aggiungiObiettivo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="staticBackdropLabel">Aggiungi Obiettivo</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <form id="nuovoObiettivo" action="/obiettivi/aggiungi" method="GET">
+						    <input type="hidden" name="pagina" value="pagina"/>
+						    <input type="hidden" name="idconto" value="${conto.id}"/>
+						    <table>
+				                <tr>
+				                    <td>
+				                        <label for="importo">Importo:</label>
+				                    </td>
+				                    <td>
+				                        <input type="number" id="importoNuovo" name="importo" min="0" step=".01" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="data">Data di Inizio:</label>
+				                    </td>
+				                    <td>
+				                        <input type="date" id="datainizioNuovo" name="datainizio" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="data">Data di Fine:</label>
+				                    </td>
+				                    <td>
+				                        <input type="date" id="datafineNuovo" name="datafine" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="note">Note:</label>
+				                    </td>
+				                    <td>
+				                        <textarea id="noteNuovo" name="note" maxlength="200"></textarea>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="nome">Nome:</label>
+				                    </td>
+				                    <td>
+				                        <input type="text" id="nomeNuovo" name="nome" required>
+				                    </td>
+				                </tr>
+				            </table>
+					   	</form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+				        <button form="nuovoObiettivo" type="submit" class="btn btn-primary" >Salva</button>
+				        
+				      </div>
+				 	  
+				    </div>
+				  </div>
+				</div>
 	            <c:import url="/navbar.jsp"></c:import>
 				
 		
 				<div id="importiTabBox" class="shadow-sm rounded">
-				<h3>Obiettivi <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle-fill"></i></a></h3>
+				<h3>Obiettivi <a href="#" data-bs-toggle="modal" data-bs-target="#aggiungiObiettivo"><i class="bi bi-plus-circle-fill"></i></a></h3>
 						<table id="obiettiviTable" class="table table-fixed table-striped table-hover align-middle">
 							<thead>
 								<tr>
@@ -57,7 +121,7 @@
 									</td>
 									<td>
 										<fmt:formatNumber type="currency" currencySymbol="€">
-											<c:out value="${obiettivo.importo / (Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths())}" />
+											<c:out value="${obiettivo.importo / ((Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()) == 0 ? 1 : (Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()) )}" />
 										</fmt:formatNumber>
 									</td>
 									<td>${obiettivo.datainizio}</td>
