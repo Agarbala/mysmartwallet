@@ -3,6 +3,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.time.Period" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
+<%@ page import="java.time.YearMonth" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -74,6 +75,11 @@
 				                    <td>
 				                        <input type="text" id="nomeNuovo" name="nome" required>
 				                    </td>
+			                    </tr>
+			                    <tr>
+				                    <td>
+				                    	<p id="rata-mensile"></p>
+				                    </td>
 				                </tr>
 				            </table>
 					   	</form>
@@ -121,8 +127,10 @@
 									</td>
 									<td>
 										<fmt:formatNumber type="currency" currencySymbol="€">
-											<c:set value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()}" var="diff"/>
-											<c:out value="${obiettivo.importo / (diff == 0 ? 1 : diff)}"/>
+											<c:set value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()}" var="diffMesi"/>
+									           <c:set value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getYears() * 12}" var="diffAnni"/>
+									           <c:set value="${diffMesi + diffAnni}" var="diff"/>
+									           <c:out value="${obiettivo.importo / (diff == 0 ? 1 : diff)}"/>
 										</fmt:formatNumber>
 									</td>
 									<td>${obiettivo.datainizio}</td>
@@ -144,7 +152,8 @@
 							</c:forEach>
 							</tbody>
 						</table>
-					</div >				
+					</div >	
+								
 	        </div>
     	</div>
 		
@@ -168,6 +177,12 @@
 		
 		 
 		$(document).ready(function() {
+			
+			  const importoInput = $('#importoNuovo');
+			  const dataInizioInput = $('#datainizioNuovo');
+			  const dataFineInput = $('#datafineNuovo');
+			  const rataMensileParagraph = $('#rata-mensile');
+
 			
 			$('#obiettiviTable').DataTable( {
 				language: {
@@ -209,7 +224,32 @@
 	                    } 
 	                }
 	            });
-			});    
+			}); 
+		    
+		    function calcolaRataMensile() {
+			    const importo = Number(importoInput.val());
+			    const dataInizio = new Date(dataInizioInput.val());
+			    const dataFine = new Date(dataFineInput.val());
+				console.log(dataInizio);
+			    // Verifica che tutti i valori siano stati inseriti
+			    if (importo && dataInizio.toString() != 'Invalid Date' && dataFine.toString() != 'Invalid Date') {
+			      // Calcola il numero di mesi tra la data di inizio e la data di fine
+			      const numMesi = (dataFine.getFullYear() - dataInizio.getFullYear()) * 12 + (dataFine.getMonth() - dataInizio.getMonth());
+
+			      // Calcola la rata mensile e visualizzala nel paragrafo
+			      const rataMensile = importo / numMesi;
+			      rataMensileParagraph.html('La rata mensile è: ' + rataMensile.toFixed(2) + ' euro.');
+			    } else {
+			      // Se manca almeno un valore, mostra un messaggio vuoto nel paragrafo
+			      rataMensileParagraph.html('');
+			    }
+			  }
+
+			  // Aggiungi l'evento input a tutti gli input dell'utente
+			  importoInput.on('input', calcolaRataMensile);
+			  dataInizioInput.on('input', calcolaRataMensile);
+			  dataFineInput.on('input', calcolaRataMensile);
+			
 		});
 		
 		
