@@ -1,5 +1,6 @@
 package com.generation.mysmartwallet.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,14 @@ public class ObiettiviController extends SessionUtil{
 		Obiettivo o = context.getBean(Obiettivo.class, obiettivoMap);
 		if(daoObiettivo.create(o)) {
 			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
-			conto.getObiettivi().add(o);
+			conto.setObiettivi((ArrayList<Obiettivo>) daoObiettivo.tuttiPerUtente(conto.getId()));
 		}
-		return "redirect:/obiettivi/listaObiettivi";
+		switch(obiettivoMap.get("pagina").toLowerCase()) {
+		case "home":
+			return "redirect:/";
+		default:
+			return "redirect:/obiettivi/listaObiettivi";
+		}
 	}
 	
 	@GetMapping("/modifica")
