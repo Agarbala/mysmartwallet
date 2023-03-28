@@ -38,19 +38,33 @@ public class DaoObiettivo {
 	public boolean create(Obiettivo o)
 	{
 
-		String query = "insert into obiettivo (idconto, importo, datainizio, datafine, completato, nome) values (?,?,?,?,?,?);";
-		return db.update(query, o.getId()+"", o.getImporto()+ "", o.getDatainizio()+ "", o.getDatafine()+ "", o.isCompletato()? "1":"0", o.getNome());
+		String query = "insert into obiettivi (idconto, importo, datainizio, datafine, completato, nome, note) values (?,?,?,?,?,?,?);";
+		return db.update(query,
+						o.getIdconto()+"",
+						o.getImporto()+ "",
+						o.getDatainizio()+ "",
+						o.getDatafine()+ "", 
+						o.isCompletato()? "1":"0",
+						o.getNome(),
+						o.getNote());
 	}
 
 	public boolean update(Obiettivo o)
 	{
-		String query = "update obiettivo set  idconto = ?, importo = ?, datainizio = ?, datafine = ?, nome = ? where id = ?;";
-		return db.update(query, o.getId()+ "", o.getImporto()+ "", o.getDatainizio()+ "", o.getDatafine()+ "", o.getNome());
+		String query = "update obiettivi set  idconto = ?, importo = ?, datainizio = ?, datafine = ?, nome = ?, note = ? where id = ?;";
+		return db.update(query,
+						o.getIdconto()+ "", 
+						o.getImporto()+ "", 
+						o.getDatainizio()+ "", 
+						o.getDatafine()+ "",
+						o.getNome(),
+						o.getNote(),
+						o.getId()+"");
 	}
 
 	public boolean delete(int id)
 	{
-		String query = "delete from obiettivo where id = ?;";
+		String query = "delete from obiettivi where id = ?;";
 		return db.update(query, id + "");
 	}
 

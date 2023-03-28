@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>  
+<%@ page import="java.time.Period" %>
 
 <!DOCTYPE html>
 <html>
@@ -224,6 +225,71 @@
 				</div>
 				
 				<!-- Fine Modal Modifica Transazione -->
+				<div class="modal fade modal-right" id="aggiungiObiettivo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="staticBackdropLabel">Aggiungi Obiettivo</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <form id="nuovoObiettivo" action="/obiettivi/aggiungi" method="GET">
+						    <input type="hidden" name="pagina" value="home"/>
+						    <input type="hidden" name="idconto" value="${conto.id}"/>
+						    <table>
+				                <tr>
+				                    <td>
+				                        <label for="importo">Importo:</label>
+				                    </td>
+				                    <td>
+				                        <input type="number" id="importoNuovo" name="importo" min="0" step=".01" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="data">Data di Inizio:</label>
+				                    </td>
+				                    <td>
+				                        <input type="date" id="datainizioNuovo" name="datainizio" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="data">Data di Fine:</label>
+				                    </td>
+				                    <td>
+				                        <input type="date" id="datafineNuovo" name="datafine" required>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="note">Note:</label>
+				                    </td>
+				                    <td>
+				                        <textarea id="noteNuovo" name="note" maxlength="200"></textarea>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td>
+				                        <label for="nome">Nome:</label>
+				                    </td>
+				                    <td>
+				                        <input type="text" id="nomeNuovo" name="nome" required>
+				                    </td>
+				                </tr>
+				            </table>
+					   	</form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+				        <button form="nuovoObiettivo" type="submit" class="btn btn-primary" >Salva</button>
+				        
+				      </div>
+				 	  
+				    </div>
+				  </div>
+				</div>
+				
 				<div id="bilanciContainer">
 				
 					<div id="recapMensile" class="shadow rounded">
@@ -270,16 +336,17 @@
 					
 						<div id="bilancioCol1" class="shadow-sm rounded">
 							
-							<table id="bilanciTable" class="table table-striped table-hover align-middle">
-								<h5>Obiettivi  <a href=""><i class="bi bi-plus-circle-fill"></i></a></h5>
+							<table id="obiettiviTable" class="table table-striped table-hover align-middle">
+								<h5>Obiettivi  <a data-bs-toggle="modal" data-bs-target="#aggiungiObiettivo" href="" ><i class="bi bi-plus-circle-fill"></i></a></h5>
 
 								<thead>
 									<tr>
 										<th scope="col"></th>
 										<th scope="col">Totale</th>
 										<th scope="col">Risparmiato</th>
-										<th scope="col">ogni mese</th>
-										<th scope="col">Scadenza</th>
+										<th scope="col">Quota mensile</th>
+										<th scope="col">Data fine</th>
+										<th scope="col">Completato</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -294,12 +361,20 @@
 											</fmt:formatNumber>
 										</td>
 										<td>3500.00</td>
-										<td>354.00</td>
+										<td>
+										<fmt:formatNumber type="currency" currencySymbol="€">
+											<c:set value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()}" var="diffMesi"/>
+									        <c:set value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getYears() * 12}" var="diffAnni"/>
+									        <c:set value="${diffMesi + diffAnni}" var="diff"/>
+									        <c:out value="${obiettivo.importo / (diff == 0 ? 1 : diff)}"/>
+										</fmt:formatNumber>
+										</td>
 										<td>
 											${obiettivo.datafine}
 <%-- 											<fmt:parseDate value="${obiettivo.datafine}" pattern="yyyy-MM-dd" var="dataFineObiettivo" type="date"/> --%>
 <%-- 											<fmt:formatDate pattern='${dataPattern}' value="${dataFineObiettivo}"/> --%>
 										</td>
+										<td>${obiettivo.completato ? '1' : '0'}</td>
 									</tr>
 								</c:forEach>
 									
@@ -351,7 +426,6 @@
 								<tr>
 									<td>
 										${transazione.datatransazione}
-
 									</td>
 									<td class="clickableTd" onclick="location.href='transazioni/show?id=${transazione.id}'">${transazione.nome}</td>
 									<td>${transazione.categoria}</td>
@@ -379,13 +453,8 @@
 							</c:forEach>
 							</tbody>
 						</table>
-
 					</div >
-
-					
-				</div>
-				
-				
+				</div>			
 	        </div>
     	</div>
     	
@@ -421,15 +490,25 @@
 			       
 			} );
 			
-			$('#bilanciTable').DataTable( {
+		    $('#obiettiviTable').DataTable( {
 				language: {
 			        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/it-IT.json',
 			    },
-			      colReorder: false,
 			      "lengthChange": false,
 			      "pageLength": 2,
-			      "ordering": false
-			});
+			      colReorder: false,
+			      columnDefs: [
+			    	    { orderable: false, targets: [0,1,2,3,4] },
+			    		{ target: 5, visible: false}
+			    	  ],
+			    	  order: [[4, 'asc']],
+			    	  searching : false,
+
+			} ).rows( function ( idx, data, node ) {
+		        return data[5] !=0;
+		    } )
+		    .remove()
+		    .draw();
 			
 			$(".delButton").click(function() {
 				var nome = this.dataset.name;
@@ -470,11 +549,7 @@
 			});
 			
 		});
-		
-
-		
-		
-		
+			
 		
 		</script>
 	</body>

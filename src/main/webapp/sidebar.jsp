@@ -15,7 +15,7 @@
 				</div>
 				
 				<div class="icon-container">
-					<a href="#" data-sel="${param.obieSelected}"><i class="fa-solid fa-bullseye"></i></a>
+					<a href="/obiettivi/listaObiettivi" data-sel="${param.obieSelected}"><i class="fa-solid fa-bullseye"></i></a>
 					<span class="icon-label">Obiettivi</span>
 				</div>
 				

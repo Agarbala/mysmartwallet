@@ -37,7 +37,7 @@ public class HomeController {
 		double uscite = 0;
 		for(Transazione t : c.getTransazioni()) {
 			if(t.getDatatransazione().getMonth() == mese && t.getDatatransazione().getYear() == anno) {
-				if(t.getTipo().equals(TipoTransazione.ENTRATA)) {
+				if(t.getTipo().equalsIgnoreCase(TipoTransazione.ENTRATA.getLabel())) {
 					entrate += t.getImporto();
 				} else {
 					uscite += t.getImporto();
