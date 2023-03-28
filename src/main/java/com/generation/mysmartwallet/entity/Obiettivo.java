@@ -11,6 +11,7 @@ public class Obiettivo extends Entity {
 	private LocalDate datafine;
 	private boolean completato;
 	private String note;
+	private int idconto;
 	
 	
 	public Obiettivo () {}
@@ -76,6 +77,16 @@ public class Obiettivo extends Entity {
 	}
 
 
+	public int getIdconto() {
+		return idconto;
+	}
+
+
+	public void setIdconto(int idconto) {
+		this.idconto = idconto;
+	}
+
+	
 	
 	
 	
