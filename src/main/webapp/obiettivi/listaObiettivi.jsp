@@ -121,7 +121,8 @@
 									</td>
 									<td>
 										<fmt:formatNumber type="currency" currencySymbol="€">
-											<c:out value="${obiettivo.importo / ((Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()) == 0 ? 1 : (Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()) )}" />
+											<c:set value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()}" var="diff"/>
+											<c:out value="${obiettivo.importo / (diff == 0 ? 1 : diff)}"/>
 										</fmt:formatNumber>
 									</td>
 									<td>${obiettivo.datainizio}</td>
