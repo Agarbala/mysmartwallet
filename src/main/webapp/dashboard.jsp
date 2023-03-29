@@ -247,7 +247,7 @@
 				                </tr>
 				                <tr>
 				                    <td>
-				                        <label for="data">Data di Inizio:</label>
+				                        <label for="datainizio">Data di Inizio:</label>
 				                    </td>
 				                    <td>
 				                        <input type="date" id="datainizioNuovo" name="datainizio" required>
@@ -255,7 +255,7 @@
 				                </tr>
 				                <tr>
 				                    <td>
-				                        <label for="data">Data di Fine:</label>
+				                        <label for="datafine">Data di Fine:</label>
 				                    </td>
 				                    <td>
 				                        <input type="date" id="datafineNuovo" name="datafine" required>

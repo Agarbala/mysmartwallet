@@ -1,6 +1,5 @@
 package com.generation.mysmartwallet.enums;
 
-//TODO: inserire le altre categorie
 public enum Categoria {
 	CASA("Casa"),
 	TRASPORTI("Trasporti"),

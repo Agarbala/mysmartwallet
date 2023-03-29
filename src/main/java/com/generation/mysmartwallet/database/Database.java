@@ -15,7 +15,7 @@ public class Database
 	
 	private final static String NOMEDB = "MySmartWallet";
 	private final static String USER =  "root";
-	private final static String PASSWORD = "rootroot";
+	private final static String PASSWORD = "root";
 	
 	public Database()
     {
