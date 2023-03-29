@@ -20,7 +20,7 @@
 		                        </div>
 		                 
 		                    	<div class="input-field">
-		                        	<input type="password" id="password" name="password" placeholder="Password" required><br>
+		                        	<input type="password" class="password" name="password" placeholder="Password" required><br>
 		                        	<i class="uil uil-lock icon"></i>
 									<i class="uil uil-eye-slash showHidePw"></i>
 	                        	 </div>
@@ -43,6 +43,12 @@
 		                        <div class="input-field button">
 									<input type="submit" value="Registrati">
 								</div>
+								<!--SEZIONE REGISTRATI-->
+								<div class="login_signup">Sei già un membro?
+									<span>
+										<a href="login.html" class="text signup_text reg_link">Accedi</a>
+									</span>
+								</div>
 				          
 				        </form>
 		        </div>
@@ -56,44 +62,47 @@
 			<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
    		 <!-- Codice jQuery -->
+   		 <script src="js/login.js"></script>
     	<script>
 	   
-	    $(document).ready(function() {
-	        var isUsernameDisponibile = false;  // variabile di controllo
-	        
-	        $('#username').on('blur', function() {
-	            var username = $(this).val();
-	            $.ajax({
-	                url: '/isUsernameDisponibile',
-	                type: 'POST',
-	                data: {username: username},
-	                success: function(response) {
-	                    if (response) {
-	                        isUsernameDisponibile = true;  
-	                    } else {
-	                        
-	                        isUsernameDisponibile = false;   
-	                    }
-	                }
-	            });
-	        });
-	        
-	        $('#signupForm').on('submit', function(event) {
-	            if (!isUsernameDisponibile) {  
-	                //alert("Usa un altro username!");
-	                $('#usernameAvailability').text('Username non disponibile');
-                    //$('#submit').hide(); -> potrebbe confondere l'utente
-                    $('#username').css('border-color', 'red');
-	                event.preventDefault();  // impedisce l'invio
-	            }
-	        });
-	        
-	        var data = new DateTime($('#datadinascita'), {
-	            format: 'YYYY-MM-DD'
-	        });
+		    $(document).ready(function() {
+		        var isUsernameDisponibile = false;  // variabile di controllo
+		        
+		        $('#username').on('blur', function() {
+		            var username = $(this).val();
+		            $.ajax({
+		                url: '/isUsernameDisponibile',
+		                type: 'POST',
+		                data: {username: username},
+		                success: function(response) {
+		                    if (response) {
+		                        isUsernameDisponibile = true;  
+		                    } else {
+		                        
+		                        isUsernameDisponibile = false;   
+		                    }
+		                }
+		            });
+		        });
+		        
+		        $('#signupForm').on('submit', function(event) {
+		            if (!isUsernameDisponibile) {  
+		                //alert("Usa un altro username!");
+		                $('#usernameAvailability').text('Username non disponibile');
+	                    //$('#submit').hide(); -> potrebbe confondere l'utente
+	                    $('#username').css('border-color', 'red');
+		                event.preventDefault();  // impedisce l'invio
+		            }
+		        });
+		        
+		        var data = new DateTime($('#datadinascita'), {
+		            format: 'YYYY-MM-DD'
+		        });
+	
+		    });
 
-	    });
-
+	    
+	    
 	    </script>
     </body>
 </html>
