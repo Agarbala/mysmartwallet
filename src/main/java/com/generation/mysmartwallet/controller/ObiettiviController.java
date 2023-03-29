@@ -66,8 +66,7 @@ public class ObiettiviController extends SessionUtil{
 		Obiettivo o = context.getBean(Obiettivo.class, obiettivoMap);
 		if(daoObiettivo.update(o)) {
 			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
-			conto.getObiettivi().removeIf(obb -> obb.getId() == o.getId());
-			conto.getObiettivi().add(o);
+			conto.setObiettivi((ArrayList<Obiettivo>) daoObiettivo.tuttiPerUtente(conto.getId()));
 		}
 		return "redirect:/obiettivi/listaObiettivi";
 	}

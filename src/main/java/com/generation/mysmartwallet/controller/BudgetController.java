@@ -1,5 +1,6 @@
 package com.generation.mysmartwallet.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.generation.mysmartwallet.dao.DaoBudget;
 import com.generation.mysmartwallet.entity.Budget;
 import com.generation.mysmartwallet.entity.Conto;
+import com.generation.mysmartwallet.entity.Transazione;
 import com.generation.mysmartwallet.util.SessionUtil;
 
 @Controller
@@ -29,8 +31,7 @@ public class BudgetController {
 		Budget b = context.getBean(Budget.class, budgetMap);
 		if(daoBudget.update(b)){
 			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
-			conto.getBudgets().removeIf(bu -> bu.getId() == b.getId());
-			conto.getBudgets().add(b);
+			conto.setBudgets((ArrayList<Budget>) daoBudget.tuttiPerUtente(conto.getId()));
 		}
 		return "redirect:/budget/listaBudget.jsp";
 	}
@@ -40,7 +41,7 @@ public class BudgetController {
 		Budget b = context.getBean(Budget.class, budgetMap);
 		if(daoBudget.create(b)) {
 			Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
-			conto.getBudgets().add(b);
+			conto.setBudgets((ArrayList<Budget>) daoBudget.tuttiPerUtente(conto.getId()));
 		}
 		return "redirect:/budget/listaBudget.jsp";
 	}
