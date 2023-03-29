@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.generation.mysmartwallet.database.Database;
 import com.generation.mysmartwallet.entity.Budget;
+import com.generation.mysmartwallet.enums.Categoria;
 
 
 public class DaoBudget {
@@ -34,12 +35,20 @@ public class DaoBudget {
 	{
 		return read("select * from budgetPerCategoria where idConto = ?", idUtente+"");
 	}
+	
 
 	public boolean create(Budget bud)
 	{
+		if(bud.getId() == 0) {
+			String query = "insert into budgetPerCategoria (idconto, budget, nome) values (?,?,?);";
+			System.out.println("ho aggiunto il budget");
+			return db.update(query, bud.getIdconto() + "", bud.getBudget()+ "", bud.getNome());
+		}
+		
+		String query = "update budgetPerCategoria set budget = ? where id = ?;";
+		System.out.println("ho aggiornato il budget");
+		return db.update(query, bud.getBudget()+"", bud.getId() + "");
 
-		String query = "insert into budgetPerCategoria (idconto, budget, nome) values (?,?,?);";
-		return db.update(query, bud.getId()+ "", bud.getBudget()+ "", bud.getNome()+ "");
 	}
 
 	public boolean update(Budget bud)
@@ -54,5 +63,9 @@ public class DaoBudget {
 		return db.update(query, id + "");
 	}
 
+	public String getIdPerCategoria(String categoria) {
+		String query = "select * from budgetPerCategoria where nome = ?";
+		return db.row(query, categoria) == null ? "0" : db.row(query, categoria).get("id");
+	}
 
 }

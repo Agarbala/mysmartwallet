@@ -6,15 +6,13 @@ public class Budget extends Entity {
 
 	private Categoria nome;
 	private double budget;
+	private int idconto;
 
 	
 	public Budget() {}
 	
-	
-
-
-	public Categoria getNome() {
-		return nome;
+	public String getNome() {
+		return nome.getLabel();
 	}
 
 
@@ -28,15 +26,17 @@ public class Budget extends Entity {
 	}
 
 
-	public void setBudjet(double budget) {
+	public void setBudget(double budget) {
 		this.budget = budget;
 	}
 
-	
-	
-	
-	
-	
+	public int getIdconto() {
+		return idconto;
+	}
+
+	public void setIdconto(int idconto) {
+		this.idconto = idconto;
+	}
 	
 }
 
