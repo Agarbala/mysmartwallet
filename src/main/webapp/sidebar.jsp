@@ -21,7 +21,7 @@
 				
 				
 				<div class="icon-container">
-				  <a href="#" data-sel="${param.budgSelected}"><i class="fa-solid fa-wallet iconColor"></i></a>
+				  <a href="/budget/listaBudget" data-sel="${param.budgSelected}"><i class="fa-solid fa-wallet iconColor"></i></a>
 				  <span class="icon-label">Budget</span>
 				</div>
 				

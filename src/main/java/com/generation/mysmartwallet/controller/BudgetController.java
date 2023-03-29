@@ -1,6 +1,10 @@
 package com.generation.mysmartwallet.controller;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import com.generation.mysmartwallet.dao.DaoBudget;
 import com.generation.mysmartwallet.entity.Budget;
 import com.generation.mysmartwallet.entity.Conto;
 import com.generation.mysmartwallet.entity.Transazione;
+import com.generation.mysmartwallet.enums.Categoria;
 import com.generation.mysmartwallet.util.SessionUtil;
 
 @Controller
@@ -48,8 +53,25 @@ public class BudgetController {
 	
 	@GetMapping("/listaBudget")
 	public String listaBudget(Model model, HttpSession session) {
-		model.addAttribute("budget", context.getBean(Budget.class, SessionUtil.idFromSession(session)).getBudget());
+		model.addAttribute("budget", context.getBean(Conto.class, SessionUtil.idFromSession(session)).getBudgets());
+		model.addAttribute("speseCategoria",spesaCategoria(session));
 		return "listaBudget.jsp";
+	}
+	
+	private Map<String,Double> spesaCategoria(HttpSession session){
+		YearMonth dataCorrente = YearMonth.from(LocalDate.now());
+		Map<String,Double> speseCat = new HashMap<String, Double>();
+		for(Categoria c:Categoria.values()) {
+			speseCat.put(c.getLabel(), 0.0);
+		}
+		Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		for(Transazione t:conto.getTransazioni()) {
+			if(YearMonth.from(t.getDatatransazione()).equals(dataCorrente) && t.getTipo().equalsIgnoreCase("uscita")) {
+					speseCat.put(t.getCategoria(),speseCat.get(t.getCategoria())+t.getImporto());
+			}
+		}
+		return speseCat;
+		
 	}
 	
 
