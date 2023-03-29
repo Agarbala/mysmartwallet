@@ -309,14 +309,14 @@
 							<div class="bilancioCont">
 								<h4>Bilancio mensile</h4>
 								<h5>
-									<fmt:formatNumber type="currency" currencySymbol="">
+									<fmt:formatNumber type="currency" currencySymbol="€">
 												${bilancioMensile}
 									</fmt:formatNumber></h5>
 							</div>
 							<div class="bilancioCont">
 								<h4>Uscite</h4>
 								<h5>
-									<fmt:formatNumber type="currency" currencySymbol="">
+									<fmt:formatNumber type="currency" currencySymbol="€">
 												${uscite}
 									</fmt:formatNumber></h5>
 								</h5>
@@ -324,7 +324,7 @@
 							<div class="bilancioCont">
 								<h4>Entrate</h4>
 								<h5>
-									<fmt:formatNumber type="currency" currencySymbol="">
+									<fmt:formatNumber type="currency" currencySymbol="€">
 												${entrate}
 									</fmt:formatNumber></h5>
 								</h5>
