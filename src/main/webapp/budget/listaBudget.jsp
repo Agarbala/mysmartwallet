@@ -23,10 +23,10 @@
 	        </jsp:include>
 			<div class="main-content">
 				<c:import url="/navbar.jsp"></c:import>
-				<div class="row g-2">
+				<div class="row g-0 gy-3 d-flex w-100 justify-content-between">
 
 					<c:forEach var="cat" items="${speseCategoria.keySet()}">
-						<div class="card col-4" style="width:32% ;margin-left:5px"  >
+						<div class="card col-sm-12 col-md-4" style="width:32%; height: 300px;">
 				
   							<div class="card-body">
     							<h5 class="card-title">${cat}</h5>
