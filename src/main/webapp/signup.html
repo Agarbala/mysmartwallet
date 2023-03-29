@@ -3,66 +3,60 @@
         <title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" href="/css/font.css">
         <link rel="stylesheet" type="text/css" href="/css/style.css">
-      
+     	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+      	<link href="https://cdn.datatables.net/datetime/1.4.0/css/dataTables.dateTime.min.css" rel="stylesheet"/>
     </head>
     <body>
-        <form id="signupForm" action="signupProcess" method="post">
-            <table>
-                <tr>
-                    <td>
-                        <label for="username">Username:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="username" name="username" required><br>
-                        <div id="usernameAvailability"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="password">Password:</label>
-                    </td>
-                    <td>
-                        <input type="password" id="password" name="password" required><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="nome">Nome:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="nome" name="nome" required><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="cognome">Cognome:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="cognome" name="cognome" required><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="datadinascita">Data di nascita:</label>
-                    </td>
-                    <td>
-                        <input type="date" id="datadinascita" name="datadinascita" required><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" id="submit" value="Registrati" onClick="" >
-                    </td>
-                 </tr>
-            </table>
-        </form>
-        
+    	<div class="cont">
+	    	<div class="containForm sign_up">
+	    		<div class="form login">
+			    	<span class="title">Registrazione</span>
+				        <form id="signupForm" action="signupProcess" method="post">
+				     
+		                    	<div class="input-field">
+		                        	<input type="text" id="username" name="username" placeholder="Username" required><br>
+		                        	<div id="usernameAvailability"></div>
+		                        	<i class="uil uil-envelope"></i>
+		                        </div>
+		                 
+		                    	<div class="input-field">
+		                        	<input type="password" id="password" name="password" placeholder="Password" required><br>
+		                        	<i class="uil uil-lock icon"></i>
+									<i class="uil uil-eye-slash showHidePw"></i>
+	                        	 </div>
+		                   
+		                    	<div class="input-field">
+		                       	 	<input type="text" id="nome" name="nome" placeholder="Nome" required><br>
+		                       	 	<i class="uil uil-comment-alt-edit"></i>
+	                       	 	 </div>
+		                
+		                    	<div class="input-field">
+	                     	  		 <input type="text" id="cognome" name="cognome" placeholder="Cognome" required><br>
+	                     	  		 <i class="uil uil-comment-alt-edit"></i>
+	                       	 	 </div>
+		       
+		                    	<div class="input-field">
+		                        	<input type="text" id="datadinascita" name="datadinascita" placeholder="Data di nascita" required><br>
+		                        	<i class="uil uil-calendar-alt"></i>
+	                        	 </div>
+		                 
+		                        <div class="input-field button">
+									<input type="submit" value="Registrati">
+								</div>
+				          
+				        </form>
+		        </div>
+	        </div>
+        </div>
         
         
          <!-- Inclusione di jQuery -->
    		 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   		 <script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
+			<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
    		 <!-- Codice jQuery -->
-	    <script>
+    	<script>
 	   
 	    $(document).ready(function() {
 	        var isUsernameDisponibile = false;  // variabile di controllo
@@ -92,6 +86,10 @@
                     $('#username').css('border-color', 'red');
 	                event.preventDefault();  // impedisce l'invio
 	            }
+	        });
+	        
+	        var data = new DateTime($('#datadinascita'), {
+	            format: 'YYYY-MM-DD'
 	        });
 
 	    });
