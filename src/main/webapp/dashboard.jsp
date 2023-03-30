@@ -80,9 +80,9 @@
 						</div>
 						<div class="bilancioCont">
 							<h4>Entrate</h4>
-							<fmt:formatNumber type="currency" currencySymbol="€">
-								<h5>${entrate}</h5>
-							</fmt:formatNumber>
+							<h5>
+								<fmt:formatNumber type="currency" currencySymbol="€">${entrate}</fmt:formatNumber>
+							</h5>
 						</div>
 					</div>
 				</div>
