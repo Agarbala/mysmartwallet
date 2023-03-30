@@ -116,7 +116,7 @@
 											<h6>${obiettivo.nome}</h6>
 										</td>
 										<td><fmt:formatNumber type="currency" currencySymbol="€">${obiettivo.importo}</fmt:formatNumber></td>
-										<td>${risparmiato.get(obiettivo.id)}</td>
+										<td><fmt:formatNumber type="currency" currencySymbol="€">${risparmiato.get(obiettivo.id)}</fmt:formatNumber></td>
 										<td><fmt:formatNumber type="currency" currencySymbol="€">
 												<c:out value="${obiettivo.rata}" />
 											</fmt:formatNumber></td>
