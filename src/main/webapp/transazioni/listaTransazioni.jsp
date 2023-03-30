@@ -90,11 +90,11 @@
 									</a>
 								</td>
 								<td class="td_center">
-									<a id="del" title="Elimina"
-										href="/transazioni/elimina?id=${transazione.id}&pagina=lista">
-										<i class="bi bi-x-circle-fill"></i>
-
-									</a>
+									<a class="delButton" id="del" title="Elimina"
+									href="/transazioni/elimina?id=${transazione.id}&pagina=lista"
+									data-name="${transazione.nome}"> 
+									<i class="bi bi-x-circle-fill"></i>
+								</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -152,6 +152,13 @@
 		);
 
 		$(document).ready(function () {
+			
+			$(".delButton").click(function () {
+				var nome = this.dataset.name;
+				if (!confirm("Sicuro di voler cancellare '" + nome + "'?")) {
+					event.preventDefault();
+				}
+			});
 
 			$('#transazioniTable').DataTable({
 				language: {
