@@ -66,3 +66,22 @@
 		</div>
 	</div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+	$(document).ready(function () {
+		function controllaDate() {
+			
+			let datainizio = new Date($("#datainizio").val());
+			let datafine = new Date($("#datafine").val());
+			
+			if(datafine < datainizio) {
+				event.preventDefault();
+				alert("La data di inizio deve essere precedente alla data di fine!")
+			}
+		}
+		
+		$("#modificaObiettivo").on("submit", controllaDate);
+	});
+</script>
