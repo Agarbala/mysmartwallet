@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!-- Modal Aggiungi Transazione-->
 <div class="modal fade modal-right" id="aggiungiTransazione"
 	data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -63,9 +60,9 @@
 						<tr>
 							<td><label for="tipo">Tipo di transazione:</label></td>
 							<td>
-							<input type="radio" id="entrataNuovo" name="tipo" value="entrata" required> 
+							<input class="entrataNuovo" type="radio" id="entrataNuovo" name="tipo" value="entrata" required> 
 							<label id="tipo" for="entrata">Entrata</label>
-							<input type="radio" id="uscitaNuovo" name="tipo" value="uscita"
+							<input class="uscitaNuovo" type="radio" id="uscitaNuovo" name="tipo" value="uscita"
 							required> 
 							<label id="tipo" for="uscita">Uscita</label></td>
 						</tr>
