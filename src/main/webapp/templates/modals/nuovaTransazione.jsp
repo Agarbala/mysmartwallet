@@ -63,12 +63,11 @@
 						<tr>
 							<td><label for="tipo">Tipo di transazione:</label></td>
 							<td>
-							<input type="radio" id="entrataNuovo" name="tipo"
-								value="entrata" required> 
-								<label id="tipo" for="entrata">Entrata</label>
-								<input type="radio" id="uscitaNuovo" name="tipo" value="uscita"
-								required> 
-								<label id="tipo" for="uscita">Uscita</label></td>
+							<input type="radio" id="entrataNuovo" name="tipo" value="entrata" required> 
+							<label id="tipo" for="entrata">Entrata</label>
+							<input type="radio" id="uscitaNuovo" name="tipo" value="uscita"
+							required> 
+							<label id="tipo" for="uscita">Uscita</label></td>
 						</tr>
 						<tr id="obiettivoSel">
 							<td><label for="obiettivo">Obiettivo:</label></td>

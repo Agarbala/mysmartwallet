@@ -78,9 +78,9 @@
 								<label for="tipo">Tipo di transazione:</label>
 							</td>
 							<td>
-								<input type="radio" id="entrata" name="tipo" value="entrata" required>
+								<input id="entrataNuovo" type="radio" id="entrata" name="tipo" value="entrata" required>
 								<label id="tipo" for="entrata">Entrata</label>
-								<input type="radio" id="uscita" name="tipo" value="uscita" required>
+								<input id="uscitaNuovo" type="radio" id="uscita" name="tipo" value="uscita" required>
 								<label id="tipo" for="uscita">Uscita</label>
 							</td>
 						</tr>
