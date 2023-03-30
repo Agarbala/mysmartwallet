@@ -96,6 +96,7 @@ public class TransazioniController {
 	public Map<String, String> getTransazione(@RequestParam int id, HttpSession session) {
 		Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 		// TODO:Farlo con il foreach
+		System.out.println(c.getTransazioni().stream().filter(t -> t.getId() == id).findFirst().get().toMap());
 		return c.getTransazioni().stream().filter(t -> t.getId() == id).findFirst().get().toMap();
 	}
 	

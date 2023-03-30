@@ -198,7 +198,7 @@
 								if (key == 'metodo' || key == 'categoria') {
 									$("#" + key).val(value.toLowerCase());
 								} else if (key == 'tipo') {
-									if (value == 'ENTRATA') {
+									if (value == 'Entrata') {
 										$("#entrata").prop("checked", true);
 									} else {
 										$("#uscita").prop("checked", true);

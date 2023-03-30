@@ -79,7 +79,7 @@ font-weight: bold!important;
 .modalInputs td textarea {
 	padding-top: 10px;
 }
-#entrataNuovo, #uscitaNuovo {
+.entrataNuovo, .uscitaNuovo {
 	width: auto !important;
 	height: auto !important;
 }
@@ -328,6 +328,7 @@ td.truncate {
     padding: 80px 90px;
     padding-left: 140px;
     box-sizing: border-box;
+    min-height: 100vh!important;
    
 }
 
