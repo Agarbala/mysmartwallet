@@ -38,6 +38,7 @@
 										<label for="casaBudget">Budget</label>
 
 									</div>
+									<span></span>
 									<div class="col">€
 									
 										<input class="bdg" id="${cat}" type="number" step=".50" <%--
