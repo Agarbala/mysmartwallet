@@ -111,7 +111,7 @@
 	<c:import url="/templates/footer.jsp"></c:import>
 
 	<!-- Inclusione di jQuery -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>

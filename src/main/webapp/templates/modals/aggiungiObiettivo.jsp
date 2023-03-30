@@ -64,3 +64,21 @@
 		</div>
 	</div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+	$(document).ready(function () {
+		function controllaDate() {
+			
+			let datainizio = new Date($("#datainizioNuovo").val());
+			let datafine = new Date($("#datafineNuovo").val());
+			
+			if(datafine < datainizio) {
+				event.preventDefault();
+				alert("La data di inizio deve essere precedente alla data di fine!")
+			}
+		}
+		
+		$("#nuovoObiettivo").on("submit", controllaDate);
+	});
+</script>
