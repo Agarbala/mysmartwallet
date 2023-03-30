@@ -39,7 +39,8 @@
 										<label for="casaBudget">Budget</label>
 
 									</div>
-									<div class="col">
+									<div class="col">€
+									
 										<input class="bdg" id="${cat}" type="number" step=".50" <%--
 											value="${(budget.stream().filter(b -> b.getNome().equalsIgnoreCase(cat)).count()) > 0 ? (budget.stream().filter(b -> b.getNome().equalsIgnoreCase(cat)).findFirst().get().getBudget()) : 0}">
 										--%>
@@ -123,6 +124,8 @@
 					salvaNelDb(this);
 				});
 			})
+			
+
 		});
 	</script>
 </body>
