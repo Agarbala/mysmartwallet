@@ -25,7 +25,7 @@
 						</a>
 						<div id="userImg">
 							<!-- implementare immagine utente -->
-							<a href="#"><img alt="" src="/imgs/gianpiero.jpeg"></a>
+							<a href="#"><img alt="" src="/imgs/user.svg"></a>
 						</div>
 					</div>
 				</li>
