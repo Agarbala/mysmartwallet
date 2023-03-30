@@ -5,6 +5,14 @@
     
 }
 
+.nascosto {
+	display:none !important;
+}
+
+.visibile {
+	display: block;
+}
+
 #logo{
     height: 30px;
 }

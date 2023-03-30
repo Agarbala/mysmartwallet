@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+
 
 <!-- Modal Aggiungi Transazione-->
 <div class="modal fade modal-right" id="aggiungiTransazione"
@@ -62,20 +62,22 @@
 						</tr>
 						<tr>
 							<td><label for="tipo">Tipo di transazione:</label></td>
-							<td><input type="radio" id="entrataNuovo" name="tipo"
-								value="entrata" required> <label id="tipo" for="entrata">Entrata</label>
+							<td>
+							<input type="radio" id="entrataNuovo" name="tipo"
+								value="entrata" required> 
+								<label id="tipo" for="entrata">Entrata</label>
 								<input type="radio" id="uscitaNuovo" name="tipo" value="uscita"
-								required> <label id="tipo" for="uscita">Uscita</label></td>
+								required> 
+								<label id="tipo" for="uscita">Uscita</label></td>
 						</tr>
-						<tr>
+						<tr id="obiettivoSel">
 							<td><label for="obiettivo">Obiettivo:</label></td>
 							<td><select id="obiettivo" name="obiettivoid">
 									<option value="0">Nessuno</option>
 									<c:forEach var="obi" items="${conto.obiettivi}">
 										<option value="${obi.id}">${obi.nome}</option>
 									</c:forEach>
-							</select> <!-- da finire <input type="hidden" name="obiettivoid" value="">  -->
-							</td>
+							</select></td>
 						</tr>
 					</table>
 				</form>
@@ -91,4 +93,29 @@
 		</div>
 	</div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("#obiettivoSel").hide();
+	$("#uscitaNuovo").on('change', function() {
+		$("#obiettivoSel").show();
+	});
+	$("#entrataNuovo").on('change', function() {
+		$("#obiettivo").val(0);
+		$("#categoriaNuovo").prop( "disabled", false);
+		$("#obiettivoSel").hide();
+	});
+	
+	$("#obiettivo").on('change', function() {
+		if($("#obiettivo").val() != 0) {
+			$("#categoriaNuovo").val('altro');
+			$("#categoriaNuovo").prop( "disabled", true );
+		} else {
+			$("#categoriaNuovo").prop( "disabled", false);
+		}
+	});
+	
+	
+});
+</script>
 <!-- Fine Modal Aggiungi Transazione -->
