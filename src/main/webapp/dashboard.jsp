@@ -92,7 +92,7 @@
 					<div id="bilancioCol1" class="shadow-sm rounded">
 
 						<table id="obiettiviTable"
-							class="table table-striped table-hover align-middle">
+							class="table table-striped table-hover align-middle w-100">
 							<h5>
 								Obiettivi <a data-bs-toggle="modal"
 									data-bs-target="#aggiungiObiettivo" href=""><i
