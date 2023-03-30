@@ -20,7 +20,7 @@
 					method="GET">
 					<input type="hidden" name="pagina" value="${param.pagina}" /> <input
 						type="hidden" name="idconto" value="${conto.id}" />
-					<table>
+					<table class="modalInputs">
 						<tr>
 							<td><label for="importo">Importo:</label></td>
 							<td><input type="number" id="importoNuovo" name="importo"

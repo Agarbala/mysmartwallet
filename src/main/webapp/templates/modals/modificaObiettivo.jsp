@@ -13,7 +13,7 @@
 					<input type="hidden" name="pagina" value="${param.pagina}" />
 					<input type="hidden" name="idconto" value="${conto.id}" />
 					<input type="hidden" id="idObiettivo" name="id" value="" />
-					<table>
+					<table class="modalInputs">
 						<tr>
 							<td>
 								<label for="importo">Importo:</label>
