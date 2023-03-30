@@ -46,6 +46,7 @@
 					<thead>
 						<tr>
 							<th scope="col">Nome</th>
+							<th scope="col">Risparmiato</th>
 							<th scope="col">Importo</th>
 							<th scope="col">Quota mensile</th>
 							<th scope="col">Data di Inizio</th>
@@ -64,6 +65,11 @@
 								<td>
 									${obiettivo.nome}
 
+								</td>
+								<td>
+									<fmt:formatNumber type="currency" currencySymbol="€">
+										<c:out value="${risparmiato.get(obiettivo.id)}" />
+									</fmt:formatNumber>
 								</td>
 								<td>
 									<fmt:formatNumber type="currency" currencySymbol="€">

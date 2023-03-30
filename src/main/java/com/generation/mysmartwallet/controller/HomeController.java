@@ -3,7 +3,9 @@ package com.generation.mysmartwallet.controller;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.TextStyle;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.generation.mysmartwallet.entity.Conto;
+import com.generation.mysmartwallet.entity.Obiettivo;
 import com.generation.mysmartwallet.entity.Transazione;
 import com.generation.mysmartwallet.enums.TipoTransazione;
 import com.generation.mysmartwallet.util.SessionUtil;
@@ -45,6 +48,7 @@ public class HomeController {
 			}
 		}
 		
+		model.addAttribute("risparmiato", getRisparmiatoPerObiettivo(session));
 		model.addAttribute("conto", c);
 		model.addAttribute("bilancioMensile", (entrate - uscite));
 		model.addAttribute("entrate", entrate);
@@ -52,5 +56,20 @@ public class HomeController {
 		model.addAttribute("mese", mese.getDisplayName(TextStyle.FULL, Locale.ITALIAN).toUpperCase());
 
 		return "dashboard.jsp";
+	}
+	
+	private Map<Integer, Double> getRisparmiatoPerObiettivo(HttpSession session) {
+		Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		Map<Integer, Double> ris = new HashMap<>();
+		for(Obiettivo o : conto.getObiettivi()) {
+			double somma = 0;
+			for(Transazione t : conto.getTransazioni()) {
+				if(t.getObiettivoid() == o.getId()) {
+					somma += t.getImporto();
+				}
+			}
+			ris.put(o.getId(), somma);
+		}
+		return ris;
 	}
 }
