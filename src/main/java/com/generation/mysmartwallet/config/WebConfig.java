@@ -24,7 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
                 		"/isUsernameDisponibile", 
                 		"/error", 
                 		"/css/*", 
-                		"/js/*"
+                		"/js/*",
+                		"/imgs/*"
                 		);
     }
 }
