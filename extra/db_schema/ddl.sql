@@ -27,6 +27,7 @@ CREATE TABLE obiettivi (
     completato BOOLEAN,
     nome VARCHAR(100) NOT NULL,
     note VARCHAR(1000),
+    rata double as (if( PERIOD_DIFF(EXTRACT(YEAR_MONTH FROM datafine), EXTRACT(YEAR_MONTH FROM datainizio)) > 0, (importo/PERIOD_DIFF(EXTRACT(YEAR_MONTH FROM datafine), EXTRACT(YEAR_MONTH FROM datainizio))), importo)),
     idconto INT NOT NULL,
     FOREIGN KEY (idconto)
         REFERENCES conto (id)

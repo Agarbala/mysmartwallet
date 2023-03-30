@@ -72,14 +72,7 @@
 								</td>
 								<td>
 									<fmt:formatNumber type="currency" currencySymbol="€">
-										<c:set
-											value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getMonths()}"
-											var="diffMesi" />
-										<c:set
-											value="${Period.between(obiettivo.datainizio.withDayOfMonth(1), obiettivo.datafine.withDayOfMonth(1)).getYears() * 12}"
-											var="diffAnni" />
-										<c:set value="${diffMesi + diffAnni}" var="diff" />
-										<c:out value="${obiettivo.importo / (diff == 0 ? 1 : diff)}" />
+										<c:out value="${obiettivo.rata}"/>
 									</fmt:formatNumber>
 								</td>
 								<td>${obiettivo.datainizio}</td>
