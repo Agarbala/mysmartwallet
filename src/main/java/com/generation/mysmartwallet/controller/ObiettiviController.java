@@ -1,6 +1,7 @@
 package com.generation.mysmartwallet.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.generation.mysmartwallet.dao.DaoObiettivo;
 import com.generation.mysmartwallet.entity.Conto;
 import com.generation.mysmartwallet.entity.Obiettivo;
+import com.generation.mysmartwallet.entity.Transazione;
 import com.generation.mysmartwallet.util.SessionUtil;
 
 @Controller
@@ -43,7 +45,23 @@ public class ObiettiviController extends SessionUtil{
 	@GetMapping("/listaObiettivi")
 	public String listaObiettivi(Model model, HttpSession session) {
 		model.addAttribute("obiettivi", context.getBean(Conto.class, SessionUtil.idFromSession(session)).getObiettivi());
+		model.addAttribute("risparmiato", getRisparmiatoPerObiettivo(session));
 		return "listaObiettivi.jsp";
+	}
+	
+	private Map<Integer, Double> getRisparmiatoPerObiettivo(HttpSession session) {
+		Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		Map<Integer, Double> ris = new HashMap<>();
+		for(Obiettivo o : conto.getObiettivi()) {
+			double somma = 0;
+			for(Transazione t : conto.getTransazioni()) {
+				if(t.getObiettivoid() == o.getId()) {
+					somma += t.getImporto();
+				}
+			}
+			ris.put(o.getId(), somma);
+		}
+		return ris;
 	}
 	
 	@GetMapping("/aggiungi")

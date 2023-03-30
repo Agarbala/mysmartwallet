@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.generation.mysmartwallet.dao.DaoTransazioni;
 import com.generation.mysmartwallet.entity.Conto;
 import com.generation.mysmartwallet.entity.Transazione;
+import com.generation.mysmartwallet.enums.Categoria;
 import com.generation.mysmartwallet.util.SessionUtil;
 
 @Controller
@@ -57,6 +58,9 @@ public class TransazioniController {
 	@GetMapping("/aggiungi")
 	public String aggiungiTransazione(@RequestParam Map<String, String> transazioneMap, HttpSession session) {
 		Transazione t = context.getBean(Transazione.class, transazioneMap);
+		if(t.getObiettivoid() != 0) {
+			t.setCategoria(Categoria.ALTRO);
+		}
 		if(daoTransazione.create(t)) {
 			Conto c = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 //			c.getTransazioni().add(t);
