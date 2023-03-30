@@ -59,7 +59,7 @@
 
 
 	<!-- Inclusione di jQuery -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
@@ -97,6 +97,9 @@
 			});
 
 			var data = new DateTime($('#datadinascita'), {
+				locale: 'it',
+				minDate: new Date('Jan 01, 1930 00:00:00'),
+				maxDate: new Date('Dec 31, 15 00:00:00'),
 				format: 'YYYY-MM-DD'
 			});
 
