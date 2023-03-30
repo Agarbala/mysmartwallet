@@ -36,6 +36,8 @@
 
 
 /*MODAL INPUTS*/
+.modalInputs {width: 100%;}
+
 .modalInputs td input, .modalInputs td textarea {
     height: 50px;
     width: 100%;
@@ -85,11 +87,7 @@
 	background: red !important;
     border: none !important;
 }
-.modal-content {
-   
-    height: 100% !important;
-    
-}
+
 
 
 
@@ -370,7 +368,7 @@ td.truncate {
 }
 
 
-/* MODAL */
+/* MODAL 
 @media screen and (min-width: 1400px) {
   .modal-dialog {
     margin-right: 0 !important;
@@ -390,6 +388,7 @@ td.truncate {
   transform: none;
   
 }
+*/
 /*------- LOGIN---------- */
 .cont {
 	padding: 100px 30px 30px;
