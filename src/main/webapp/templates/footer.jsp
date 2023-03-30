@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style="position:absolute; bottom:0; width:100%;">
+<footer class="text-center text-lg-start bg-light text-muted" style="bottom:0; width:100%;">
 	<!--Social media -->
 	<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 		<!-- Left -->
