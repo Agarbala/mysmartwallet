@@ -77,6 +77,24 @@
     border-radius: 10px;
 }
 
+.conferma-btn{
+	background: #344b79 !important;
+    border: none !important;
+}
+.annulla-btn{
+	background: red !important;
+    border: none !important;
+}
+.modal-content {
+   
+    height: 100% !important;
+    
+}
+
+
+
+
+
 
 .d-flex {
     display: flex !important;

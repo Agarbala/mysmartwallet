@@ -83,10 +83,10 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
+				<button type="button" class="btn btn-secondary annulla-btn"
 					data-bs-dismiss="modal">Annulla</button>
 				<button form="nuovaTransazione" type="submit"
-					class="btn btn-primary">Salva</button>
+					class="btn btn-primary conferma-btn">Salva</button>
 
 			</div>
 
