@@ -2,6 +2,7 @@
 body{
     width: 100%;
     overflow-x: hidden;  
+
 }
 
 #logo{
@@ -9,8 +10,14 @@ body{
 }
 .mainCont {
     display: flex;
+    flex-direction:column;
     background: #ededed;
     z-index: 1;
+    min-height: 100vh;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+/*     margin: 0 auto -145px; */
 }
 
 .h4, h4 {
@@ -328,7 +335,7 @@ td.truncate {
     padding: 80px 90px;
     padding-left: 140px;
     box-sizing: border-box;
-    min-height: 100vh!important;
+    min-height: 30vh!important;
    
 }
 

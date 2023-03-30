@@ -204,6 +204,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 
 	<c:import url="/templates/footer.jsp"></c:import>
