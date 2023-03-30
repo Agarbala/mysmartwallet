@@ -24,9 +24,9 @@
 		<jsp:include page="/templates/sidebar.jsp">
 			<jsp:param name="tranSelected" value="true" />
 		</jsp:include>
+		
 		<div class="main-content">
 			<c:import url="/templates/navbar.jsp"></c:import>
-
 			<!-- Import Modali-->
 			<c:import url="/templates/modals/nuovaTransazione.jsp">
 				<c:param name="pagina" value="lista"></c:param>
@@ -45,7 +45,7 @@
 						<tr>
 							<td>Dal:</td>
 							<td><input type="text" id="min" name="min"></td>
-							<td>A:</td>
+							<td>Al:</td>
 							<td><input type="text" id="max" name="max"></td>
 						</tr>
 					</tbody>
@@ -110,16 +110,12 @@
 
 	<c:import url="/templates/footer.jsp"></c:import>
 
-	<!-- Inclusione di jQuery -->
+	<!-- Script Datatables, Jquery, Bootstrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-
-
-	<script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/cr-1.6.2/fc-4.2.2/sb-1.4.2/datatables.min.js"></script>ù
 	<script src="https://cdn.datatables.net/plug-ins/1.13.4/sorting/datetime-moment.js"></script>
-
+	<script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
 		crossorigin="anonymous"></script>
@@ -127,11 +123,10 @@
 		integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
 		crossorigin="anonymous"></script>
 
+
 	<script>
-
+		
 		var minDate, maxDate;
-
-
 
 		$.fn.dataTable.ext.search.push(
 			function (settings, data, dataIndex) {
@@ -219,7 +214,6 @@
 			});
 
 		});
-
 
 	</script>
 </body>
