@@ -26,14 +26,13 @@
 		</jsp:include>
 		<div class="main-content overflow-hidden">
 			<c:import url="/templates//navbar.jsp"></c:import>
-			<div class="row gx-5 gy-3  justify-content-between">
+			<div class="row gx-5 gy-3  justify-content-between" style="margin-top:10px">
 
 				<c:forEach var="cat" items="${speseCategoria.keySet()}">
 					<div class="col-12 col-lg-4">
-						<div class="card p-4" style="height: 300px;">
-							<div class="card-body">
-								<h5 class="card-title">${cat}</h5>
-								<h6 class="card-subtitle mb-2 text-muted">pensare</h6>
+						<div class="card p-4" id="budgetcard" style="height: 300px;">
+							<div class="card-body" id="budgetcardbody">
+								<h4 class="card-title" style="margin-bottom:20px;">${cat}</h4>
 								<div class="row">
 									<div class="col">
 										<label for="casaBudget">Budget</label>
@@ -48,8 +47,8 @@
 									</div>
 								</div>
 
-								<p>Questo mese hai speso: <fmt:formatNumber type="currency" currencySymbol="€">
-										${speseCategoria.get(cat)}</fmt:formatNumber>
+								<p id="pbudget">Questo mese hai speso:<br> <span style="font-weight:bold"><fmt:formatNumber type="currency" currencySymbol="€">
+										${speseCategoria.get(cat)}</fmt:formatNumber></span>
 								</p>
 							</div>
 						</div>
