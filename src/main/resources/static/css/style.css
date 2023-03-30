@@ -50,8 +50,62 @@ font-weight: bold!important;
 }
 
 
+
+/*MODAL INPUTS*/
+.modalInputs {width: 100%;}
+
+.modalInputs td input, .modalInputs td textarea {
+    height: 50px;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.modalInputs td select {
+	border: 2px solid #ccc;
+    border-radius: 10px;
+    height: 50px;
+    margin-top: 5px;
+    width: 100%;
+}
+.modalInputs td input:is(:focus, :valid) {
+	border-bottom-color: #323a46;
+}
+.modalInputs td textarea {
+	padding-top: 10px;
+}
+#entrataNuovo, #uscitaNuovo {
+	width: auto !important;
+	height: auto !important;
+}
+
+.modal-body {
+    padding: 60px !important;
+}
+.modalInputs tr {
+	display: flex;
+    flex-direction: column !important;
+    margin-bottom: 22px;
+    border-top: 2px solid #344b79;
+    border-radius: 10px;
+}
+
+.conferma-btn{
+	background: #344b79 !important;
+    border: none !important;
+}
+.annulla-btn{
+	background: red !important;
+    border: none !important;
+}
+
 .d-flex {
-    display: flex!important;
+    display: flex !important;
     margin: 0 auto;
     width: 50%;
 }
@@ -319,7 +373,7 @@ td.truncate {
 }
 
 
-/* MODAL */
+/* MODAL 
 @media screen and (min-width: 1400px) {
   .modal-dialog {
     margin-right: 0 !important;
@@ -339,6 +393,7 @@ td.truncate {
   transform: none;
   
 }
+*/
 /*------- LOGIN---------- */
 .cont {
 	padding: 100px 30px 30px;

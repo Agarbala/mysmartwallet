@@ -11,13 +11,13 @@
 				<form id="nuovoObiettivo" action="/obiettivi/aggiungi" method="GET">
 					<input type="hidden" name="pagina" value="${param.pagina}" />
 					<input type="hidden" name="idconto" value="${conto.id}" />
-					<table>
+					<table class="modalInputs">
 						<tr>
 							<td>
 								<label for="importo">Importo:</label>
 							</td>
 							<td>
-								<input type="number" id="importoNuovo" name="importo" min="0" step=".01" required>
+								<input placeholder="inserisci un importo" type="number" id="importoNuovo" name="importo" min="0" step=".01" required>
 							</td>
 						</tr>
 						<tr>
@@ -41,7 +41,7 @@
 								<label for="note">Note:</label>
 							</td>
 							<td>
-								<textarea id="noteNuovo" name="note" maxlength="200"></textarea>
+								<textarea placeholder="aggiungi una nota..." id="noteNuovo" name="note" maxlength="200"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -49,15 +49,15 @@
 								<label for="nome">Nome:</label>
 							</td>
 							<td>
-								<input type="text" id="nomeNuovo" name="nome" required>
+								<input type="text" id="nomeNuovo" name="nome" required placeholder="Nome obiettivo">
 							</td>
 						</tr>
 					</table>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-				<button form="nuovoObiettivo" type="submit" class="btn btn-primary">Salva</button>
+				<button type="button" class="btn btn-secondary annulla-btn" data-bs-dismiss="modal">Annulla</button>
+				<button form="nuovoObiettivo" type="submit" class="btn btn-primary conferma-btn">Salva</button>
 
 			</div>
 

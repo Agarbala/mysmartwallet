@@ -13,7 +13,7 @@
 					<input type="hidden" name="pagina" value="${param.pagina}" />
 					<input type="hidden" name="idconto" value="${conto.id}" />
 					<input type="hidden" id="idTransazione" name="id" value="" />
-					<table>
+					<table class="modalInputs">
 						<tr>
 							<td>
 								<label for="importo">Importo:</label>
@@ -88,8 +88,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-				<button form="modificaTransazione" type="submit" class="btn btn-primary">Salva</button>
+				<button type="button" class="btn btn-secondary annulla-btn" data-bs-dismiss="modal">Annulla</button>
+				<button form="modificaTransazione" type="submit" class="btn btn-primary conferma-btn">Salva</button>
 			</div>
 
 
