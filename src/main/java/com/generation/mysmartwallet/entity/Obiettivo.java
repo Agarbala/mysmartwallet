@@ -12,6 +12,7 @@ public class Obiettivo extends Entity {
 	private boolean completato;
 	private String note;
 	private int idconto;
+	private double rata;
 	
 	
 	public Obiettivo () {}
@@ -86,11 +87,14 @@ public class Obiettivo extends Entity {
 		this.idconto = idconto;
 	}
 
-	
-	
-	
-	
-	
-	
-	
+
+	public double getRata() {
+		return rata;
+	}
+
+
+	public void setRata(double rata) {
+		this.rata = rata;
+	}
+
 }
