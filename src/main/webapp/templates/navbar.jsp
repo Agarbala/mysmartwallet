@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg ">
+		 <div style="padding-left: 33px;">
+			<img src="/imgs/Logo.png" style="width:45px;">
+		 </div> 
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">My Smart Wallet <!-- <img id="logo" src="./logo.png" alt="logo"> --></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -22,7 +25,7 @@
 						</a>
 						<div id="userImg">
 							<!-- implementare immagine utente -->
-							<a href="#"><img alt="" src="imgs/gianpiero.jpeg"></a>
+							<a href="#"><img alt="" src="/imgs/gianpiero.jpeg"></a>
 						</div>
 					</div>
 				</li>

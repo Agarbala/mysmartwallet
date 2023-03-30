@@ -1,9 +1,9 @@
 
- body{
+body{
     width: 100%;
-    overflow-x: hidden;
-    
+    overflow-x: hidden;  
 }
+
 
 #logo{
     height: 30px;
@@ -13,6 +13,16 @@
     background: #ededed;
     z-index: 1;
 }
+
+.h4, h4 {
+    font-size: calc(1.275rem + .3vw);
+    font-weight: bold!important;
+}
+.h5, h5 {
+font-size: 1.25rem;
+font-weight: bold!important;
+}
+
 .container-fluid {
     margin: 0 20px 0 80px !important;
 }
@@ -22,7 +32,24 @@
     left: 0;
     width: 100%;
     z-index: 99;
+    background-color: #07354d;
 }
+
+.navbar-brand {
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: var(--bs-navbar-brand-font-size);
+    color: var(--bs-navbar-brand-color);
+    /* font-size: var(--bs-navbar-brand-font-size); */
+    /* color: var(--bs-navbar-brand-color); */
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 1.50rem!important;
+    font-weight: bold!important;
+    color: color(srgb 0.9805 0.7805 0.283)!important;
+}
+
 
 .d-flex {
     display: flex!important;
@@ -35,12 +62,11 @@
     margin-right: 70px;
 }
 #userCont a{
-    text-decoration:none;
-    
+    text-decoration: none;
 }
 #userCont h6{
     text-align: right;
-    color: #000;
+    color: #fed766;
 }
 
 #userImg {
@@ -65,7 +91,7 @@
     top: 10px;
     right: -103px;
     width: 80px;
-    color: #434343;
+    color: #07354d;
     font-size: 14px;
     font-weight: 600;
     text-align: left;
@@ -85,7 +111,7 @@
 }
 
 .iconColor {
-	color: #fff;
+    color: #fed766;
 }
 #recapMensile {
     width: 100%;
@@ -97,19 +123,18 @@
     justify-content: space-around;
     align-items: center;
     position: relative;
-
-/*     -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px 1px 17px 15px rgba(0,0,0,0); */
-/*     box-shadow: 0px 10px 13px -7px #0403039c, 2px 1px 17px 15px rgba(0,0,0,0); */
-/*     -webkit-border-radius: 10px; */
-/* 	-moz-border-radius: 10px; */
-/* 	border-radius: 10px; */
-   
+    /* -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px 1px 17px 15px rgba(0,0,0,0); */
+    /* box-shadow: 0px 10px 13px -7px #0403039c, 2px 1px 17px 15px rgba(0,0,0,0); */
+    /* -webkit-border-radius: 10px; */
+    /* -moz-border-radius: 10px; */
+    border-radius: 10px 10px 10px 75px!important;
 }
 div#recapImg {
     width: 20%;
     height: 100%;
     display: flex;
     position: relative;
+    border-radius: 10px 0 0 10px;
 }
 div#recapImg img{
     object-fit: cover;
@@ -119,21 +144,17 @@ div#recapImg img{
 #recaph4 {
     width: 100%;
     height: 100%;
-    background: #52ae2c;
+    background: #07354d;
+    border-radius: 10px 75px 30px 75px;
 }
-#freccia {
-    width: 0;
-    height: 100%;
-    border-top: 75px solid transparent;
-    border-left: 50px solid #52ae2c;
-    border-bottom: 75px solid transparent;
-}
+
 div#recapImg h4{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: #FAC748;
+    font-weight: bold!important;
 }
 
 #bilanciMens {
@@ -143,9 +164,6 @@ div#recapImg h4{
     gap: 40px;
     justify-content: space-around;
     align-items: center;
-    
-    
-    
 }
 
 
@@ -162,30 +180,31 @@ div#recapImg h4{
     background-color: #fff;
     width: 60%;
     padding: 30px;
+    border-radius: 20px!important;
 }
 #bilancioCol2 {
-	position: relative;
+    position: relative;
     background-color: #fff;
     width: 40%;
     padding: 30px;
- 
+    border-radius: 20px!important;
 }
 .bilTot {
     width: 100%;
-    
 }
 .bilTotValuta {
-	position: absolute;
-	bottom: 0;
-	right: 20px;
-	width:100%;
-	align-self: flex-end;
+    position: absolute;
+    bottom: 35px;
+    right: 40px;
+    width: 100%;
+    align-self: flex-end;
 }
 .bilTotValuta h2{
     text-align: right;
     font-size: 3vw;
     margin-top: auto;
-    /*color: red;*/
+    /* color: red; */
+    font-weight: bold;
 }
 
 .table_obiett {
@@ -202,7 +221,7 @@ div#recapImg h4{
     margin-top: 30px;
     background: white;
     padding: 30px;
-    
+    border-radius: 20px!important;
 }
 
 .clickableTd {
@@ -236,12 +255,12 @@ td.truncate {
 
 #del i{
     font-size: 24px;
-    color: red;
+    color: rgb(209, 38, 38);
 }
 
 #mod i{
     font-size: 24px;
-    color: green;
+    color: color(srgb 0.0272 0.2074 0.3024);
 }
 
 
@@ -255,26 +274,29 @@ td.truncate {
 }
 
 .side {
-	/* flex-basis: 100px; */
-	flex-basis: 50px;
-    background-color: #323a46;
-    padding: 10px;
-    padding-top: 60px;
+    /* flex-basis: 100px; */
+    flex-basis: 50px;
+    background-color: #07354d;
+    padding: 20px;
+    padding-top: 30px;
     box-sizing: border-box;
     text-align: center;
-    height: 100vh;
-    z-index:100;
-    position:fixed;
+    height: fit-content;
+    z-index: 100;
+    position: fixed;
+    border-radius: 10px;
+    left: 20px;
+    top: 16%;
 }
 
 .side a {
-	display: block;
-	margin-bottom: 10px;
-	color: #fdfdfd;
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 18px;
-	padding: 5px;
+    display: block;
+    margin-bottom: 10px;
+    color: #fac748;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
 }
 
 .side a:hover {
@@ -433,11 +455,11 @@ td.truncate {
 }
 
 #reg_form .button input {
-    color: #fff;
+    color: #FAC748;
     font-size: 17px;
     font-weight: 600;
     border-radius: 5px;
-    background-color: #323a46;
+    background-color: #07354d;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -483,11 +505,11 @@ td.truncate {
 }
 
 #signupForm .button input {
-    color: #fff;
+    color: #FAC748;
     font-size: 17px;
     font-weight: 600;
     border-radius: 5px;
-    background-color: #323a46;
+    background-color: #07354d;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
