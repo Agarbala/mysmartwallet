@@ -14,9 +14,10 @@ MySmartWallet è una web application per la gestione del portafoglio personale. 
 
 ## Funzionalità
 
-Aggiunta di transazioni (entrata e uscita, data, importo, categoria)
-Gestione degli obiettivi di risparmio (con calcolo della quota mensile necessaria per risparmiare quella cifra in base a data di inizio e data di fine)
-Impostazione di un budget per le categorie sopracitate
+- Aggiunta, modifica ed eliminazione di transazioni
+- Gestione di obiettivi di risparmio
+- Impostazione di un budget per le diverse categorie di spesa
+- Signup/Login/Logout
 
 ## Installazione
 
