@@ -23,7 +23,7 @@ MySmartWallet è una web application per la gestione del portafoglio personale. 
 
 1. Clonare il repository
 ```bash
-git clone https://github.com/agarbala/mysmartwallet.git
+git clone https://github.com/Agarbala/mysmartwallet.git
 ```
 2. Aprire il progetto in un IDE compatibile (ad es. Eclipse)
 3. Creare un database MySQL locale sfruttando il file `/extra/db_schema/ddl.sql` 
