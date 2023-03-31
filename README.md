@@ -27,6 +27,6 @@ git clone https://github.com/agarbala/mysmartwallet.git
 ```
 2. Aprire il progetto in un IDE compatibile (ad es. Eclipse)
 3. Creare un database MySQL locale sfruttando il file `/extra/db_schema/ddl.sql` 
-4. Modificare le impostazioni di connessione nel file 'Database.java' nel package 'com.generation.mysmartwallet.database' in 'src/main/java/'
-5. Eseguire il file 'src/main/java/com/mysmartwallet/mysmartwallet/MySmartWalletApplication.java' per avviare l'applicazione
-6. Accedere alla webapp all'indirizzo http://localhost:8080
+4. Modificare le impostazioni di connessione al DB nel file `src/main/java/com.generation.mysmartwallet.database/Database.java`
+5. Eseguire il file `src/main/java/com/mysmartwallet/mysmartwallet/MySmartWalletApplication.java` per avviare l'applicazione
+6. Accedere alla webapp all'indirizzo `http://localhost:8080`
