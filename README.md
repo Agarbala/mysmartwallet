@@ -1,7 +1,11 @@
 # MySmartWallet
 
 MySmartWallet è una web application per la gestione del portafoglio personale. Il progetto è stato creato come lavoro di gruppo finale per il corso JAITA79 di Generation Italy.
-<img width="500" alt="MySmartWallel Dashboard" src="https://user-images.githubusercontent.com/127420155/229134690-3caa52b4-939a-4945-b7dd-bc266673ee12.png">
+
+<details>
+<summary>Immagine Dashboard</summary>
+<img width="800" alt="MySmartWallel Dashboard" src="https://user-images.githubusercontent.com/127420155/229134690-3caa52b4-939a-4945-b7dd-bc266673ee12.png">
+</details>
 
 ## Tecnologie
 ### Backend
