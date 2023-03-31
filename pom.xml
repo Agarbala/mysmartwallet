@@ -19,14 +19,14 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+		  <groupId>org.mindrot</groupId>
+		  <artifactId>jbcrypt</artifactId>
+		  <version>0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
@@ -43,10 +43,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
 		</dependency>
+		<!-- Questa dependency serve per gestire le pagine JSP -->
+		<dependency>
+	        <groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+    	</dependency>
 	</dependencies>
 
 	<build>
