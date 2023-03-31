@@ -101,6 +101,10 @@
 
 			var data = new DateTime($('#datadinascita'), {
 				locale: 'it',
+				i18n: {
+		            months: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+		            weekdays: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab']
+		        },
 				minDate: new Date('Jan 01, 1930 00:00:00'),
 				maxDate: new Date('Dec 31, 15 00:00:00'),
 				format: 'YYYY-MM-DD'
