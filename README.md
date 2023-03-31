@@ -7,6 +7,8 @@ MySmartWallet è una web application per la gestione del portafoglio personale. 
 - Java 8
 - Spring Boot v2.7.10
 - MySql v8.0.32
+- jstl v1.2
+- jbcrypt v0.4
 ### Frontend + Plugin
 - Bootstrap v5.3.0
 - jQuery v3.6.4
