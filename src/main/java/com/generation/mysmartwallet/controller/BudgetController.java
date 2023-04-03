@@ -61,8 +61,9 @@ public class BudgetController {
 	
 	@PostMapping("/getIdPerCategoria")
 	@ResponseBody
-	public String getId(@RequestBody String categoria) {
-		return daoBudget.getIdPerCategoria(categoria);
+	public String getId(@RequestBody String categoria, HttpSession session) {
+		Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
+		return daoBudget.getIdPerCategoria(categoria, conto.getId());
 	}
 	
 	@GetMapping("/listaBudget")

@@ -63,9 +63,9 @@ public class DaoBudget {
 		return db.update(query, id + "");
 	}
 
-	public String getIdPerCategoria(String categoria) {
-		String query = "select * from budgetPerCategoria where nome = ?";
-		return db.row(query, categoria) == null ? "0" : db.row(query, categoria).get("id");
+	public String getIdPerCategoria(String categoria, int idconto) {
+		String query = "select * from budgetPerCategoria where nome = ? and idconto = ?;";
+		return db.row(query, categoria, idconto +"") == null ? "0" : db.row(query, categoria, idconto +"").get("id");
 	}
 
 }
