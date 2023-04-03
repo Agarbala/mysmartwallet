@@ -83,7 +83,7 @@
 								</td>
 								<td>${obiettivo.datainizio}</td>
 								<td>${obiettivo.datafine}</td>
-								<td id="tdcompleted" style="color:transparent">${obiettivo.completato ? '1' : '0'} <i class="${obiettivo.completato ? 'bi bi-check-fill' : 'bi bi-play-fill' }" style="color: color(srgb 0.1232 0.725 0.1357)!important; font-size: xx-large; margin-left: 18px;"></i></td>
+								<td id="tdcompleted" style="color:transparent">${obiettivo.completato ? '1' : '0'} <i class="${obiettivo.completato ? 'bi bi-check-circle-fill fs-3' : 'bi bi-play-fill' }" style="color: color(srgb 0.1232 0.725 0.1357)!important; font-size: xx-large; margin-left: 18px;"></i></td>
 								<td class="truncate">${obiettivo.note}</td>
 								<td class="td_center">
 									<a class="modButton" id="mod" title="Modifica" href="#" data-bs-toggle="modal"
@@ -148,7 +148,7 @@
 					{ orderable: false, targets: [0, 1, 2, 3, 4, 5, 6, 7, 8] },
 					{ "searchable": false, "targets": [1, 2, 3, 4] }
 				],
-				order: [[5, 'asc'], [4, 'asc']]
+				order: [[6, 'asc'], [5, 'asc']]
 
 			});
 
