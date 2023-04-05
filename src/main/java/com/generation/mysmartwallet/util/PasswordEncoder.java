@@ -1,4 +1,5 @@
 package com.generation.mysmartwallet.util;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 public class PasswordEncoder {

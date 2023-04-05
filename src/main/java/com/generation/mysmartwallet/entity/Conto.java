@@ -2,7 +2,6 @@ package com.generation.mysmartwallet.entity;
 
 import java.util.ArrayList;
 
-
 public class Conto extends Entity {
 
 	private User utente;
@@ -10,8 +9,9 @@ public class Conto extends Entity {
 	private ArrayList<Obiettivo> obiettivi;
 	private ArrayList<Budget> budgets;
 	private double saldo;
-	
-	public Conto () {}
+
+	public Conto() {
+	}
 
 	public User getUtente() {
 		return utente;
@@ -21,21 +21,17 @@ public class Conto extends Entity {
 		this.utente = utente;
 	}
 
-
 	public ArrayList<Transazione> getTransazioni() {
 		return transazioni;
 	}
-
 
 	public void setTransazioni(ArrayList<Transazione> transazioni) {
 		this.transazioni = transazioni;
 	}
 
-
 	public ArrayList<Obiettivo> getObiettivi() {
 		return obiettivi;
 	}
-
 
 	public void setObiettivi(ArrayList<Obiettivo> obiettivi) {
 		this.obiettivi = obiettivi;
@@ -57,10 +53,4 @@ public class Conto extends Entity {
 		this.saldo = saldo;
 	}
 
-
-	
-	
-	
-	
-	
 }

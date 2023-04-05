@@ -8,23 +8,20 @@ public class Budget extends Entity {
 	private double budget;
 	private int idconto;
 
-	
-	public Budget() {}
-	
+	public Budget() {
+	}
+
 	public String getNome() {
 		return nome.getLabel();
 	}
-
 
 	public void setNome(Categoria nome) {
 		this.nome = nome;
 	}
 
-
 	public double getBudget() {
 		return budget;
 	}
-
 
 	public void setBudget(double budget) {
 		this.budget = budget;
@@ -37,6 +34,5 @@ public class Budget extends Entity {
 	public void setIdconto(int idconto) {
 		this.idconto = idconto;
 	}
-	
-}
 
+}

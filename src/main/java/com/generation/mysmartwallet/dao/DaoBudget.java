@@ -9,8 +9,6 @@ import org.springframework.context.ApplicationContext;
 
 import com.generation.mysmartwallet.database.Database;
 import com.generation.mysmartwallet.entity.Budget;
-import com.generation.mysmartwallet.enums.Categoria;
-
 
 public class DaoBudget {
 	@Autowired
@@ -19,46 +17,39 @@ public class DaoBudget {
 	@Autowired
 	private ApplicationContext context;
 
-	public List<Budget> read(String query, String... params)
-	{
+	public List<Budget> read(String query, String... params) {
 		List<Budget> ris = new ArrayList<Budget>();
 		List<Map<String, String>> righe = db.rows(query, params);
-		for(Map<String,String> riga : righe)
-		{
+		for (Map<String, String> riga : righe) {
 			Budget bud = context.getBean(Budget.class, riga);
 			ris.add(bud);
 		}
 		return ris;
 	}
 
-	public List<Budget> tuttiPerUtente(int idUtente)
-	{
-		return read("select * from budgetPerCategoria where idConto = ?", idUtente+"");
+	public List<Budget> tuttiPerUtente(int idUtente) {
+		return read("select * from budgetPerCategoria where idConto = ?", idUtente + "");
 	}
-	
 
-	public boolean create(Budget bud)
-	{
-		if(bud.getId() == 0) {
+	public boolean create(Budget bud) {
+		if (bud.getId() == 0) {
 			String query = "insert into budgetPerCategoria (idconto, budget, nome) values (?,?,?);";
 			System.out.println("ho aggiunto il budget");
-			return db.update(query, bud.getIdconto() + "", bud.getBudget()+ "", bud.getNome());
+			return db.update(query, bud.getIdconto() + "", bud.getBudget() + "", bud.getNome());
 		}
-		
+
 		String query = "update budgetPerCategoria set budget = ? where id = ?;";
 		System.out.println("ho aggiornato il budget");
-		return db.update(query, bud.getBudget()+"", bud.getId() + "");
+		return db.update(query, bud.getBudget() + "", bud.getId() + "");
 
 	}
 
-	public boolean update(Budget bud)
-	{
+	public boolean update(Budget bud) {
 		String query = "update budgetPerCategoria set budget = ? where id = ?;";
-		return db.update(query, bud.getId()+ "", bud.getBudget()+ "");
+		return db.update(query, bud.getId() + "", bud.getBudget() + "");
 	}
 
-	public boolean delete(int id)
-	{
+	public boolean delete(int id) {
 		String query = "delete from budgetPerCategoria where id = ?;";
 		return db.update(query, id + "");
 	}

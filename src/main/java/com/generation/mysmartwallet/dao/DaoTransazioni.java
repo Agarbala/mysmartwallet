@@ -15,57 +15,50 @@ public class DaoTransazioni {
 	@Autowired
 	private ApplicationContext context;
 
-	public List<Transazione> read(String query, String... params)
-	{
+	public List<Transazione> read(String query, String... params) {
 		List<Transazione> ris = new ArrayList<Transazione>();
 		List<Map<String, String>> righe = db.rows(query, params);
-		for(Map<String,String> riga : righe)
-		{
-			Transazione tr = context.getBean(Transazione.class,riga);
+		for (Map<String, String> riga : righe) {
+			Transazione tr = context.getBean(Transazione.class, riga);
 			ris.add(tr);
 		}
 		return ris;
 	}
 
-	public List<Transazione> tuttePerUtente(int idUtente)
-	{
+	public List<Transazione> tuttePerUtente(int idUtente) {
 		return read("select * from transazioni where idconto = ? order by datatransazione desc", idUtente + "");
 	}
 
-	public boolean create(Transazione t)
-	{
+	public boolean create(Transazione t) {
 		String query = "insert into transazioni(idconto, importo, datatransazione, note, nome, metodo, categoria, tipo, obiettivoid) values(?,?,?,?,?,?,?,?,?);";
-		return db.update(query, 
-				t.getIdconto()+ "", 
-				t.getImporto()+ "", 
-				t.getDatatransazione()+ "", 
-				t.getNote(), t.getNome(), 
-				t.getMetodo(), 
+		return db.update(query,
+				t.getIdconto() + "",
+				t.getImporto() + "",
+				t.getDatatransazione() + "",
+				t.getNote(), t.getNome(),
+				t.getMetodo(),
 				t.getCategoria(),
-				t.getTipo(), 
+				t.getTipo(),
 				t.getObiettivoid() == 0 ? null : t.getObiettivoid() + "");
 	}
 
-	public boolean update(Transazione t)
-	{
+	public boolean update(Transazione t) {
 		String query = "update transazioni set idconto = ?, importo = ?, datatransazione = ?, note = ?, nome= ?, metodo = ?, categoria = ?, tipo = ? where id = ? ;";
-		return db.update(query, 
-				t.getIdconto()+"", 
-				t.getImporto()+ "", 
-				t.getDatatransazione()+ "", 
-				t.getNote(), 
-				t.getNome(), 
-				t.getMetodo(), 
-				t.getCategoria(), 
+		return db.update(query,
+				t.getIdconto() + "",
+				t.getImporto() + "",
+				t.getDatatransazione() + "",
+				t.getNote(),
+				t.getNome(),
+				t.getMetodo(),
+				t.getCategoria(),
 				t.getTipo(),
-				t.getId()+"");
+				t.getId() + "");
 	}
 
-	public boolean delete(int id)
-	{
+	public boolean delete(int id) {
 		String query = "delete from transazioni where id = ?;";
 		return db.update(query, id + "");
 	}
-
 
 }

@@ -22,7 +22,7 @@ public class SignupController {
 
 	@Autowired
 	private DaoUtente daoUtente;
-	
+
 	@Autowired
 	private DaoConto daoConto;
 
@@ -35,7 +35,9 @@ public class SignupController {
 	}
 
 	/**
-	 * Le chiamate a questo Mapping controllano la disponibilità dell'username passato come parametro
+	 * Le chiamate a questo Mapping controllano la disponibilità dell'username
+	 * passato come parametro
+	 * 
 	 * @param username
 	 * @return true se l'username è disponibile, false altrimenti
 	 */
@@ -44,23 +46,23 @@ public class SignupController {
 	public boolean isUsernameDisponibile(@RequestParam String username) {
 		return !daoUtente.isUsernameEsistente(username);
 	}
-	
+
 	@PostMapping("/signupProcess")
 	public String signupProcess(HttpSession session, @RequestParam Map<String, String> user) {
 		// Controllo che non esista già un utente con lo stesso username nel database
-		if(!daoUtente.isUsernameEsistente(user.get("username"))) {
+		if (!daoUtente.isUsernameEsistente(user.get("username"))) {
 			// Se non esiste, creo un nuovo oggetto User dai parametri della request
 			User newUser = context.getBean(User.class, user);
 			// Cripto la password
 			newUser.setPassword(encoder.encode(user.get("password")));
 			// Provo ad aggiungerlo
-			if(daoUtente.create(newUser)) {
+			if (daoUtente.create(newUser)) {
 				// Oltre all'utente, bisogna creare il conto
 				daoConto.create(daoUtente.cercaIdPerUsername(newUser.getUsername()));
-//				// Aggiungo l'utente in sessione e lo porto alla home
-//				Map<String, String> userMap = newUser.toMap();
-//				userMap.remove("password");
-//				session.setAttribute("user", userMap);
+				// // Aggiungo l'utente in sessione e lo porto alla home
+				// Map<String, String> userMap = newUser.toMap();
+				// userMap.remove("password");
+				// session.setAttribute("user", userMap);
 				return "redirect:/login";
 			}
 		}

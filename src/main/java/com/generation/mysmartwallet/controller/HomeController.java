@@ -21,10 +21,8 @@ import com.generation.mysmartwallet.entity.Transazione;
 import com.generation.mysmartwallet.enums.TipoTransazione;
 import com.generation.mysmartwallet.util.SessionUtil;
 
-
 @Controller
 public class HomeController {
-
 
 	@Autowired
 	private ApplicationContext context;
@@ -35,19 +33,19 @@ public class HomeController {
 		LocalDate oggi = LocalDate.now();
 		Month mese = oggi.getMonth();
 		int anno = oggi.getYear();
-		
+
 		double entrate = 0;
 		double uscite = 0;
-		for(Transazione t : c.getTransazioni()) {
-			if(t.getDatatransazione().getMonth() == mese && t.getDatatransazione().getYear() == anno) {
-				if(t.getTipo().equalsIgnoreCase(TipoTransazione.ENTRATA.getLabel())) {
+		for (Transazione t : c.getTransazioni()) {
+			if (t.getDatatransazione().getMonth() == mese && t.getDatatransazione().getYear() == anno) {
+				if (t.getTipo().equalsIgnoreCase(TipoTransazione.ENTRATA.getLabel())) {
 					entrate += t.getImporto();
 				} else {
 					uscite += t.getImporto();
 				}
 			}
 		}
-		
+
 		model.addAttribute("risparmiato", getRisparmiatoPerObiettivo(session));
 		model.addAttribute("conto", c);
 		model.addAttribute("bilancioMensile", (entrate - uscite));
@@ -57,14 +55,14 @@ public class HomeController {
 
 		return "dashboard.jsp";
 	}
-	
+
 	private Map<Integer, Double> getRisparmiatoPerObiettivo(HttpSession session) {
 		Conto conto = context.getBean(Conto.class, SessionUtil.idFromSession(session));
 		Map<Integer, Double> ris = new HashMap<>();
-		for(Obiettivo o : conto.getObiettivi()) {
+		for (Obiettivo o : conto.getObiettivi()) {
 			double somma = 0;
-			for(Transazione t : conto.getTransazioni()) {
-				if(t.getObiettivoid() == o.getId()) {
+			for (Transazione t : conto.getTransazioni()) {
+				if (t.getObiettivoid() == o.getId()) {
 					somma += t.getImporto();
 				}
 			}

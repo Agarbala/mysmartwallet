@@ -1,117 +1,193 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="/css/font.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link href="https://cdn.datatables.net/datetime/1.4.0/css/dataTables.dateTime.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      href="https://cdn.datatables.net/datetime/1.4.0/css/dataTables.dateTime.min.css"
+      rel="stylesheet"
+    />
   </head>
-<body style="background-color: color(srgb 0.0272 0.2074 0.3024); margin: 0;">
-	<div class="cont">
-		<div class="containForm sign_up">
-			<div class="form login">
-				<span class="title">Registrazione</span>
-				<form id="signupForm" action="signupProcess" method="post">
+  <body style="background-color: color(srgb 0.0272 0.2074 0.3024); margin: 0">
+    <div class="cont">
+      <div class="containForm sign_up">
+        <div class="form login">
+          <span class="title">Registrazione</span>
+          <form id="signupForm" action="signupProcess" method="post">
+            <div class="input-field">
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                required
+              /><br />
+              <div id="usernameAvailability"></div>
+              <i class="uil uil-envelope"></i>
+            </div>
 
-					<div class="input-field">
-						<input type="text" id="username" name="username" placeholder="Username" required><br>
-						<div id="usernameAvailability"></div>
-						<i class="uil uil-envelope"></i>
-					</div>
+            <div class="input-field">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                required
+              /><br />
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
 
-					<div class="input-field">
-						<input type="password" id="password" name="password" placeholder="Password" required><br>
-						<i class="uil uil-lock icon"></i>
-						<i class="uil uil-eye-slash showHidePw"></i>
-					</div>
+            <div class="input-field">
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Nome"
+                required
+              /><br />
+              <i class="uil uil-comment-alt-edit"></i>
+            </div>
 
-					<div class="input-field">
-						<input type="text" id="nome" name="nome" placeholder="Nome" required><br>
-						<i class="uil uil-comment-alt-edit"></i>
-					</div>
+            <div class="input-field">
+              <input
+                type="text"
+                id="cognome"
+                name="cognome"
+                placeholder="Cognome"
+                required
+              /><br />
+              <i class="uil uil-comment-alt-edit"></i>
+            </div>
 
-					<div class="input-field">
-						<input type="text" id="cognome" name="cognome" placeholder="Cognome" required><br>
-						<i class="uil uil-comment-alt-edit"></i>
-					</div>
+            <div class="input-field">
+              <input
+                type="text"
+                id="datadinascita"
+                name="datadinascita"
+                placeholder="Data di nascita"
+                required
+              /><br />
+              <i class="uil uil-calendar-alt"></i>
+            </div>
 
-					<div class="input-field">
-						<input type="text" id="datadinascita" name="datadinascita" placeholder="Data di nascita"
-							required><br>
-						<i class="uil uil-calendar-alt"></i>
-					</div>
+            <div class="input-field button">
+              <input type="submit" value="Registrati" />
+            </div>
+            <!--SEZIONE REGISTRATI-->
+            <div class="login_signup">
+              Sei già un membro?
+              <span>
+                <a href="login.html" class="text signup_text reg_link"
+                  >Accedi</a
+                >
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        style="
+          width: 100%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          opacity: 0.2;
+          z-index: -1;
+        "
+      ></div>
+      <div
+        style="
+          background-color: rgba(75, 75, 75, 0.48);
+          width: 100%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          opacity: 0.4;
+          z-index: -1;
+        "
+      ></div>
+      <div
+        style="
+          background-image: url('/imgs/Logo.png');
+          width: 100%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          opacity: 0.2;
+          z-index: -2;
+          background-size: 159px;
+          background-position-x: 20px;
+        "
+      ></div>
+    </div>
 
-					<div class="input-field button">
-						<input type="submit" value="Registrati">
-					</div>
-          <!--SEZIONE REGISTRATI-->
-					<div class="login_signup">Sei già un membro?
-					 <span>
-					  <a href="login.html" class="text signup_text reg_link">Accedi</a>
-					 </span>
-				  </div>
-				</form>
-			</div>
-		</div>
-		<div style="width: 100%; height: 100vh; position: absolute; top: 0; opacity: 0.2; z-index: -1;"></div>
-	    <div style="background-color: rgba(75, 75, 75, 0.48); width: 100%; height: 100vh; position: absolute; top: 0; opacity: 0.4; z-index: -1;"></div>
-	    <div style="background-image: url('/imgs/Logo.png'); width: 100%; height: 100vh; position: absolute; top: 0; opacity: 0.2; z-index: -2; background-size: 159px; background-position-x: 20px;"></div>
-	</div>
+    <!-- Inclusione di jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <!-- Codice jQuery -->
+    <script>
+      $(document).ready(function () {
+        var isUsernameDisponibile = false; // variabile di controllo
 
+        $("#username").on("blur", function () {
+          var username = $(this).val();
+          $.ajax({
+            url: "/isUsernameDisponibile",
+            type: "POST",
+            data: { username: username },
+            success: function (response) {
+              if (response) {
+                isUsernameDisponibile = true;
+              } else {
+                isUsernameDisponibile = false;
+              }
+            },
+          });
+        });
 
-	<!-- Inclusione di jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-	<!-- Codice jQuery -->
-	<script>
+        $("#signupForm").on("submit", function (event) {
+          if (!isUsernameDisponibile) {
+            //alert("Usa un altro username!");
+            $("#usernameAvailability").text("Username non disponibile");
+            //$('#submit').hide(); -> potrebbe confondere l'utente
+            $("#username").css("border-color", "red");
+            event.preventDefault(); // impedisce l'invio
+          }
+        });
 
-		$(document).ready(function () {
-			var isUsernameDisponibile = false;  // variabile di controllo
-
-			$('#username').on('blur', function () {
-				var username = $(this).val();
-				$.ajax({
-					url: '/isUsernameDisponibile',
-					type: 'POST',
-					data: { username: username },
-					success: function (response) {
-						if (response) {
-							isUsernameDisponibile = true;
-						} else {
-
-							isUsernameDisponibile = false;
-						}
-					}
-				});
-			});
-
-			$('#signupForm').on('submit', function (event) {
-				if (!isUsernameDisponibile) {
-					//alert("Usa un altro username!");
-					$('#usernameAvailability').text('Username non disponibile');
-					//$('#submit').hide(); -> potrebbe confondere l'utente
-					$('#username').css('border-color', 'red');
-					event.preventDefault();  // impedisce l'invio
-				}
-			});
-
-			var data = new DateTime($('#datadinascita'), {
-				locale: 'it',
-				i18n: {
-		            months: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
-		            weekdays: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab']
-		        },
-				minDate: new Date('Jan 01, 1930 00:00:00'),
-				maxDate: new Date('Dec 31, 15 00:00:00'),
-				format: 'YYYY-MM-DD'
-			});
-
-		});
-
-	</script>
- </body>
+        var data = new DateTime($("#datadinascita"), {
+          locale: "it",
+          i18n: {
+            months: [
+              "Gen",
+              "Feb",
+              "Mar",
+              "Apr",
+              "Mag",
+              "Giu",
+              "Lug",
+              "Ago",
+              "Set",
+              "Ott",
+              "Nov",
+              "Dic",
+            ],
+            weekdays: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+          },
+          minDate: new Date("Jan 01, 1930 00:00:00"),
+          maxDate: new Date("Dec 31, 15 00:00:00"),
+          format: "YYYY-MM-DD",
+        });
+      });
+    </script>
+  </body>
 </html>

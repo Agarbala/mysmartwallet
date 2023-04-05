@@ -17,27 +17,27 @@ public class DataContext {
 	public Database db() {
 		return new Database();
 	}
-	
+
 	@Bean
 	public DaoUtente daoUtente() {
 		return new DaoUtente();
 	}
-	
+
 	@Bean
 	public DaoTransazioni daoTransazioni() {
 		return new DaoTransazioni();
 	}
-	
+
 	@Bean
 	public DaoObiettivo daoObiettivi() {
 		return new DaoObiettivo();
 	}
-	
+
 	@Bean
 	public DaoBudget daoBudget() {
 		return new DaoBudget();
 	}
-	
+
 	@Bean
 	public DaoConto daoConto() {
 		return new DaoConto();

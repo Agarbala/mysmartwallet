@@ -20,8 +20,7 @@ import com.generation.mysmartwallet.entity.User;
 
 @Configuration
 public class EntityContext {
-	
-	
+
 	@Autowired
 	private DaoTransazioni daoTransazioni;
 	@Autowired
@@ -38,7 +37,7 @@ public class EntityContext {
 		u.fromMap(row);
 		return u;
 	}
-	
+
 	@Bean
 	@Scope("prototype")
 	public Transazione transazione(Map<String, String> row) {
@@ -46,7 +45,7 @@ public class EntityContext {
 		t.fromMap(row);
 		return t;
 	}
-	
+
 	@Bean
 	@Scope("prototype")
 	public Obiettivo obiettivo(Map<String, String> row) {
@@ -54,7 +53,7 @@ public class EntityContext {
 		o.fromMap(row);
 		return o;
 	}
-	
+
 	@Bean
 	@Scope("prototype")
 	public Budget budget(Map<String, String> row) {
@@ -62,8 +61,9 @@ public class EntityContext {
 		b.fromMap(row);
 		return b;
 	}
-	
-	// Creo un oggetto Conto solo una volta per sessione, al logout invalido la sessione
+
+	// Creo un oggetto Conto solo una volta per sessione, al logout invalido la
+	// sessione
 	@Bean
 	@Scope("session")
 	public Conto conto(int id) {

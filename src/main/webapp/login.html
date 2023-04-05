@@ -1,65 +1,110 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="/css/font.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-</head>
+  <body
+    class="body-login"
+    style="background-color: color(srgb 0.0272 0.2074 0.3024); margin: 0"
+  >
+    <div class="cont">
+      <div class="containForm log_in" s>
+        <div class="form login">
+          <span class="title">Login</span>
 
-<body class="body-login" style="background-color: color(srgb 0.0272 0.2074 0.3024); margin: 0;">
-	<div class="cont">
-		<div class="containForm log_in"s>
-			<div class="form login">
+          <form id="reg_form" action="loginProcess" method="POST">
+            <div class="input-field">
+              <input
+                name="username"
+                type="text"
+                placeholder="Inserisci il tuo username"
+                required
+              />
+              <i class="uil uil-envelope"></i>
+            </div>
+            <div class="input-field">
+              <input
+                name="password"
+                class="password"
+                name="password"
+                type="password"
+                placeholder="Inserisci la tua password"
+                required
+              />
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
 
-				<span class="title">Login</span>
+            <div class="checkbox_text">
+              <div class="checkbox_content">
+                <input type="checkbox" id="log_check" />
+                <label for="log_check" class="text">Ricorda</label>
+              </div>
 
-				<form id="reg_form" action="loginProcess" method="POST">
+              <a href="#" class="text">Password dimenticata?</a>
+            </div>
 
-					<div class="input-field">
-						<input name="username" type="text" placeholder="Inserisci il tuo username" required>
-						<i class="uil uil-envelope"></i>
-					</div>
-					<div class="input-field">
-						<input name="password" class="password" name="password" type="password"
-							placeholder="Inserisci la tua password" required>
-						<i class="uil uil-lock icon"></i>
-						<i class="uil uil-eye-slash showHidePw"></i>
-					</div>
+            <div class="input-field button">
+              <input type="submit" value="Accedi" />
+            </div>
+          </form>
 
-					<div class="checkbox_text">
-						<div class="checkbox_content">
-							<input type="checkbox" id="log_check">
-							<label for="log_check" class="text">Ricorda</label>
-						</div>
+          <span class="form_succes"></span>
 
-						<a href="#" class="text">Password dimenticata?</a>
-					</div>
-
-
-					<div class="input-field button">
-						<input type="submit" value="Accedi">
-					</div>
-				</form>
-
-				<span class="form_succes"></span>
-
-				<!--SEZIONE REGISTRATI-->
-				<div class="login_signup">Non sei ancora un membro?
-					<span>
-						<a href="signup.html" class="text signup_text reg_link">Registrati</a>
-					</span>
-				</div>
-
-			</div>
-		</div>
-		<div style="width: 100%; height: 100vh; position: absolute; top: 0; opacity: 0.2; z-index: -1;"></div>
-	    <div style="background-color: rgba(75, 75, 75, 0.48); width: 100%; height: 100vh; position: absolute; top: 0; opacity: 0.4; z-index: -1;"></div>
-	    <div style="background-image: url('/imgs/Logo.png'); width: 100%; height: 100vh; position: absolute; top: 0; opacity: 0.2; z-index: -2; background-size: 159px; background-position-x: 20px;"></div>
-	</div>
-	<script src="js/login.js"></script>
-</body>
-
+          <!--SEZIONE REGISTRATI-->
+          <div class="login_signup">
+            Non sei ancora un membro?
+            <span>
+              <a href="signup.html" class="text signup_text reg_link"
+                >Registrati</a
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          width: 100%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          opacity: 0.2;
+          z-index: -1;
+        "
+      ></div>
+      <div
+        style="
+          background-color: rgba(75, 75, 75, 0.48);
+          width: 100%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          opacity: 0.4;
+          z-index: -1;
+        "
+      ></div>
+      <div
+        style="
+          background-image: url('/imgs/Logo.png');
+          width: 100%;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          opacity: 0.2;
+          z-index: -2;
+          background-size: 159px;
+          background-position-x: 20px;
+        "
+      ></div>
+    </div>
+    <script src="js/login.js"></script>
+  </body>
 </html>

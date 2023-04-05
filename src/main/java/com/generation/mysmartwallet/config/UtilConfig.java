@@ -10,7 +10,7 @@ public class UtilConfig {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		
+
 		return new PasswordEncoder();
 	}
 }
