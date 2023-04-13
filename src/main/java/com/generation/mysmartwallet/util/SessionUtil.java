@@ -1,13 +1,12 @@
 package com.generation.mysmartwallet.util;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 public abstract class SessionUtil {
 
-	@SuppressWarnings("unchecked")
-	public static int idFromSession(HttpSession session) {
-		return Integer.parseInt(((Map<String, String>) session.getAttribute("user")).get("id"));
-	}
+    @SuppressWarnings("unchecked")
+    public static int idFromSession(HttpSession session) {
+        return Integer.parseInt(((Map<String, String>) session.getAttribute("user")).get("id"));
+    }
 }

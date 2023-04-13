@@ -10,7 +10,7 @@ public enum Categoria {
 
     private final String label;
 
-    private Categoria(String label) {
+    Categoria(String label) {
         this.label = label;
     }
 

@@ -1,16 +1,15 @@
 package com.generation.mysmartwallet.config;
 
+import com.generation.mysmartwallet.util.PasswordEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.generation.mysmartwallet.util.PasswordEncoder;
 
 @Configuration
 public class UtilConfig {
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+    @Bean
+    PasswordEncoder passwordEncoder() {
 
-		return new PasswordEncoder();
-	}
+        return new PasswordEncoder();
+    }
 }
